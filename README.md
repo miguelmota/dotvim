@@ -81,7 +81,7 @@ To swith windows type <kbd>Ctr</kbd>+<kbd>j</kbd>
 
 ### Toggle paste mode
 
-<kbd>F9</kbd> turn on paste mode, <kbd>F8</kbd> turns of paste mode
+<kbd>F9</kbd> turn on paste mode, <kbd>F8</kbd> turns off paste mode
 
 ## License
 
