@@ -1,11 +1,12 @@
 # Vim config
 
-My `~/.vim` configuration
+My `~/.vim` and `~/.vimrc` configuration
 
 ## Bundles
 
 - [Vundle](https://github.com/gmarik/Vundle.vim) - Plug-in manager
 - [NERDtree](https://github.com/scrooloose/nerdtree) - A tree explorer
+- [NERDcommenter](https://github.com/scrooloose/nerdtree) - A tree explorer
 - [ctrlp](https://github.com/kien/ctrlp.vim) - Fuzzy file, buffer, mru, tag, etc finder
 - [syntastic](https://github.com/scrooloose/syntastic) - Syntax checking hacks
 - [neocomplcache](https://github.com/Shougo/neocomplcache.vim) - Ultimate auto-completion system 
@@ -34,7 +35,7 @@ My `~/.vim` configuration
 brew install ctags
 ```
 
-[Tern](https://github.com/marijnh/tern)
+[Tern](https://github.com/marijnh/tern) for tern plugin
 
 ```
 cd ~/.vim/bundle/tern_for_vim
@@ -56,6 +57,17 @@ vim +BundleInstall
 ln -s vim-config/.vim ~/.vim
 ln -s vim-config/.vim/.vimrc ~/.vimrc
 ```
+
+## Key bindings
+
+### Nerdcommenter
+
+Hightlight text in visual mode then type <kbd>\</kbd> <kbd>cc</kbd> to toggle comments
+
+### Window switching
+
+To swith windows type <kbd>Ctr</kbd>+<kbd>j</kbd> (h|j|k|l)
+
 
 ## License
 

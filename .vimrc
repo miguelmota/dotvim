@@ -28,6 +28,7 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'tpope/vim-fugitive'
 Bundle 'moll/vim-node'
 Bundle 'vim-scripts/Rename'
+Bundle 'scrooloose/nerdcommenter'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -144,6 +145,9 @@ set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1 
 colorscheme solarized
+" Required for NERDcommenter
+filetype plugin on
+" Enable indent
 filetype plugin indent on
 " Enable closetag
 let b:closetag_html_style=1
@@ -183,8 +187,23 @@ map j gj
 map k gk
 " Use spaces instead of tabs
 set expandtab
-" Enable neocomplache
+" Neocomplache config
+let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Hold Ctr and use movement keys to move around window splits
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
