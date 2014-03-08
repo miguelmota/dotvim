@@ -77,7 +77,7 @@ To swith windows type <kbd>Ctr</kbd>+<kbd>j</kbd>
 
 <kbd>F9</kbd> turn on paste mode, <kbd>F8</kbd> turns off paste mode
 
-## Some functions
+## Custom functions
 
 `:Sws` to strip whitespace
 
