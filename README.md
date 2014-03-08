@@ -19,7 +19,7 @@ My `~/.vim` and `~/.vimrc` configuration
 - [rename](https://github.com/vim-scripts/Rename) - File renaming
 - [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) - Visually display indent levels
 - [vim-fugitive](https://github.com/tpope/vim-fugitive) - Git wrapper
-- [tern_for_vim](https://github.com/marijnh/tern_for_vim) - [Tern](http://ternjs.net/g-based JavaScript editing support
+- [tern_for_vim](https://github.com/marijnh/tern_for_vim) - [Tern](http://ternjs.net/g-based) JavaScript editing support
 - [vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax) - Enhanced JavaScript syntax
 - [vim-jade](https://github.com/digitaltoad/vim-jade) - Jade template engine syntax highlighting and indention
 - [vim-mustache-handlebars](https://github.com/mustache/vim-mustache-handlebars) - Mustache and Handlebars support
@@ -35,7 +35,7 @@ My `~/.vim` and `~/.vimrc` configuration
 brew install ctags
 ```
 
-[Tern](https://github.com/marijnh/tern) for tern plugin
+[Tern](https://github.com/marijnh/tern) for [tern](https://github.com/marijnh/tern_for_vim) plugin
 
 ```
 cd ~/.vim/bundle/tern_for_vim
@@ -73,6 +73,17 @@ To swith windows type <kbd>Ctr</kbd>+<kbd>j</kbd>
 <kbd>h</kbd> left,
 <kbd>l</kbd> right
 
+### Some functions
+
+`:Sws` to strip whitespace
+
+`:Ttw` convert tabs to whitespace
+
+### Toggle paste mode
+
+<kbd>F9</kbd> turn on paste mode
+
+<kbd>F8</kbd> turns off paste mode
 
 ## License
 
