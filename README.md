@@ -6,7 +6,7 @@ My `~/.vim` and `~/.vimrc` configuration
 
 - [Vundle](https://github.com/gmarik/Vundle.vim) - Plug-in manager
 - [NERDtree](https://github.com/scrooloose/nerdtree) - A tree explorer
-- [NERDcommenter](https://github.com/scrooloose/nerdtree) - A tree explorer
+- [NERDcommenter](https://github.com/scrooloose/nerdcommenter) - Intensely orgasminc commenting
 - [ctrlp](https://github.com/kien/ctrlp.vim) - Fuzzy file, buffer, mru, tag, etc finder
 - [syntastic](https://github.com/scrooloose/syntastic) - Syntax checking hacks
 - [neocomplcache](https://github.com/Shougo/neocomplcache.vim) - Ultimate auto-completion system 
