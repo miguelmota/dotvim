@@ -66,12 +66,7 @@ Hightlight text in visual mode then type <kbd>\\</kbd> <kbd>cc</kbd> to toggle c
 
 ### Window switching
 
-To swith windows type <kbd>Ctr</kbd>+<kbd>j</kbd>
-
-<kbd>j</kbd> down,
-<kbd>k</kbd> up,
-<kbd>h</kbd> left,
-<kbd>l</kbd> right
+To swith windows type <kbd>Ctr</kbd>+<kbd><movement key></kbd>
 
 ### Paste mode
 
