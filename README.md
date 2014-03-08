@@ -79,7 +79,7 @@ To swith windows type <kbd>Ctr</kbd>+<kbd>j</kbd>
 
 `:Ttw` convert tabs to whitespace
 
-### Toggle paste mode
+### Paste mode
 
 <kbd>F9</kbd> turn on paste mode, <kbd>F8</kbd> turns off paste mode
 
