@@ -62,11 +62,11 @@ ln -s vim-config/.vim/.vimrc ~/.vimrc
 
 ### Nerdcommenter
 
-Hightlight text in visual mode then type <kbd>\</kbd> <kbd>cc</kbd> to toggle comments
+Hightlight text in visual mode then type <kbd>\\</kbd> <kbd>cc</kbd> to toggle comments
 
 ### Window switching
 
-To swith windows type <kbd>Ctr</kbd>+<kbd>j</kbd> (h|j|k|l)
+To swith windows type <kbd>Ctr</kbd>+<kbd>j</kbd> ( h | j | k | l )
 
 
 ## License
