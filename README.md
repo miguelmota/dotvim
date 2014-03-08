@@ -73,15 +73,15 @@ To swith windows type <kbd>Ctr</kbd>+<kbd>j</kbd>
 <kbd>h</kbd> left,
 <kbd>l</kbd> right
 
-### Some functions
+### Paste mode
+
+<kbd>F9</kbd> turn on paste mode, <kbd>F8</kbd> turns off paste mode
+
+## Some functions
 
 `:Sws` to strip whitespace
 
 `:Ttw` convert tabs to whitespace
-
-### Paste mode
-
-<kbd>F9</kbd> turn on paste mode, <kbd>F8</kbd> turns off paste mode
 
 ## License
 
