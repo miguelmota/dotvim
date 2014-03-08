@@ -76,7 +76,7 @@ To swith windows type <kbd>Ctr</kbd>+<kbd><movement key></kbd>
 
 `:Sws` to strip whitespace
 
-`:Ttw` convert tabs to whitespace
+`:Ttw` to convert tabs to whitespace
 
 ## License
 
