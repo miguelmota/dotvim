@@ -151,7 +151,7 @@ filetype plugin on
 filetype plugin indent on
 " Enable closetag
 let b:closetag_html_style=1
-au Filetype html,xml,xsl,ejs,jade,haml,erb source ~/.vim/plugin/closetag.vim "" ctrl-_ 
+au Filetype html,xml,xsl,ejs,jade,haml,erb source ~/.vim/closetag.vim/plugin/closetag.vim "" ctrl-_ 
 source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_ 
 " NerdTree show hidden files
 let NERDTreeShowHidden=1
