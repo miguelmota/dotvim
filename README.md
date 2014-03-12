@@ -1,6 +1,8 @@
 # Vim config
 
-My `~/.vim` and `~/.vimrc` configuration
+My `~/.vim` and `~/.vimrc` configuration.
+
+Mainly focused on JavaScript development.
 
 ## Bundles
 
@@ -13,12 +15,14 @@ My `~/.vim` and `~/.vimrc` configuration
 - [delimitMate](https://github.com/Raimondi/delimitMate) - Auto-completion for quotes, parens, brackets, etc
 - [conque-term](https://github.com/rosenfeld/conque-term) - Run interative commands inside a buffer
 - [emmet-vim](https://github.com/mattn/emmet-vim) - Emmet support
+- [snipmate](https://github.com/msanders/snipmate.vim) - Snippets
 - [tagbar](https://github.com/majutsushi/tagbar) - Display tags ordered by class
 - [closetag](https://github.com/vim-scripts/closetag.vim) - Close open HTML/XML tags
 - [tabular](https://github.com/godlygeek/tabular) - Text filtering and alignment
 - [rename](https://github.com/vim-scripts/Rename) - File renaming
 - [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) - Visually display indent levels
 - [vim-fugitive](https://github.com/tpope/vim-fugitive) - Git wrapper
+- [html5](https://github.com/othree/html5.vim) - HTML5 omnicomplete and syntax
 - [tern_for_vim](https://github.com/marijnh/tern_for_vim) - [Tern](http://ternjs.net/g-based) JavaScript editing support
 - [vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax) - Enhanced JavaScript syntax
 - [vim-jade](https://github.com/digitaltoad/vim-jade) - Jade template engine syntax highlighting and indention

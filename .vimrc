@@ -29,6 +29,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'moll/vim-node'
 Bundle 'vim-scripts/Rename'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'othree/html5.vim'
+Bundle 'msanders/snipmate.vim'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -218,3 +220,4 @@ map <C-S-Tab> :bprevious<cr
 au FileType mail let b:delimitMate_autoclose = 0 
 " Ctr-c inbetween brackets to expand (DelimitMate)
 imap <C-c> <CR><Esc>O
+let g:snippets_dir = "~/.vim/snippets"
