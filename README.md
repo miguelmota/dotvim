@@ -64,31 +64,31 @@ ln -s vim-config/.vim/.vimrc ~/.vimrc
 
 ### Key bindings
 
-Nerdcommenter
+Comment toggle:
 
-Hightlight text in visual mode then type <kbd>\\</kbd> <kbd>cc</kbd> to toggle comments
+Hightlight text in visual mode then type `\ cc`
 
-Window switching
+Window switching:
 
 `Ctr+<movement key>`
 
-Paste mode toggle
+Paste mode toggle:
 
 `F9`
 
-List mode toggle
+List mode toggle:
 
 `F10`
 
-Strip whitespace
+Strip whitespace:
 
 `\ ss`
 
-Tabs to whitespace
+Tabs to whitespace:
 
 `\ ts`
 
-Reload vimrc
+Reload vimrc:
 
 `\ rv`
 
@@ -107,9 +107,9 @@ Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent
 <%   Decrease indent of a braced or bracketed block (cursor on brace)
 ]p   Paste text, aligning indentation with surroundings
 
-=i{  Re-indent the 'inner block', i.e. the contents of the block
-=a{  Re-indent 'a block', i.e. block and containing braces
-=2a{ Re-indent '2 blocks', i.e. this block and containing block
+=i{  Re-indent the "inner block", i.e. the contents of the block
+=a{  Re-indent "a block", i.e. block and containing braces
+=2a{ Re-indent "2 blocks", i.e. this block and containing block
 
 >i{  Increase inner block indent
 <i{  Decrease inner block indent
