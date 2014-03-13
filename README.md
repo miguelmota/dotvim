@@ -62,33 +62,33 @@ ln -s vim-config/.vim ~/.vim
 ln -s vim-config/.vim/.vimrc ~/.vimrc
 ```
 
-## Key bindings
+### Key bindings
 
-### Nerdcommenter
+Nerdcommenter
 
 Hightlight text in visual mode then type <kbd>\\</kbd> <kbd>cc</kbd> to toggle comments
 
-### Window switching
+Window switching
 
-<kbd>Ctr</kbd>+<kbd>\<movement key\></kbd>
+`Ctr+<movement key\>`
 
-### Paste mode toggle
+Paste mode toggle
 
-<kbd>F9</kbd>
+`F9`
 
-### Strip whitespace
+Strip whitespace
 
-<kbd>\\</kbd> <kbd>ss</kbd> 
+`\ ss`
 
-### Tabs to whitespace
+Tabs to whitespace
 
-<kbd>\\</kbd> <kbd>ts</kbd> 
+`\ ts`
 
-### Reload `~/.vimrc`
+Reload vimrc
 
-<kbd>\\</kbd> <kbd>rv</kbd> 
+`\ rv`
 
-## Indentation
+### Indentation
 
 Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent-multiple-lines-quickly-in-vi))
 
