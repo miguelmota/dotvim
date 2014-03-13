@@ -166,7 +166,9 @@ nmap <F8> :TagbarToggle<CR>
 " Open TagBar on JavaScript file
 autocmd BufRead *.js :TagbarToggle
 " Save as sudo
-command W w !sudo tee % >/dev/null
+"command W w !sudo tee % >/dev/null
+" Reload ~/.vimrc with \ + rv
+map <Leader>rv :source $MYVIMRC<CR>
 " Syntastic checker
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_check_on_open=1
@@ -174,16 +176,16 @@ let g:syntastic_check_on_open=1
 let g:mustache_abbreviations = 1
 " Emmet trigger key
 let g:user_emmet_leader_key='<C-Z'
-" Set paste shortcut
-command Setp execute "set paste"
-command Setnp execute "set nopaste"
 " Disable paste mode, (enabling this can affect many other things)
 set nopaste
 " Paste mode toggle
-map <F9> :set paste<CR>
-map <F10> :set nopaste<CR>
-command Sws :call StripWhitespace()
-command Ttw :call TabsToWhitespace()
+map <F9> :set invpaste paste?<CR>
+" \ + ss to strip whitespace
+map <Leader>ss :call StripWhitespace()<CR>
+" \ + ts to convert tabs to whitespace
+map <Leader>ts :call TabsToWhitespace()<CR>
+" \ + ct to open ConqueTerm
+map <Leader>ct :tabe <bar> ConqueTerm bash<CR>
 " Treat long lines as line breaks
 map j gj
 map k gk

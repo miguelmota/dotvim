@@ -70,17 +70,46 @@ Hightlight text in visual mode then type <kbd>\\</kbd> <kbd>cc</kbd> to toggle c
 
 ### Window switching
 
-To swith windows type <kbd>Ctr</kbd>+<kbd>\<movement key\></kbd>
+<kbd>Ctr</kbd>+<kbd>\<movement key\></kbd>
 
-### Paste mode
+### Paste mode toggle
 
-<kbd>F9</kbd> turn on paste mode, <kbd>F8</kbd> turns off paste mode
+<kbd>F9</kbd>
 
-## Custom functions
+### Strip whitespace
 
-`:Sws` to strip whitespace
+<kbd>\\</kbd> <kbd>ss</kbd> 
 
-`:Ttw` to convert tabs to whitespace
+### Tabs to whitespace
+
+<kbd>\\</kbd> <kbd>ts</kbd> 
+
+### Reload `~/.vimrc`
+
+<kbd>\\</kbd> <kbd>rv</kbd> 
+
+## Indentation
+
+Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent-multiple-lines-quickly-in-vi))
+
+```bash
+>>   Indent line by shiftwidth spaces
+<<   De-indent line by shiftwidth spaces
+5>>  Indent 5 lines
+5==  Re-indent 5 lines
+
+>%   Increase indent of a braced or bracketed block (place cursor on brace first)
+=%   Reindent a braced or bracketed block (cursor on brace)
+<%   Decrease indent of a braced or bracketed block (cursor on brace)
+]p   Paste text, aligning indentation with surroundings
+
+=i{  Re-indent the 'inner block', i.e. the contents of the block
+=a{  Re-indent 'a block', i.e. block and containing braces
+=2a{ Re-indent '2 blocks', i.e. this block and containing block
+
+>i{  Increase inner block indent
+<i{  Decrease inner block indent
+```
 
 ## License
 
