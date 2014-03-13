@@ -70,11 +70,15 @@ Hightlight text in visual mode then type <kbd>\\</kbd> <kbd>cc</kbd> to toggle c
 
 Window switching
 
-`Ctr+<movement key\>`
+`Ctr+<movement key>`
 
 Paste mode toggle
 
 `F9`
+
+List mode toggle
+
+`F10`
 
 Strip whitespace
 

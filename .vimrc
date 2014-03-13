@@ -181,7 +181,7 @@ set nopaste
 " Paste mode toggle
 map <F9> :set invpaste paste?<CR>
 " List mode toggle
-map <F9> :set invlist list?<CR>
+map <F10> :set invlist list?<CR>
 " \ + ss to strip whitespace
 map <Leader>ss :call StripWhitespace()<CR>
 " \ + ts to convert tabs to whitespace
