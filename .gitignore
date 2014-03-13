@@ -90,6 +90,7 @@ publish
 _test
 _archive
 uploads
+backup
 
 # Vim files to ignore #
 #####################
