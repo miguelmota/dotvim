@@ -99,18 +99,17 @@ Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent
 # Create dotfiles directory
 mkdir ~/.dotfiles
 
-# Clone and move
-git clone https://github.com/miguelmota/vim-config.git
-mv vim-config ~/.dotfiles/.vim
+# Clone repo
+git clone https://github.com/miguelmota/vim-config.git ~/.dotfiles/.vim
 
 # Create backup directory
 mkdir -p ~/.vim/backup
 
 # Create symlinks
-ln -sf ~/.dotfiles/.vim ~/.vim
-ln -sf ~/.dotfiles/.vim/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/.vim ~/.vim
+ln -s ~/.dotfiles/.vim/.vimrc ~/.vimrc
 
-# Install vundle bundle manager
+# Install Vundle bundle manager
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 # Install bundles (ignore errors about uninstalled bundles)
@@ -121,21 +120,12 @@ vim +BundleInstall
 
 [ctags](http://ctags.sourceforge.net/) for [ctrlp](https://github.com/kien/ctrlp.vim) and [tagbar](https://github.com/majutsushi/tagbar) plugins
 
-Mac OSX instal
-
 ```bash
+# Mac OSX
 brew install ctags
-```
 
-Ubuntu install
-
-```bash
-wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
-tar -xvf ctags-5.8.tar.gz
-cd ctags-5.8
-sudo ./configure
-sudo make
-sudo make install
+# Ubuntu
+sudo apt-get install exuberant-ctags
 ```
 
 [Tern](https://github.com/marijnh/tern) for [tern](https://github.com/marijnh/tern_for_vim) plugin
