@@ -91,6 +91,7 @@ _test
 _archive
 uploads
 backup
+colors
 
 # Vim files to ignore #
 #####################

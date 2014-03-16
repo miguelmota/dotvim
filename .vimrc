@@ -31,6 +31,7 @@ Bundle 'vim-scripts/Rename'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'othree/html5.vim'
 Bundle 'msanders/snipmate.vim'
+Bundle 'mklabs/vim-backbone'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -164,7 +165,7 @@ autocmd VimEnter * wincmd p
 " TagBar key binding
 nmap <F8> :TagbarToggle<CR>
 " Open TagBar on JavaScript file
-autocmd BufRead *.js :TagbarToggle
+" autocmd BufRead *.js :TagbarToggle
 " Save as sudo
 "command W w !sudo tee % >/dev/null
 " Reload ~/.vimrc with \ + rv
@@ -193,17 +194,6 @@ map j gj
 map k gk
 " Use spaces instead of tabs
 set expandtab
-" Neocomplache config
-let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -224,4 +214,21 @@ map <C-S-Tab> :bprevious<cr
 au FileType mail let b:delimitMate_autoclose = 0 
 " Ctr-c inbetween brackets to expand (DelimitMate)
 imap <C-c> <CR><Esc>O
+" SnipMate snippets
 let g:snippets_dir = "~/.vim/snippets"
+" Neocomplache config
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+" Open file in new tab
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': [],
+  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+  \ }

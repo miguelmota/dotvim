@@ -29,48 +29,26 @@ Mainly focused on JavaScript development.
 - [vim-mustache-handlebars](https://github.com/mustache/vim-mustache-handlebars) - Mustache and Handlebars support
 - [vim-coffee-script](https://github.com/kchmck/vim-coffee-script) - CoffeeScript support
 - [vim-node](https://github.com/moll/vim-node) - Tools and enviroment for developing with Node.js
+- [vim-backbone](https://github.com/mklabs/vim-backbone) - Utilities for Backbone
 - [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized) - Precision colorscheme
 
-## Required dependencies
-
-[ctags](http://ctags.sourceforge.net/) for [ctrlp](https://github.com/kien/ctrlp.vim) plugin
-
-```bash
-brew install ctags
-```
-
-[Tern](https://github.com/marijnh/tern) for [tern](https://github.com/marijnh/tern_for_vim) plugin
-
-```
-cd ~/.vim/bundle/tern_for_vim
-
-npm install
-```
-
-## Installing bundles
-
-Run `BundleInstall` after adding a [Vundle](https://github.com/gmarik/Vundle.vim) bundle in `.vimrc`
-
-```bash
-vim +BundleInstall
-```
-
-## Symlinks
-
-```bash
-ln -s vim-config/.vim ~/.vim
-ln -s vim-config/.vim/.vimrc ~/.vimrc
-```
-
 ### Key bindings
+
+Search/open files:
+
+`Ctrl+p`
 
 Comment toggle:
 
 Hightlight text in visual mode then type `\ cc`
 
+Close tag:
+
+`Ctr + Shift + _`
+
 Window switching:
 
-`Ctr+<movement key>`
+`Ctr + <movement key>`
 
 Paste mode toggle:
 
@@ -114,6 +92,73 @@ Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent
 >i{  Increase inner block indent
 <i{  Decrease inner block indent
 ```
+
+## Install
+
+```bash
+# Create dotfiles directory
+
+mkdir ~/.dotfiles
+
+# Clone and move
+
+git clone https://github.com/miguelmota/vim-config.git
+mv vim-config ~/.dotfiles
+
+# Create backup directory
+mkdir -p ~/.vim/backup
+
+# Create symlinks
+
+ln -s ~/.dotfiles/.vim ~/.vim
+ln -s ~/.dotfiles/.vim/.vimrc ~/.vimrc
+
+# Install vundle bundle manager
+
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+# Install bundles
+
+vim +BundleInstall
+```
+
+## Required dependencies
+
+[ctags](http://ctags.sourceforge.net/) for [ctrlp](https://github.com/kien/ctrlp.vim) and [tagbar](https://github.com/majutsushi/tagbar) plugins
+
+Mac OSX instal
+
+```bash
+brew install ctags
+```
+
+Ubuntu install
+
+```bash
+wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+tar -xvf ctags-5.8.tar.gz
+cd ctags-5.8
+sudo ./configure
+sudo make
+sudo make install
+```
+
+[Tern](https://github.com/marijnh/tern) for [tern](https://github.com/marijnh/tern_for_vim) plugin
+
+Make sure to have [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed first
+
+```
+cd ~/.vim/bundle/tern_for_vim
+
+npm install
+```
+
+All done.
+
+## Installing bundles
+
+Run `BundleInstall` after adding a [Vundle](https://github.com/gmarik/Vundle.vim) bundle in `.vimrc`
+
 
 ## License
 
