@@ -95,7 +95,7 @@ Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent
 
 ## Install
 
-(Adjust according)
+(Adjust accordingly)
 
 ```bash
 # Create dotfiles directory
