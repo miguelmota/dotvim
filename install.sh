@@ -31,7 +31,7 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 # Install bundles
 echo "**** Installing bundles."
-vim +BundleInstall qall 2&> /dev/null
+vim +BundleInstall +qall 2&> /dev/null
 #vim +BundleInstall
 
 # Install ctags
