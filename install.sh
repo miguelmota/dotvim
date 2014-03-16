@@ -29,10 +29,6 @@ ln -sf ~/.dotfiles/.vim/.vimrc ~/.vimrc
 echo "**** Cloning Vundle bundle."
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-# Install bundles
-echo "**** Installing bundles."
-vim +BundleInstall +qall 2&> /dev/null
-
 # Install ctags
 if ! ctags_loc="$(type -p ctags)" || [ -z "$ctags_loc" ]; then
   echo "**** Installing ctags."
@@ -60,6 +56,10 @@ if ! npm_loc="$(type -p npm)" || [ -z "$npm_loc" ]; then
     sudo apt-get install npm
   fi
 if
+
+# Install bundles
+echo "**** Installing bundles."
+vim +BundleInstall +qall 2&> /dev/null
 
 # Install term
 echo "**** Installing tern."
