@@ -95,6 +95,8 @@ Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent
 
 ## Install
 
+(Adjust according)
+
 ```bash
 # Create dotfiles directory
 mkdir ~/.dotfiles
@@ -144,6 +146,11 @@ All done.
 
 Run `BundleInstall` after adding a [Vundle](https://github.com/gmarik/Vundle.vim) bundle in `.vimrc`
 
+## Updating
+
+```bash
+wget https://raw.github.com/miguelmota/vim-config/master/update.sh -O - | bash
+```
 
 ## License
 
