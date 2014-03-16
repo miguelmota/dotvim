@@ -97,11 +97,9 @@ Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent
 
 ```bash
 # Create dotfiles directory
-
 mkdir ~/.dotfiles
 
 # Clone and move
-
 git clone https://github.com/miguelmota/vim-config.git
 mv vim-config ~/.dotfiles/.vim
 
@@ -109,16 +107,13 @@ mv vim-config ~/.dotfiles/.vim
 mkdir -p ~/.vim/backup
 
 # Create symlinks
-
 ln -sf ~/.dotfiles/.vim ~/.vim
 ln -sf ~/.dotfiles/.vim/.vimrc ~/.vimrc
 
 # Install vundle bundle manager
-
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-# Install bundles
-
+# Install bundles (ignore errors about uninstalled bundles)
 vim +BundleInstall
 ```
 
