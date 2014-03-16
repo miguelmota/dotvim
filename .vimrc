@@ -32,6 +32,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'othree/html5.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'mklabs/vim-backbone'
+Bundle 'tpope/vim-pathogen'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion

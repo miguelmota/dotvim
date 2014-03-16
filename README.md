@@ -103,15 +103,15 @@ mkdir ~/.dotfiles
 # Clone and move
 
 git clone https://github.com/miguelmota/vim-config.git
-mv vim-config ~/.dotfiles
+mv vim-config ~/.dotfiles/.vim
 
 # Create backup directory
 mkdir -p ~/.vim/backup
 
 # Create symlinks
 
-ln -s ~/.dotfiles/.vim ~/.vim
-ln -s ~/.dotfiles/.vim/.vimrc ~/.vimrc
+ln -sf ~/.dotfiles/.vim ~/.vim
+ln -sf ~/.dotfiles/.vim/.vimrc ~/.vimrc
 
 # Install vundle bundle manager
 
