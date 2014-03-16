@@ -22,8 +22,8 @@ echo "**** Creating backup directory."
 
 # Create symlinks
 echo "**** Creating symbolic links."
-ln -s ~/.dotfiles/.vim ~/.vim
-ln -s ~/.dotfiles/.vim/.vimrc ~/.vimrc
+ln -sf ~/.dotfiles/.vim ~/.vim
+ln -sf ~/.dotfiles/.vim/.vimrc ~/.vimrc
 
 # Install Vundle bundle manager
 echo "**** Cloning Vundle bundle."
@@ -32,10 +32,9 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 # Install bundles
 echo "**** Installing bundles."
 vim +BundleInstall +qall 2&> /dev/null
-#vim +BundleInstall
 
 # Install ctags
-if ! ctags_loc="$(type -p "$ctags")" || [ -z "$ctags_loc" ]; then
+if ! ctags_loc="$(type -p ctags)" || [ -z "$ctags_loc" ]; then
   echo "**** Installing ctags."
   if [ "$(uname)" == "Darwin" ]; then
     brew install ctags
@@ -48,7 +47,7 @@ if ! ctags_loc="$(type -p "$ctags")" || [ -z "$ctags_loc" ]; then
 fi
 
 # Install tern dependencies
-if ! npm_loc="$(type -p "$npm")" || [ -z "$npm_loc" ]; then
+if ! npm_loc="$(type -p npm)" || [ -z "$npm_loc" ]; then
   echo "**** Installing tern dependencies."
   echo "** Installing nodejs."
   if [ "$(uname)" == "Darwin" ]; then
