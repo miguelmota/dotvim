@@ -32,10 +32,10 @@ if [[ ! -e ~/.vim/bundle/vundle/.git ]]; then
 fi
 
 # Install ctags
-if ! ctags_loc="$(type -p ctags)" || [ -z "$ctags_loc" ]; then
+if ! type ctags > /dev/null; then
   echo "**** Installing ctags."
   if [ "$(uname)" == "Darwin" ]; then
-    brew installkk ctags
+    brew install ctags
   fi
 
   if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
@@ -45,7 +45,7 @@ if ! ctags_loc="$(type -p ctags)" || [ -z "$ctags_loc" ]; then
 fi
 
 # Install tern dependencies
-if ! npm_loc="$(type -p npm)" || [ -z "$npm_loc" ]; then
+if ! type npm > /dev/null; then
   echo "**** Installing tern dependencies."
   echo "** Installing nodejs."
   if [ "$(uname)" == "Darwin" ]; then
@@ -57,11 +57,12 @@ if ! npm_loc="$(type -p npm)" || [ -z "$npm_loc" ]; then
     echo "** Installing npm."
     sudo apt-get install npm
   fi
-if
+fi
 
 # Install bundles
-echo "**** Installing bundles."
-vim +BundleInstall +qall 2&> /dev/null
+echo "**** Installing bundles (this may take a while)."
+#vim +BundleInstall +qall 2&> /dev/null
+vim +BundleInstall 
 
 # Install term
 echo "**** Installing tern."
