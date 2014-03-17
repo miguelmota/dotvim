@@ -59,7 +59,7 @@ if
 
 # Install bundles
 echo "**** Installing bundles."
-vim +BundleInstall +qall 2&> /dev/null
+vim +BundleInstall > /dev/null
 
 # Install term
 echo "**** Installing tern."
