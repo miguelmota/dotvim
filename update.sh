@@ -18,8 +18,8 @@ git clone https://github.com/miguelmota/vim-config.git ~/.tmp/vim-config
 
 # Update vim config
 echo "**** Updating vim config."
-cp -rf ~/.tmp/vim-config/ ~/.vim
-cp -f ~/.tmp/vim-config/.vimrc ~/.vimrc
+cp -rf ~/.tmp/vim-config/ ~/.dotfiles/.vim
+cp -f ~/.tmp/vim-config/.vimrc ~/.dotfiles/.vim/.vimrc
 
 # Remove tmp directory
 echo "**** Removing tmp directory."
