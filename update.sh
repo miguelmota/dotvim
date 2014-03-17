@@ -5,7 +5,6 @@ echo "**** Backing up .dotfiles directory."
 if [ -d ~/.dotfiles ]; then
   #tar -zcvf "~/dotfiles-backup-$(date +"%Y-%m-%d").tar.gz" ~/.dotfiles
   cp -rf ~/.dotfiles ~/.dotfiles.$(date +"%Y-%m-%d")
-  rm -rf ~/.dotfiles
 fi
 
 # Create tmp directory
