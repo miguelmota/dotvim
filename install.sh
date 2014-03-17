@@ -26,14 +26,16 @@ ln -sf ~/.dotfiles/.vim ~/.vim
 ln -sf ~/.dotfiles/.vim/.vimrc ~/.vimrc
 
 # Install Vundle bundle manager
-echo "**** Cloning Vundle bundle."
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+if [[ ! -e ~/.vim/bundle/vundle/.git ]]; then
+  echo "**** Cloning Vundle bundle."
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+fi
 
 # Install ctags
 if ! ctags_loc="$(type -p ctags)" || [ -z "$ctags_loc" ]; then
   echo "**** Installing ctags."
   if [ "$(uname)" == "Darwin" ]; then
-    brew install ctags
+    brew installkk ctags
   fi
 
   if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
@@ -59,7 +61,7 @@ if
 
 # Install bundles
 echo "**** Installing bundles."
-vim +BundleInstall > /dev/null
+vim +BundleInstall +qall 2&> /dev/null
 
 # Install term
 echo "**** Installing tern."
