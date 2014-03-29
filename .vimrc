@@ -13,7 +13,7 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplcache.vim'
+" Bundle 'Shougo/neocomplcache.vim'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'rosenfeld/conque-term'
 Bundle 'kien/ctrlp.vim'
@@ -33,6 +33,16 @@ Bundle 'othree/html5.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'mklabs/vim-backbone'
 Bundle 'tpope/vim-pathogen'
+Bundle 'Yggdroot/indentLine'
+Bundle 'sukima/xmledit'
+Bundle 'tmhedberg/matchit'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-surround'
+Bundle 'bling/vim-airline'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'jeetsukumaran/vim-buffergator'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'Valloric/YouCompleteMe'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -51,27 +61,31 @@ set ttyfast
 syntax enable
 " Display line numbers
 set number
-" Width of tab set to 2
-set tabstop=2
-" Indents will have a width of 2
-set shiftwidth=2
-" Columns for a tab
-set softtabstop=2
+" Width of tab set to 4 spaces.
+" 4 spaces will equal 1 tab
+set tabstop=4
+" Indents will have a width of 4
+set shiftwidth=4
+" Columns for a tab, amount of whitespace.
+" softtabstop = shiftwidth = tabstop
+set softtabstop=4
 " Enable smart indent
 set smarttab
 set smartindent
 set smartcase
+" Copy to clipboard
 "set clipboard=unnamedplus
+set clipboard=unnamed
 "if $TMUX == ''
 "	set clipboard+=unnamed
 "endif
-" Highlight cursor line
-set cursorline
 " Start scrolling three lines before the horizontal window border
 "set scrolloff=3
 " Show invisible characters
-" set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-" set list
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set list
+" List characters
+"set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 " Highlight searches
 set hlsearch
 " Incremental search
@@ -149,6 +163,9 @@ set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1 
 colorscheme solarized
+" Highlight cursor line
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
 " Required for NERDcommenter
 filetype plugin on
 " Enable indent
@@ -174,10 +191,11 @@ map <Leader>rv :source $MYVIMRC<CR>
 " Syntastic checker
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " Mustache abbreviations
 let g:mustache_abbreviations = 1
-" Emmet trigger key
-let g:user_emmet_leader_key='<C-Z'
+" Emmet trigger key ie. Ctrl+y+,
+let g:user_emmet_leader_key='<C-Y>'
 " Disable paste mode, (enabling this can affect many other things)
 set nopaste
 " Paste mode toggle
@@ -194,7 +212,7 @@ map <Leader>ct :tabe <bar> ConqueTerm bash<CR>
 map j gj
 map k gk
 " Use spaces instead of tabs
-set expandtab
+set noexpandtab
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -208,7 +226,7 @@ map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 " Ctr-tab to switch buffers
 map <C-Tab> :bnext<cr>
-map <C-S-Tab> :bprevious<cr
+map <C-S-Tab> :bprevious<cr>
 " Enable code folding (vim-javascript-syntax)
 "au FileType javascript call JavaScriptFold()
 " DelimitMate config
@@ -218,18 +236,53 @@ imap <C-c> <CR><Esc>O
 " SnipMate snippets
 let g:snippets_dir = "~/.vim/snippets"
 " Neocomplache config
-let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
+"let g:acp_enableAtStartup = 0
+"let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_enable_auto_select = 1
+"let g:neocomplcache_enable_underbar_completion = 1
+"let g:neocomplcache_min_syntax_length = 0
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplcache#close_popup()
+"inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Open file in new tab
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
   \ }
+" Indent colors"
+let g:indentLine_color_term = 239
+" Ignore case toggle
+set ic
+nmap <F6> :set ignorecase! ignorecase?
+" EasyMotion config
+let g:EasyMotion_leader_key = '<Leader>' 
+" Airline config
+let g:airline#extensions#tabline#enabled = 1
+" NerdTree shortcut
+map <Leader>n :NERDTreeToggle<cr>
+" opening a new file when the current buffer has unsaved changes causes files
+" to be hidden instead of closed
+set hidden
+" miniBuffExplorer config
+let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplModSelTarget = 1 
+map <Leader>e :MBEToggle<cr>
+" Easy window resizing
+"map <C-]> 5<C-w>>
+"map <C-[> 5<C-w><
+"map <C-m> 3<C-w>+
+"map <C-n> 3<C-w>-
+" YouCompleteMe config
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_min_num_identifier_candidate_chars = 0
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_complete_in_comments = 1
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
