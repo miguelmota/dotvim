@@ -22,8 +22,9 @@ echo "**** Creating backup directory."
 
 # Create symlinks
 echo "**** Creating symbolic links."
-ln -sf ~/.dotfiles/.vim ~/.vim
-ln -sf ~/.dotfiles/.vim/.vimrc ~/.vimrc
+ln -snf ~/.dotfiles/.vim ~/.vim
+ln -snf ~/.dotfiles/.vim/.vimrc ~/.vimrc
+ln -snf ~/.dotfiles/.vim/.viminfo ~/.viminfo
 
 # Install Vundle bundle manager
 if [[ ! -e ~/.vim/bundle/vundle/.git ]]; then
