@@ -13,7 +13,7 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
-" Bundle 'Shougo/neocomplcache.vim'
+ Bundle 'Shougo/neocomplcache.vim'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'rosenfeld/conque-term'
 Bundle 'kien/ctrlp.vim'
@@ -42,7 +42,7 @@ Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'fholgado/minibufexpl.vim'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -235,20 +235,21 @@ au FileType mail let b:delimitMate_autoclose = 0
 imap <C-c> <CR><Esc>O
 " SnipMate snippets
 let g:snippets_dir = "~/.vim/snippets"
+"let g:snips_trigger_key = '<C-\>'
 " Neocomplache config
-"let g:acp_enableAtStartup = 0
-"let g:neocomplcache_enable_at_startup = 1
-"let g:neocomplcache_enable_smart_case = 1
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_enable_underbar_completion = 1
-"let g:neocomplcache_min_syntax_length = 0
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 0
 " <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><C-y>  neocomplcache#close_popup()
-"inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Open file in new tab
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
@@ -280,9 +281,9 @@ map <Leader>e :MBEToggle<cr>
 "map <C-m> 3<C-w>+
 "map <C-n> 3<C-w>-
 " YouCompleteMe config
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_min_num_identifier_candidate_chars = 0
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_complete_in_comments = 1
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_min_num_of_chars_for_completion = 2
+"let g:ycm_min_num_identifier_candidate_chars = 0
+"let g:ycm_show_diagnostics_ui = 1
+"let g:ycm_complete_in_comments = 1
+"nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>

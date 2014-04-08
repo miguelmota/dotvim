@@ -11,7 +11,10 @@ Mainly focused on JavaScript development.
 - [NERDcommenter](https://github.com/scrooloose/nerdcommenter) - Intensely orgasminc commenting
 - [ctrlp](https://github.com/kien/ctrlp.vim) - Fuzzy file, buffer, mru, tag, etc finder
 - [syntastic](https://github.com/scrooloose/syntastic) - Syntax checking hacks
+<!--
 - [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) -A Code-completion engine
+-->
+- [neocomplcache](https://github.com/Shougo/neocomplcache.vim) - Auto-completion system
 - [delimitMate](https://github.com/Raimondi/delimitMate) - Auto-completion for quotes, parens, brackets, etc
 - [conque-term](https://github.com/rosenfeld/conque-term) - Run interative commands inside a buffer
 - [emmet](https://github.com/mattn/emmet-vim) - Emmet support
