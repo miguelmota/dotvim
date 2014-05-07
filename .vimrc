@@ -13,7 +13,7 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
- Bundle 'Shougo/neocomplcache.vim'
+Bundle 'Shougo/neocomplcache.vim'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'rosenfeld/conque-term'
 Bundle 'kien/ctrlp.vim'
@@ -62,7 +62,7 @@ syntax enable
 " Display line numbers
 set number
 " Width of tab set to 4 spaces.
-" 4 spaces will equal 1 tab
+" 4 spaces will equal 1 tab (generally speaking, 8 spaces equal 1 tab)
 set tabstop=4
 " Indents will have a width of 4
 set shiftwidth=4
@@ -118,36 +118,36 @@ set directory=~/.vim/backup/
 set showcmd
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
-	let save_cursor = getpos(".")
- 	let old_query = getreg('/')
- 	:%s/\s\+$//e
- 	call setpos('.', save_cursor)
- 	call setreg('/', old_query)
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 " Convert tabs to whitespace
 function! TabsToWhitespace()
-	let save_cursor = getpos(".")
- 	let old_query = getreg('/')
- 	:%s/\t/  /e
- 	call setpos('.', save_cursor)
- 	call setreg('/', old_query)
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\t/  /e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
 endfunction
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>)
 " Automatic commands
 if has("autocmd")
-	 	" Enable file type detection
- 		filetype on
+    " Enable file type detection
+    filetype on
     " Treat .json files as .js
-		autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-		autocmd BufNewFile,BufRead *.ejs setfiletype ejs syntax=html
-		autocmd BufNewFile,BufRead *.jade setfiletype jade syntax=html
-		autocmd BufNewFile,BufRead *.haml setfiletype haml syntax=html
-		autocmd BufNewFile,BufRead *.erb setfiletype erb syntax=html
-		autocmd BufNewFile,BufRead *.hbs setfiletype hbs syntax=html
-		autocmd BufNewFile,BufRead *.scss setfiletype scss syntax=css
-		autocmd BufNewFile,BufRead *.less setfiletype less syntax=css
+    autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+    autocmd BufNewFile,BufRead *.ejs setfiletype ejs syntax=html
+    autocmd BufNewFile,BufRead *.jade setfiletype jade syntax=html
+    autocmd BufNewFile,BufRead *.haml setfiletype haml syntax=html
+    autocmd BufNewFile,BufRead *.erb setfiletype erb syntax=html
+    autocmd BufNewFile,BufRead *.hbs setfiletype hbs syntax=html
+    autocmd BufNewFile,BufRead *.scss setfiletype scss syntax=css
+    autocmd BufNewFile,BufRead *.less setfiletype less syntax=css
 endif
 " Don’t add empty newlines at the end of files
 set binary
@@ -212,7 +212,7 @@ map <Leader>ct :tabe <bar> ConqueTerm bash<CR>
 map j gj
 map k gk
 " Use spaces instead of tabs
-set noexpandtab
+set expandtab 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -252,9 +252,9 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Open file in new tab
 let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': [],
-  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
-  \ }
+            \ 'AcceptSelection("e")': [],
+            \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+            \ }
 " Indent colors"
 let g:indentLine_color_term = 239
 " Ignore case toggle
@@ -287,3 +287,28 @@ map <Leader>e :MBEToggle<cr>
 "let g:ycm_show_diagnostics_ui = 1
 "let g:ycm_complete_in_comments = 1
 "nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" Powerline config
+"set rtp+=~/.powerline/powerline/bindings/vim
+" Always show statusline
+set laststatus=2
+" Use 256 colours
+set t_Co=256
+" Use powerline fonts
+let g:airline_powerline_fonts = 1
+" Fix timeout when pressing escape key
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+" Shortcut to align indents
+map <F12> mzgg=G`z :call StripWhitespace()<CR>
+" Remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+set wrap
+set linebreak
+" note trailing space at end of next line
+set showbreak=>\ \ \

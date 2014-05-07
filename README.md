@@ -119,11 +119,19 @@ Buffergator toggle panel:
 Buffergator shortcuts:
 
 ```bash
-<C-V> Open in vertical split 
+<C-V> Open in vertical split
 <C-S> Open in horizontal split
 <C-T> Open in tab
 Use `[b` (or <M-b>) and `]b` (or <M-S-b>) to flip through the most-recently
 Use `<Leader><LEFT>`, `<Leader><UP>`, `<Leader><RIGHT>`, `<Leader><DOWN>` to
+```
+
+Recording
+
+```
+q<letter> Start recording
+q Stop recording
+@<letter> Replay recording
 ```
 
 ### Indentation
