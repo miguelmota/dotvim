@@ -126,6 +126,18 @@ Use `[b` (or <M-b>) and `]b` (or <M-S-b>) to flip through the most-recently
 Use `<Leader><LEFT>`, `<Leader><UP>`, `<Leader><RIGHT>`, `<Leader><DOWN>` to
 ```
 
+Mini Buffer Explorer
+
+toggle panel
+
+`\ e`
+
+Switch to buffer
+
+```bash
+ number<C-^>
+ ```
+
 Recording
 
 ```
@@ -134,10 +146,29 @@ q Stop recording
 @<letter> Replay recording
 ```
 
-Tabular align equals
+vim-node open required module file
 
-```bash
-:Tab /=
+`gf` on `require('.')` to open ./index.js`
+
+ConqueTerm
+
+run iteractive prompt
+
+```
+:ConqueTerm bash
+```
+
+Git
+
+Common commands
+
+```
+:Gstatus
+:Gdiff
+:Gblame
+:Glog
+:Gcommit -m "message"
+:Gremove
 ```
 
 ### Indentation

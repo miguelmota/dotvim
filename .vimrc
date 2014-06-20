@@ -9,39 +9,39 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Vundle bundles
 Bundle 'scrooloose/nerdtree'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'nathanaelkane/vim-indent-guides'
+"Bundle 'jelera/vim-javascript-syntax'
+"Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'rosenfeld/conque-term'
 Bundle 'kien/ctrlp.vim'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'majutsushi/tagbar'
+"Bundle 'mustache/vim-mustache-handlebars'
+"Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'godlygeek/tabular'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'kchmck/vim-coffee-script'
+"Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'tpope/vim-fugitive'
 Bundle 'moll/vim-node'
-Bundle 'vim-scripts/Rename'
+"Bundle 'vim-scripts/Rename'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'othree/html5.vim'
 Bundle 'msanders/snipmate.vim'
-Bundle 'mklabs/vim-backbone'
-Bundle 'tpope/vim-pathogen'
+"Bundle 'mklabs/vim-backbone'
+"Bundle 'tpope/vim-pathogen'
 Bundle 'Yggdroot/indentLine'
 Bundle 'sukima/xmledit'
 Bundle 'tmhedberg/matchit'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-surround'
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'tpope/vim-surround'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'jeetsukumaran/vim-buffergator'
-Bundle 'fholgado/minibufexpl.vim'
+"Bundle 'fholgado/minibufexpl.vim'
 "Bundle 'Valloric/YouCompleteMe'
 " Enable pathogen
 call pathogen#infect()
@@ -161,7 +161,7 @@ set secure
 " Theme config
 set background=dark
 let g:solarized_termcolors=256
-let g:solarized_termtrans = 1 
+let g:solarized_termtrans = 1
 colorscheme solarized
 " Highlight cursor line
 set cursorline
@@ -172,8 +172,8 @@ filetype plugin on
 filetype plugin indent on
 " Enable closetag
 let b:closetag_html_style=1
-au Filetype html,xml,xsl,ejs,jade,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_ 
-source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_ 
+au Filetype html,xml,xsl,ejs,jade,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
+source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
 " NerdTree show hidden files
 let NERDTreeShowHidden=1
 " Start NERDTree if no files were specified
@@ -212,7 +212,7 @@ map <Leader>ct :tabe <bar> ConqueTerm bash<CR>
 map j gj
 map k gk
 " Use spaces instead of tabs
-set expandtab 
+set expandtab
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -230,7 +230,7 @@ map <C-S-Tab> :bprevious<cr>
 " Enable code folding (vim-javascript-syntax)
 "au FileType javascript call JavaScriptFold()
 " DelimitMate config
-au FileType mail let b:delimitMate_autoclose = 0 
+au FileType mail let b:delimitMate_autoclose = 0
 " Ctr-c inbetween brackets to expand (DelimitMate)
 imap <C-c> <CR><Esc>O
 " SnipMate snippets
@@ -261,7 +261,7 @@ let g:indentLine_color_term = 239
 set ic
 nmap <F6> :set ignorecase! ignorecase?
 " EasyMotion config
-let g:EasyMotion_leader_key = '<Leader>' 
+let g:EasyMotion_leader_key = '<Leader>'
 " Airline config
 let g:airline#extensions#tabline#enabled = 1
 " NerdTree shortcut
@@ -270,10 +270,10 @@ map <Leader>n :NERDTreeToggle<cr>
 " to be hidden instead of closed
 set hidden
 " miniBuffExplorer config
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1 
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
 map <Leader>e :MBEToggle<cr>
 " Easy window resizing
 "map <C-]> 5<C-w>>
