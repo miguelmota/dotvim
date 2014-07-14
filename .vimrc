@@ -23,7 +23,7 @@ Bundle 'vim-scripts/closetag.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'godlygeek/tabular'
 Bundle 'altercation/vim-colors-solarized'
-"Bundle 'kchmck/vim-coffee-script'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'tpope/vim-fugitive'
 Bundle 'moll/vim-node'
@@ -43,6 +43,8 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'jeetsukumaran/vim-buffergator'
 "Bundle 'fholgado/minibufexpl.vim'
 "Bundle 'Valloric/YouCompleteMe'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'heartsentwined/vim-emblem'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -149,6 +151,8 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.scss setfiletype scss syntax=css
     autocmd BufNewFile,BufRead *.less setfiletype less syntax=css
 endif
+au BufReadPost *.em set syntax=jade
+au BufReadPost *.emblem set syntax=jade
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
@@ -165,14 +169,14 @@ let g:solarized_termtrans = 1
 colorscheme solarized
 " Highlight cursor line
 set cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey40
+hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
 " Required for NERDcommenter
 filetype plugin on
 " Enable indent
 filetype plugin indent on
 " Enable closetag
 let b:closetag_html_style=1
-au Filetype html,xml,xsl,ejs,jade,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
+au Filetype html,xml,xsl,ejs,jade,emblem,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
 source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
 " NerdTree show hidden files
 let NERDTreeShowHidden=1

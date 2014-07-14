@@ -110,7 +110,7 @@ yit
 
 Eady Motion:
 
-`\ \ w1`
+`\ \ w`
 
 Buffergator toggle panel:
 
@@ -164,7 +164,9 @@ Common commands
 
 ```
 :Gstatus
-:Gdiff
+:Gdiff :0
+:Gdiff [revision]
+:Gdiff ~3
 :Gblame
 :Glog
 :Gcommit -m "message"
