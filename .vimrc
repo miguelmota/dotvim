@@ -12,7 +12,7 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'jelera/vim-javascript-syntax'
 "Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
-"Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'rosenfeld/conque-term'
@@ -45,6 +45,8 @@ Bundle 'jeetsukumaran/vim-buffergator'
 "Bundle 'Valloric/YouCompleteMe'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'heartsentwined/vim-emblem'
+Bundle 'tpope/vim-markdown'
+Bundle 'vim-scripts/SyntaxRange'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -63,14 +65,14 @@ set ttyfast
 syntax enable
 " Display line numbers
 set number
-" Width of tab set to 4 spaces.
+" Width of tab set to 2 spaces.
 " 4 spaces will equal 1 tab (generally speaking, 8 spaces equal 1 tab)
-set tabstop=4
-" Indents will have a width of 4
-set shiftwidth=4
+set tabstop=2
+" Indents will have a width of 2
+set shiftwidth=2
 " Columns for a tab, amount of whitespace.
 " softtabstop = shiftwidth = tabstop
-set softtabstop=4
+set softtabstop=2
 " Enable smart indent
 set smarttab
 set smartindent
@@ -193,9 +195,9 @@ nmap <F8> :TagbarToggle<CR>
 " Reload ~/.vimrc with \ + rv
 map <Leader>rv :source $MYVIMRC<CR>
 " Syntastic checker
-"let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_check_on_open=1
-"let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " Mustache abbreviations
 let g:mustache_abbreviations = 1
 " Emmet trigger key ie. Ctrl+y+,

@@ -52,6 +52,12 @@ ctrlp shortcuts
 
 [source](https://github.com/kien/ctrlp.vim)
 
+Turn off search highlight
+
+```
+:noh
+```
+
 ```bash
 Press <F5> to purge the cache for the current directory to get new files.
 Press <c-f> and <c-b> to cycle between modes.
@@ -111,6 +117,15 @@ yit
 Eady Motion:
 
 `\ \ w`
+
+Buffer shortcuts
+
+```
+:ls - list buffers
+:buffer <num>
+:bn
+:bp
+```
 
 Buffergator toggle panel:
 
