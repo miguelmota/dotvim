@@ -6,6 +6,8 @@ Mainly focused on JavaScript development.
 
 ## Bundles
 
+(List not always up-to-date)
+
 - [Vundle](https://github.com/gmarik/Vundle.vim) - Plug-in manager
 - [NERDtree](https://github.com/scrooloose/nerdtree) - A tree explorer
 - [NERDcommenter](https://github.com/scrooloose/nerdcommenter) - Intensely orgasminc commenting
@@ -42,7 +44,12 @@ Mainly focused on JavaScript development.
 - [buffergator](https://github.com/jeetsukumaran/vim-buffergator) - Select and switch between buffers
 - [minibu](https://github.com/fholgado/minibufexpl.vim) - Elegant buffer explorer
 
-### Key bindings
+
+### References
+
+Below are references for shortcuts and key bindings.
+
+####Key bindings
 
 ctrlp Search/open files:
 
@@ -188,7 +195,7 @@ Common commands
 :Gremove
 ```
 
-### Indentation
+##### Indentation
 
 Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent-multiple-lines-quickly-in-vi))
 
@@ -211,7 +218,7 @@ Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent
 <i{  Decrease inner block indent
 ```
 
-### Tern commands
+##### Tern commands
 
 [source](https://github.com/marijnh/tern_for_vim)
 
@@ -222,6 +229,31 @@ TernType: Find the type of the thing under the cursor.
 TernRefs: Show all references to the variable or property under the cursor.
 TernRename: Rename the variable under the cursor.
 ```
+
+##### Lisp Swank server
+
+```
+# start server
+:call SlimvConnectSwank()
+
+# in source file, white over text do the following to:
+,d to eval defun
+,e to eval current expression
+,h hyperspec
+,s to describe symbol
+,g set package
+,W wrap in pair of parens
+,O split
+,J join
+,> move paren right
+,< move paren left
+,o some perf stuff
+,I remove line but
+,D compile defun
+,F compile file
+,L compile and load
+```
+
 
 ## Install
 
@@ -259,30 +291,6 @@ vim +BundleClean
 
 # Update bundles
 vim +BundleUpdate
-```
-
-Lisp Swank server
-
-```
-# start server
-:call SlimvConnectSwank()
-
-# in source file, white over text do the following to:
-,d to eval defun
-,e to eval current expression
-,h hyperspec
-,s to describe symbol
-,g set package
-,W wrap in pair of parens
-,O split
-,J join
-,> move paren right
-,< move paren left
-,o some perf stuff
-,I remove line but
-,D compile defun
-,F compile file
-,L compile and load
 ```
 
 ## Required dependencies
