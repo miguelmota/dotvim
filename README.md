@@ -47,9 +47,7 @@ Mainly focused on JavaScript development.
 
 ### References
 
-Below are references for shortcuts and key bindings.
-
-####Key bindings
+Below are references for shortcuts and key bindings (to help me remember).
 
 ctrlp Search/open files:
 
