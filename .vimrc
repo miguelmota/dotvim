@@ -47,6 +47,8 @@ Bundle 'editorconfig/editorconfig-vim'
 Bundle 'heartsentwined/vim-emblem'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/SyntaxRange'
+Bundle 'kovisoft/slimv'
+Bundle 'adimit/prolog.vim'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -168,7 +170,8 @@ set secure
 set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
-colorscheme solarized
+"colorscheme solarized
+colorscheme warez
 " Highlight cursor line
 set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
@@ -176,6 +179,7 @@ hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
 filetype plugin on
 " Enable indent
 filetype plugin indent on
+filetype indent on
 " Enable closetag
 let b:closetag_html_style=1
 au Filetype html,xml,xsl,ejs,jade,emblem,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
@@ -316,5 +320,10 @@ map <F12> mzgg=G`z :call StripWhitespace()<CR>
 autocmd BufWritePre * :%s/\s\+$//e
 set wrap
 set linebreak
-" note trailing space at end of next line
+" Note trailing space at end of next line
 set showbreak=>\ \ \
+" Load Slimv
+let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
+set guioptions+=m
+" Matching parentheses have same color
+let g:lisp_rainbow=1
