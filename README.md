@@ -193,6 +193,19 @@ Common commands
 :Gremove
 ```
 
+Vimux
+
+```
+\ x # prompt command
+\ nt # npm test
+```
+
+Tmux complete
+
+```
+C-x C-u  # autcomplete
+```
+
 ##### Indentation
 
 Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent-multiple-lines-quickly-in-vi))

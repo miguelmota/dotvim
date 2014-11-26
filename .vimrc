@@ -49,6 +49,8 @@ Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/SyntaxRange'
 Bundle 'kovisoft/slimv'
 Bundle 'adimit/prolog.vim'
+Bundle 'benmills/vimux'
+Bundle 'wellle/tmux-complete.vim'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -327,3 +329,7 @@ let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do scri
 set guioptions+=m
 " Matching parentheses have same color
 let g:lisp_rainbow=1
+" Vimux npm test
+map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
+" Vimux Prompt
+map <leader>x :VimuxPromptCommand<CR>
