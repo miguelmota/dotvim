@@ -51,6 +51,8 @@ Bundle 'kovisoft/slimv'
 Bundle 'adimit/prolog.vim'
 Bundle 'benmills/vimux'
 Bundle 'wellle/tmux-complete.vim'
+Bundle 'tpope/vim-obsession'
+Bundle 'terryma/vim-multiple-cursors'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -173,7 +175,7 @@ set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 "colorscheme solarized
-colorscheme warez
+colorscheme mirodark
 " Highlight cursor line
 set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40

@@ -193,6 +193,13 @@ Common commands
 :Gremove
 ```
 
+Vim obsession
+
+```
+:mksession
+:source Session.vim
+```
+
 Vimux
 
 ```
@@ -204,6 +211,19 @@ Tmux complete
 
 ```
 C-x C-u  # autcomplete
+```
+
+Multiple Cursors
+
+```
+C-n in Normal Mode
+C-n again to select next occurance
+v to go into Visual Mode after selections
+
+C-p in Visual Mode go back to previous cursor location
+C-x skip current location
+
+:'<,'>MultipleCursorsFind <regex>
 ```
 
 ##### Indentation
