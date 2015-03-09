@@ -193,6 +193,15 @@ Common commands
 :Gremove
 ```
 
+Vim over (substitution preview)
+
+```
+:OverCommandLine
+
+" shortcut"
+\ fr
+```
+
 Vim obsession
 
 ```
@@ -247,6 +256,12 @@ Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent
 
 >i{  Increase inner block indent
 <i{  Decrease inner block indent
+```
+
+Ack
+
+```bash
+:Ack -i 'util' -H 'app/'
 ```
 
 ##### Tern commands

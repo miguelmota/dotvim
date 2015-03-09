@@ -17,7 +17,7 @@ Bundle 'Shougo/neocomplcache.vim'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'rosenfeld/conque-term'
 Bundle 'kien/ctrlp.vim'
-"Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'mustache/vim-mustache-handlebars'
 "Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'mattn/emmet-vim'
@@ -53,6 +53,11 @@ Bundle 'benmills/vimux'
 Bundle 'wellle/tmux-complete.vim'
 Bundle 'tpope/vim-obsession'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'valloric/MatchTagAlways'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'mhinz/vim-startify'
+Bundle 'osyo-manga/vim-over'
+Bundle 'mileszs/ack.vim'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -184,10 +189,24 @@ filetype plugin on
 " Enable indent
 filetype plugin indent on
 filetype indent on
+" Ctrl-P options
+let g:ctrlp_use_caching=0
+let g:ctrlp_custom_ignore = '\v[\/](transpiled)|dist|tmp|node_modules|(\.(swp|git|bak|pyc|DS_Store))$'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_max_files=0
+let g:ctrlp_max_height = 18
+let g:ctrlp_open_multiple_files = '1vjr'
+let g:ctrlp_reuse_window = 'startify'
+map <Leader>fs :CtrlPTag<CR>
+map <Leader>fd :CtrlPCurFile<CR>
+map <Leader>fb :CtrlPBuffer<CR>
+nnoremap <Leader>ff :CtrlP<CR>
 " Enable closetag
 let b:closetag_html_style=1
 au Filetype html,xml,xsl,ejs,jade,emblem,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
 source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
+" Ack shortcut
+map <Leader>a :Ack!<space>
 " NerdTree show hidden files
 let NERDTreeShowHidden=1
 " Start NERDTree if no files were specified
@@ -279,7 +298,8 @@ let g:EasyMotion_leader_key = '<Leader>'
 " Airline config
 let g:airline#extensions#tabline#enabled = 1
 " NerdTree shortcut
-map <Leader>n :NERDTreeToggle<cr>
+map <Leader>d :NERDTreeToggle<CR>
+nmap <Leader>nt :NERDTreeFind<CR>
 " opening a new file when the current buffer has unsaved changes causes files
 " to be hidden instead of closed
 set hidden
@@ -335,3 +355,32 @@ let g:lisp_rainbow=1
 map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
 " Vimux Prompt
 map <leader>x :VimuxPromptCommand<CR>
+" Substitution preview
+function! VisualFindAndReplace()
+    :OverCommandLine%s/
+    :w
+endfunction
+function! VisualFindAndReplaceWithSelection() range
+    :'<,'>OverCommandLine s/
+    :w
+endfunction
+nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
+" Incremental numbers
+function! Incr()
+    let a = line('.') - line("'<")
+    let c = virtcol("'<")
+    if a > 0
+        execute 'normal! '.c.'|'.a."\<C-a>"
+    endif
+    normal `<
+endfunction
+vnoremap <C-a> :call Incr()<CR>
+" Tabular config
+xnoremap <Leader>a= :Tabularize /=<CR>
+xnoremap <Leader>a: :Tabularize /:<CR>
+xnoremap <Leader>a:: :Tabularize /:\zs<CR>
+xnoremap <Leader>a, :Tabularize /,<CR>
+xnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+" Clear highlights
+map <Leader>c :noh<CR>

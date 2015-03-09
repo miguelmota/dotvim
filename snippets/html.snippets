@@ -411,7 +411,7 @@ snippet h6#
 snippet head
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
- 
+
 		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
 	</head>
 snippet header
@@ -816,11 +816,11 @@ snippet html5
 	<html lang="en-US">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
 		<title>${1}</title>
 	</head>
 	<body>
-		${2}	
+		${2}
 	</body>
 	</html>
-	
+
