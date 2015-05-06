@@ -13,10 +13,7 @@ Mainly focused on JavaScript development.
 - [NERDcommenter](https://github.com/scrooloose/nerdcommenter) - Intensely orgasminc commenting
 - [ctrlp](https://github.com/kien/ctrlp.vim) - Fuzzy file, buffer, mru, tag, etc finder
 - [syntastic](https://github.com/scrooloose/syntastic) - Syntax checking hacks
-<!--
-- [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) -A Code-completion engine
--->
-- [neocomplcache](https://github.com/Shougo/neocomplcache.vim) - Auto-completion system
+- [neocomplete](https://github.com/Shougo/neocomplete.vim) - Next generation completion framework
 - [delimitMate](https://github.com/Raimondi/delimitMate) - Auto-completion for quotes, parens, brackets, etc
 - [conque-term](https://github.com/rosenfeld/conque-term) - Run interative commands inside a buffer
 - [emmet](https://github.com/mattn/emmet-vim) - Emmet support
@@ -52,6 +49,14 @@ Below are references for shortcuts and key bindings (to help me remember).
 ctrlp Search/open files:
 
 `Ctrl+p`
+
+```
+horizonal split
+<c-x>
+
+vertical split
+<c-v>
+```
 
 ctrlp shortcuts
 
@@ -274,6 +279,16 @@ TernDoc: Look up the documentation of something.
 TernType: Find the type of the thing under the cursor.
 TernRefs: Show all references to the variable or property under the cursor.
 TernRename: Rename the variable under the cursor.
+
+<Leader> td	:TernDoc	Documentation under cursor
+<Leader> tb	:TernDocBrowse	Browse documentation
+<Leader> tt	:TernType	Type hints
+<Leader> td	:TernDef	Jump to definition (yes, 'td' is duplicated)
+<Leader> tpd	:TernDefPreview	Jump to definition inside preview
+<Leader> tsd	:TernDefSplit	Definition in new split
+<Leader> ttd	:TernDefTab	Definition in new tab
+<Leader> tr	:TernRefs	All references under cursor
+<Leader> tR	:TernRename	Rename variable
 ```
 
 ##### Lisp Swank server
@@ -340,6 +355,12 @@ vim +BundleUpdate
 ```
 
 ## Required dependencies
+
+lua
+
+```bash
+brew install vim --with-lua
+```
 
 [ctags](http://ctags.sourceforge.net/) for [ctrlp](https://github.com/kien/ctrlp.vim) and [tagbar](https://github.com/majutsushi/tagbar) plugins
 

@@ -13,7 +13,7 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplcache.vim'
+Bundle 'Shougo/neocomplete.vim'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'rosenfeld/conque-term'
 Bundle 'kien/ctrlp.vim'
@@ -45,7 +45,6 @@ Bundle 'jeetsukumaran/vim-buffergator'
 "Bundle 'Valloric/YouCompleteMe'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'heartsentwined/vim-emblem'
-Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/SyntaxRange'
 Bundle 'kovisoft/slimv'
 Bundle 'adimit/prolog.vim'
@@ -55,9 +54,11 @@ Bundle 'tpope/vim-obsession'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'valloric/MatchTagAlways'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'derekwyatt/vim-sbt'
 Bundle 'mhinz/vim-startify'
 Bundle 'osyo-manga/vim-over'
 Bundle 'mileszs/ack.vim'
+Bundle 'plasticboy/vim-markdown'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -176,14 +177,15 @@ set modelines=4
 set exrc
 set secure
 " Theme config
-set background=dark
+"set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 "colorscheme solarized
-colorscheme mirodark
+"colorscheme mirodark
+colorscheme Tomorrow-Night-Bright
 " Highlight cursor line
 set cursorline
-hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
+"hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
 " Required for NERDcommenter
 filetype plugin on
 " Enable indent
@@ -271,11 +273,15 @@ let g:snippets_dir = "~/.vim/snippets"
 "let g:snips_trigger_key = '<C-\>'
 " Neocomplache config
 let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Tern keys
+let g:tern_map_keys=1
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
