@@ -280,6 +280,10 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Auto select
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_underbar_completion = 1
+let g:neocomplete#min_syntax_length = 0
 " Tern keys
 let g:tern_map_keys=1
 " <TAB>: completion.
