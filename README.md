@@ -240,6 +240,12 @@ C-x skip current location
 :'<,'>MultipleCursorsFind <regex>
 ```
 
+Number toggle
+
+```
+<ctrl-n>
+```
+
 ##### Indentation
 
 Vim defaults ([source](http://stackoverflow.com/questions/235839/how-do-i-indent-multiple-lines-quickly-in-vi))
