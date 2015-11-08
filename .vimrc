@@ -152,6 +152,10 @@ function! TabsToWhitespace()
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfunction
+" strip ^M character at end of lines
+function! StripM()
+    :%s/\r//g
+endfunction
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>)
 " Automatic commands
@@ -330,14 +334,10 @@ map <Leader>e :MBEToggle<cr>
 "let g:ycm_show_diagnostics_ui = 1
 "let g:ycm_complete_in_comments = 1
 "nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" Powerline config
-"set rtp+=~/.powerline/powerline/bindings/vim
 " Always show statusline
 set laststatus=2
 " Use 256 colours
 set t_Co=256
-" Use powerline fonts
-let g:airline_powerline_fonts = 1
 " Fix timeout when pressing escape key
 if ! has('gui_running')
     set ttimeoutlen=10
@@ -393,3 +393,11 @@ xnoremap <Leader>a, :Tabularize /,<CR>
 xnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 " Clear highlights
 map <Leader>c :noh<CR>
+" Use powerline fonts
+let g:airline_powerline_fonts = 1
+" Powerline config
+"set rtp+=~/.powerline/powerline/bindings/vim
+" binary viewer
+" :%!xxd
+" revert binary viewer
+" :%!xxd -r
