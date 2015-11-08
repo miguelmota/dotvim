@@ -133,6 +133,9 @@ set autoread
 set backup
 set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
+set undodir=~/.vim/undo/
+" Disable swap files
+set noswapfile
 " Show the (partial) command as it’s being typed
 set showcmd
 " Strip trailing whitespace (,ss)
