@@ -234,7 +234,7 @@ nmap <F8> :TagbarToggle<CR>
 " Reload ~/.vimrc with \ + rv
 map <Leader>rv :source $MYVIMRC<CR>
 " Syntastic checker
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jshint','eslint','jscs']
 "let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " Mustache abbreviations
