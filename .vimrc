@@ -200,7 +200,7 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 "colorscheme solarized
 "colorscheme mirodark
-"colorscheme Tomorrow-Night-Bright
+colorscheme Tomorrow-Night-Bright
 " Highlight cursor line
 set cursorline
 "hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
