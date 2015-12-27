@@ -93,8 +93,16 @@ set smarttab
 set smartindent
 set smartcase
 " Copy to clipboard
-"set clipboard=unnamedplus
-set clipboard=unnamed
+if has("unix")
+  let s:uname = system("uname -s")
+  if s:uname == "Darwin"
+    " Mac OSX
+    set clipboard=unnamed
+  else
+    " Linux
+    set clipboard=unnamedplus
+  endif
+endif
 "if $TMUX == ''
 "	set clipboard+=unnamed
 "endif
@@ -192,7 +200,7 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 "colorscheme solarized
 "colorscheme mirodark
-colorscheme Tomorrow-Night-Bright
+"colorscheme Tomorrow-Night-Bright
 " Highlight cursor line
 set cursorline
 "hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
