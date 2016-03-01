@@ -15,18 +15,18 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache.vim'
 "Bundle 'Shougo/neocomplete.vim'
-Bundle 'marijnh/tern_for_vim'
-Bundle 'rosenfeld/conque-term'
+"Bundle 'marijnh/tern_for_vim'
+"Bundle 'rosenfeld/conque-term'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mustache/vim-mustache-handlebars'
 "Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/closetag.vim'
-Bundle 'mattn/emmet-vim'
+"Bundle 'mattn/emmet-vim'
 Bundle 'godlygeek/tabular'
-Bundle 'altercation/vim-colors-solarized'
+"Bundle 'altercation/vim-colors-solarized'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
-Bundle 'tpope/vim-fugitive'
+"Bundle 'tpope/vim-fugitive'
 Bundle 'moll/vim-node'
 "Bundle 'vim-scripts/Rename'
 Bundle 'scrooloose/nerdcommenter'
@@ -40,21 +40,21 @@ Bundle 'sukima/xmledit'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'tpope/vim-surround'
 Bundle 'bling/vim-airline'
-Bundle 'airblade/vim-gitgutter'
+"Bundle 'airblade/vim-gitgutter'
 Bundle 'jeetsukumaran/vim-buffergator'
 "Bundle 'fholgado/minibufexpl.vim'
 "Bundle 'Valloric/YouCompleteMe'
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'heartsentwined/vim-emblem'
+"Bundle 'heartsentwined/vim-emblem'
 Bundle 'vim-scripts/SyntaxRange'
-Bundle 'kovisoft/slimv'
-Bundle 'adimit/prolog.vim'
+"Bundle 'kovisoft/slimv'
+"Bundle 'adimit/prolog.vim'
 Bundle 'benmills/vimux'
 Bundle 'wellle/tmux-complete.vim'
 Bundle 'tpope/vim-obsession'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'valloric/MatchTagAlways'
-Bundle 'derekwyatt/vim-scala'
+"Bundle 'derekwyatt/vim-scala'
 Bundle 'derekwyatt/vim-sbt'
 Bundle 'mhinz/vim-startify'
 Bundle 'osyo-manga/vim-over'
@@ -62,6 +62,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'pangloss/vim-javascript'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+" Bundle 'mxw/vim-jsx'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -227,7 +228,7 @@ nmap <F8> :TagbarToggle<CR>
 " Reload ~/.vimrc with \ + rv
 map <Leader>rv :source $MYVIMRC<CR>
 " Syntastic checker
-let g:syntastic_javascript_checkers = ['jshint']
+""let g:syntastic_javascript_checkers = ['jshint','eslint','jscs']
 "let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " Mustache abbreviations
@@ -337,7 +338,7 @@ set laststatus=2
 " Use 256 colours
 set t_Co=256
 " Use powerline fonts
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 " Fix timeout when pressing escape key
 if ! has('gui_running')
     set ttimeoutlen=10
@@ -373,8 +374,8 @@ function! VisualFindAndReplaceWithSelection() range
     :'<,'>OverCommandLine s/
     :w
 endfunction
-nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
-xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
+nnoremap <Leader>sr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>sr :call VisualFindAndReplaceWithSelection()<CR>
 " Incremental numbers
 function! Incr()
     let a = line('.') - line("'<")
@@ -393,3 +394,5 @@ xnoremap <Leader>a, :Tabularize /,<CR>
 xnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 " Clear highlights
 map <Leader>c :noh<CR>
+
+Bundle 'duganchen/vim-soy'
