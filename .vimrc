@@ -62,6 +62,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'pangloss/vim-javascript'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Bundle 'duganchen/vim-soy'
 " Bundle 'mxw/vim-jsx'
 " Enable pathogen
 call pathogen#infect()
@@ -94,8 +95,16 @@ set smarttab
 set smartindent
 set smartcase
 " Copy to clipboard
-"set clipboard=unnamedplus
-set clipboard=unnamed
+if has("unix")
+  let s:uname = system("uname -s")
+  if s:uname == "Darwin"
+    " Mac OSX
+    set clipboard=unnamed
+  else
+    " Linux
+    set clipboard=unnamedplus
+  endif
+endif
 "if $TMUX == ''
 "	set clipboard+=unnamed
 "endif
@@ -134,6 +143,9 @@ set autoread
 set backup
 set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
+set undodir=~/.vim/undo/
+" Disable swap files
+set noswapfile
 " Show the (partial) command as it’s being typed
 set showcmd
 " Strip trailing whitespace (,ss)
@@ -152,6 +164,10 @@ function! TabsToWhitespace()
     :%s/\t/  /e
     call setpos('.', save_cursor)
     call setreg('/', old_query)
+endfunction
+" strip ^M character at end of lines
+function! StripM()
+    :%s/\r//g
 endfunction
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>)
@@ -228,7 +244,7 @@ nmap <F8> :TagbarToggle<CR>
 " Reload ~/.vimrc with \ + rv
 map <Leader>rv :source $MYVIMRC<CR>
 " Syntastic checker
-""let g:syntastic_javascript_checkers = ['jshint','eslint','jscs']
+"let g:syntastic_javascript_checkers = ['jshint','eslint','jscs']
 "let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " Mustache abbreviations
@@ -331,8 +347,6 @@ map <Leader>e :MBEToggle<cr>
 "let g:ycm_show_diagnostics_ui = 1
 "let g:ycm_complete_in_comments = 1
 "nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" Powerline config
-"set rtp+=~/.powerline/powerline/bindings/vim
 " Always show statusline
 set laststatus=2
 " Use 256 colours
@@ -394,5 +408,11 @@ xnoremap <Leader>a, :Tabularize /,<CR>
 xnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 " Clear highlights
 map <Leader>c :noh<CR>
-
-Bundle 'duganchen/vim-soy'
+" Use powerline fonts
+let g:airline_powerline_fonts = 1
+" Powerline config
+"set rtp+=~/.powerline/powerline/bindings/vim
+" binary viewer
+" :%!xxd
+" revert binary viewer
+" :%!xxd -r

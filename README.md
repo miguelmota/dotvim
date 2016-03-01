@@ -396,6 +396,10 @@ git submodule update --init --recursive
 ./install.sh --clang-completer
 ```
 
+Powerline
+
+[Powerline Installation instructions](http://powerline.readthedocs.org/en/latest/installation/osx.html)
+
 All done.
 
 ## Installing bundles
