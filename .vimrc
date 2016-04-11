@@ -352,7 +352,7 @@ set laststatus=2
 " Use 256 colours
 set t_Co=256
 " Use powerline fonts
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 " Fix timeout when pressing escape key
 if ! has('gui_running')
     set ttimeoutlen=10
