@@ -97,7 +97,7 @@ set smartcase
 " Copy to clipboard
 if has("unix")
   let s:uname = system("uname -s")
-  if s:uname =~ "Darwin"
+  if s:uname == "Darwin"
     " Mac OSX
     set clipboard=unnamed
   else
@@ -416,3 +416,4 @@ map <Leader>c :noh<CR>
 " :%!xxd
 " revert binary viewer
 " :%!xxd -r
+set clipboard=unnamed
