@@ -61,9 +61,9 @@ Bundle 'osyo-manga/vim-over'
 Bundle 'mileszs/ack.vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'duganchen/vim-soy'
-" Bundle 'mxw/vim-jsx'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -244,9 +244,17 @@ nmap <F8> :TagbarToggle<CR>
 " Reload ~/.vimrc with \ + rv
 map <Leader>rv :source $MYVIMRC<CR>
 " Syntastic checker
-let g:syntastic_javascript_checkers = ['jshint','eslint','jscs']
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_javascript_checkers = ['jshint','eslint']
+let g:syntastic_html_tidy_ignore_errors = [" proprietary attribute \"ng-"]
+let g:syntastic_enable_signs = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " Mustache abbreviations
 let g:mustache_abbreviations = 1
 " Emmet trigger key ie. Ctrl+y+,
