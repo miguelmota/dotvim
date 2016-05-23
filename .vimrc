@@ -40,7 +40,7 @@ Bundle 'sukima/xmledit'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'tpope/vim-surround'
 Bundle 'bling/vim-airline'
-"Bundle 'airblade/vim-gitgutter'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'jeetsukumaran/vim-buffergator'
 "Bundle 'fholgado/minibufexpl.vim'
 "Bundle 'Valloric/YouCompleteMe'
@@ -196,13 +196,16 @@ set modelines=4
 " Enable per-directory .vimrc files and disable unsafe commands in them
 set exrc
 set secure
-" Theme config
-"set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 "colorscheme solarized
 "colorscheme mirodark
 colorscheme Tomorrow-Night-Bright
+" Theme config
+set background=dark
+" Transparent background
+hi Normal ctermbg=none
+highlight nonText ctermbg=NONE
 " Highlight cursor line
 set cursorline
 "hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
