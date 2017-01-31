@@ -396,12 +396,14 @@ cd ~/.vim/bundle/tern_for_vim
 npm install
 ```
 
-YouCompleteMe clang completer
+YouCompleteMe completers
 
 ```bash
 cd ~/.vim/bundles/YouCompleteMe
+
 git submodule update --init --recursive
-./install.sh --clang-completer
+
+./install.sh --clang-completer --tern-completer
 ```
 
 Powerline

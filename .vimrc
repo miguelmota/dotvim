@@ -9,13 +9,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Vundle bundles
 Bundle 'scrooloose/nerdtree'
-"Bundle 'jelera/vim-javascript-syntax'
+Bundle 'jelera/vim-javascript-syntax'
 "Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplcache.vim'
+"Bundle 'Shougo/neocomplcache.vim'
 "Bundle 'Shougo/neocomplete.vim'
-"Bundle 'marijnh/tern_for_vim'
+Bundle 'marijnh/tern_for_vim'
 "Bundle 'rosenfeld/conque-term'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mustache/vim-mustache-handlebars'
@@ -38,15 +38,15 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'sukima/xmledit'
  Bundle 'tmhedberg/matchit'
 "Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-surround'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'jeetsukumaran/vim-buffergator'
 "Bundle 'fholgado/minibufexpl.vim'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'editorconfig/editorconfig-vim'
 "Bundle 'heartsentwined/vim-emblem'
-Bundle 'vim-scripts/SyntaxRange'
+"Bundle 'vim-scripts/SyntaxRange'
 "Bundle 'kovisoft/slimv'
 "Bundle 'adimit/prolog.vim'
 Bundle 'benmills/vimux'
@@ -61,9 +61,14 @@ Bundle 'osyo-manga/vim-over'
 Bundle 'mileszs/ack.vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
+"Bundle 'mxw/vim-jsx'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'duganchen/vim-soy'
+Bundle 'tomlion/vim-solidity'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'vimwiki/vimwiki'
+"Bundle 'elzr/vim-json'
+Bundle 'SirVer/ultisnips'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -78,8 +83,10 @@ set encoding=utf-8 nobomb
 "let mapleader=",""
 " Optimize for fast terminal connections
 set ttyfast
-" Syntax highlighting
+" Switches on syntax highlighting, keeping current color settings
 syntax enable
+" Overrules color settings with the defaults for syntax highlighting
+syntax on
 " Display line numbers
 set number
 " Width of tab set to 2 spaces.
@@ -93,6 +100,7 @@ set softtabstop=2
 " Enable smart indent
 set smarttab
 set smartindent
+set autoindent
 set smartcase
 " Copy to clipboard
 if has("unix")
@@ -301,7 +309,11 @@ au FileType mail let b:delimitMate_autoclose = 0
 imap <C-c> <CR><Esc>O
 " SnipMate snippets
 let g:snippets_dir = "~/.vim/snippets"
-"let g:snips_trigger_key = '<C-\>'
+
+" UtilSnips config
+let g:UltiSnipsExpandTrigger="<c-s>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Neocomplache config
 let g:acp_enableAtStartup = 0
@@ -313,10 +325,10 @@ let g:neocomplcache_min_syntax_length = 0
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplcache#close_popup()
+"inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " Tern keys
 let g:tern_map_keys=1
@@ -352,11 +364,15 @@ map <Leader>e :MBEToggle<cr>
 "map <C-m> 3<C-w>+
 "map <C-n> 3<C-w>-
 " YouCompleteMe config
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_min_num_of_chars_for_completion = 2
-"let g:ycm_min_num_identifier_candidate_chars = 0
-"let g:ycm_show_diagnostics_ui = 1
-"let g:ycm_complete_in_comments = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_min_num_identifier_candidate_chars = 0
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_confirm_extra_conf = 0
+set completeopt-=preview
+
 "nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Always show statusline
 set laststatus=2
@@ -427,3 +443,7 @@ map <Leader>c :noh<CR>
 " :%!xxd
 " revert binary viewer
 " :%!xxd -r
+" Make nvim backward compatible with vim
+if !has('nvim')
+  set ttymouse=xterm2
+endif
