@@ -9,7 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Vundle bundles
 Bundle 'scrooloose/nerdtree'
-Bundle 'jelera/vim-javascript-syntax'
+"Bundle 'jelera/vim-javascript-syntax'
 "Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
@@ -460,3 +460,7 @@ map <Leader>c :noh<CR>
 if !has('nvim')
   set ttymouse=xterm2
 endif
+
+" over column length marker
+set colorcolumn=80
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
