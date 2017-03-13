@@ -69,6 +69,7 @@ Bundle 'leafgarland/typescript-vim'
 Bundle 'vimwiki/vimwiki'
 "Bundle 'elzr/vim-json'
 Bundle 'SirVer/ultisnips'
+Bundle 'fatih/vim-go'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -464,3 +465,6 @@ endif
 " over column length marker
 set colorcolumn=80
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
+" vim-go config
+let g:go_fmt_options = "-tabs=false -tabwidth=2"
