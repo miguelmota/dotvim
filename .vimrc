@@ -464,7 +464,10 @@ endif
 
 " over column length marker
 set colorcolumn=80
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
+" grey
+"highlight ColorColumn ctermbg=235 guibg=#2c2d27
+" deep pink
+highlight ColorColumn ctermbg=53 guibg=#5f005f
 
 " vim-go config
 let g:go_fmt_options = "-tabs=false -tabwidth=2"
