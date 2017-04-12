@@ -31,7 +31,7 @@ Bundle 'moll/vim-node'
 "Bundle 'vim-scripts/Rename'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'othree/html5.vim'
-Bundle 'msanders/snipmate.vim'
+"Bundle 'msanders/snipmate.vim'
 "Bundle 'mklabs/vim-backbone'
 "Bundle 'tpope/vim-pathogen'
 "Bundle 'Yggdroot/indentLine'
@@ -69,6 +69,7 @@ Bundle 'leafgarland/typescript-vim'
 Bundle 'vimwiki/vimwiki'
 "Bundle 'elzr/vim-json'
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 Bundle 'fatih/vim-go'
 " Enable pathogen
 call pathogen#infect()
@@ -220,8 +221,8 @@ set cursorline
 "hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
 " Required for NERDcommenter
 filetype plugin on
-" Enable indent
 filetype plugin indent on
+" Enable indent
 filetype indent on
 " Ctrl-P options
 let g:ctrlp_use_caching=0
@@ -308,13 +309,6 @@ map <C-S-Tab> :bprevious<cr>
 au FileType mail let b:delimitMate_autoclose = 0
 " Ctr-c inbetween brackets to expand (DelimitMate)
 imap <C-c> <CR><Esc>O
-" SnipMate snippets
-let g:snippets_dir = "~/.vim/snippets"
-
-" UtilSnips config
-let g:UltiSnipsExpandTrigger="<c-s>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Neocomplache config
 let g:acp_enableAtStartup = 0
@@ -372,20 +366,35 @@ let g:ycm_min_num_identifier_candidate_chars = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_enable_diagnostic_highlighting = 1
-let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_auto_trigger = 1
-let g:ycm_always_populate_location_list = 0
+let g:ycm_always_populate_location_list = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_cache_omnifunc = 1
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+"let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_key_invoke_completion = '<C-Space>'
 set completeopt-=preview
+
+" UtilSnips config
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips", "UltiSnips"]
+let g:UltiSnipsEditSplit="context"
+let g:UltiSnipsEnableSnipMate=1
+let g:UltiSnipsListSnippets="<c-s>"
+
+" SnipMate snippets
+let g:snippets_dir = "~/.vim/snippets"
 
 "nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Always show statusline
