@@ -47,8 +47,11 @@ vim +BundleUpdate
 lua
 
 ```bash
+# mac
 brew install vim --with-lua
 ```
+
+For installing vim with lua on Ubuntu see this gist [gist](https://gist.github.com/techgaun/2fe3dd3d004d7320a68d)
 
 [ctags](http://ctags.sourceforge.net/) for [ctrlp](https://github.com/kien/ctrlp.vim) and [tagbar](https://github.com/majutsushi/tagbar) plugins
 
@@ -73,11 +76,16 @@ npm install
 YouCompleteMe completers
 
 ```bash
+# ubuntu requirements
+sudo apt-get install python-dev python3-dev
+```
+
+```bash
 cd ~/.vim/bundles/YouCompleteMe
 
 git submodule update --init --recursive
 
-./install.py --clang-completer --tern-completer
+./install.py --clang-completer --tern-completer --gocode-completer
 ```
 
 Powerline
