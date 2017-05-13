@@ -4,45 +4,99 @@ My `~/.vim` and `~/.vimrc` configuration.
 
 Mainly focused on JavaScript development.
 
-## Bundles
+## Install
 
-(List not always up-to-date)
+(Adjust accordingly)
 
-- [Vundle](https://github.com/gmarik/Vundle.vim) - Plug-in manager
-- [NERDtree](https://github.com/scrooloose/nerdtree) - A tree explorer
-- [NERDcommenter](https://github.com/scrooloose/nerdcommenter) - Intensely orgasminc commenting
-- [ctrlp](https://github.com/kien/ctrlp.vim) - Fuzzy file, buffer, mru, tag, etc finder
-- [syntastic](https://github.com/scrooloose/syntastic) - Syntax checking hacks
-- [neocomplete](https://github.com/Shougo/neocomplete.vim) - Next generation completion framework
-- [delimitMate](https://github.com/Raimondi/delimitMate) - Auto-completion for quotes, parens, brackets, etc
-- [conque-term](https://github.com/rosenfeld/conque-term) - Run interative commands inside a buffer
-- [emmet](https://github.com/mattn/emmet-vim) - Emmet support
-- [snipmate](https://github.com/msanders/snipmate.vim) - Snippets
-- [tagbar](https://github.com/majutsushi/tagbar) - Display tags ordered by class
-- [closetag](https://github.com/vim-scripts/closetag.vim) - Close open HTML/XML tags
-- [tabular](https://github.com/godlygeek/tabular) - Text filtering and alignment
-- [rename](https://github.com/vim-scripts/Rename) - File renaming
-- [indent-guides](https://github.com/nathanaelkane/vim-indent-guides) - Visually display indent levels
-- [fugitive](https://github.com/tpope/vim-fugitive) - Git wrapper
-- [html5](https://github.com/othree/html5.vim) - HTML5 omnicomplete and syntax
-- [tern](https://github.com/marijnh/tern_for_vim) - [Tern](http://ternjs.net/g-based) JavaScript editing support
-- [javascript-syntax](https://github.com/jelera/vim-javascript-syntax) - Enhanced JavaScript syntax
-- [jade](https://github.com/digitaltoad/vim-jade) - Jade template engine syntax highlighting and indention
-- [mustache-handlebars](https://github.com/mustache/vim-mustache-handlebars) - Mustache and Handlebars support
-- [coffee-script](https://github.com/kchmck/vim-coffee-script) - CoffeeScript support
-- [node](https://github.com/moll/vim-node) - Tools and enviroment for developing with Node.js
-- [backbone](https://github.com/mklabs/vim-backbone) - Utilities for Backbone
-- [colors-solarized](https://github.com/altercation/vim-colors-solarized) - Precision colorscheme
-- [indentLine](https://github.com/Yggdroot/indentLine) - Display indentation levels
-- [matchit](https://github.com/vim-scripts/matchit.zip) - Extended % matching
-- [easymotion](https://github.com/Lokaltog/vim-easymotion) - Vim motions on speed
-- [surround](https://github.com/tpope/vim-surround) - Quoting/parenthesizing made simple
-- [airline](https://github.com/bling/vim-airline) - Lean & mean status/tabline
-- [buffergator](https://github.com/jeetsukumaran/vim-buffergator) - Select and switch between buffers
-- [minibu](https://github.com/fholgado/minibufexpl.vim) - Elegant buffer explorer
+```bash
+# Create dotfiles directory
+mkdir ~/.dotfiles
 
+# Clone repo
+git clone https://github.com/miguelmota/vim-config.git ~/.dotfiles/.vim
 
-### References
+# Create backup directory
+mkdir -p ~/.vim/backup
+
+# Create symlinks
+ln -s ~/.dotfiles/.vim ~/.vim
+ln -s ~/.dotfiles/.vim/.vimrc ~/.vimrc
+
+# Install Vundle bundle manager
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+# Install bundles (ignore errors about uninstalled bundles)
+vim +BundleInstall +qall
+```
+
+Vundle commands
+
+```bash
+# Install bundles
+vim +BundleInstall +qall
+
+# Remove bundles
+vim +BundleClean
+
+# Update bundles
+vim +BundleUpdate
+```
+
+## Required dependencies
+
+lua
+
+```bash
+brew install vim --with-lua
+```
+
+[ctags](http://ctags.sourceforge.net/) for [ctrlp](https://github.com/kien/ctrlp.vim) and [tagbar](https://github.com/majutsushi/tagbar) plugins
+
+```bash
+# Mac OSX
+brew install ctags
+
+# Ubuntu
+sudo apt-get install exuberant-ctags
+```
+
+[Tern](https://github.com/marijnh/tern) for [tern](https://github.com/marijnh/tern_for_vim) plugin
+
+Make sure to have [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed first
+
+```
+cd ~/.vim/bundle/tern_for_vim
+
+npm install
+```
+
+YouCompleteMe completers
+
+```bash
+cd ~/.vim/bundles/YouCompleteMe
+
+git submodule update --init --recursive
+
+./install.py --clang-completer --tern-completer
+```
+
+Powerline
+
+[Powerline Installation instructions](http://powerline.readthedocs.org/en/latest/installation/osx.html)
+
+All done.
+
+## Installing bundles
+
+Run `BundleInstall` after adding a [Vundle](https://github.com/gmarik/Vundle.vim) bundle in `.vimrc`
+
+## Updating
+
+```bash
+wget https://raw.github.com/miguelmota/vim-config/master/update.sh -O - | bash
+```
+
+### Reference
 
 Below are references for shortcuts and key bindings (to help me remember).
 
@@ -329,99 +383,6 @@ TernRename: Rename the variable under the cursor.
 ,L compile and load
 ```
 
-
-## Install
-
-(Adjust accordingly)
-
-```bash
-# Create dotfiles directory
-mkdir ~/.dotfiles
-
-# Clone repo
-git clone https://github.com/miguelmota/vim-config.git ~/.dotfiles/.vim
-
-# Create backup directory
-mkdir -p ~/.vim/backup
-
-# Create symlinks
-ln -s ~/.dotfiles/.vim ~/.vim
-ln -s ~/.dotfiles/.vim/.vimrc ~/.vimrc
-
-# Install Vundle bundle manager
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-
-# Install bundles (ignore errors about uninstalled bundles)
-vim +BundleInstall +qall
-```
-
-Vundle commands
-
-```bash
-# Install bundles
-vim +BundleInstall +qall
-
-# Remove bundles
-vim +BundleClean
-
-# Update bundles
-vim +BundleUpdate
-```
-
-## Required dependencies
-
-lua
-
-```bash
-brew install vim --with-lua
-```
-
-[ctags](http://ctags.sourceforge.net/) for [ctrlp](https://github.com/kien/ctrlp.vim) and [tagbar](https://github.com/majutsushi/tagbar) plugins
-
-```bash
-# Mac OSX
-brew install ctags
-
-# Ubuntu
-sudo apt-get install exuberant-ctags
-```
-
-[Tern](https://github.com/marijnh/tern) for [tern](https://github.com/marijnh/tern_for_vim) plugin
-
-Make sure to have [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed first
-
-```
-cd ~/.vim/bundle/tern_for_vim
-
-npm install
-```
-
-YouCompleteMe completers
-
-```bash
-cd ~/.vim/bundles/YouCompleteMe
-
-git submodule update --init --recursive
-
-./install.sh --clang-completer --tern-completer
-```
-
-Powerline
-
-[Powerline Installation instructions](http://powerline.readthedocs.org/en/latest/installation/osx.html)
-
-All done.
-
-## Installing bundles
-
-Run `BundleInstall` after adding a [Vundle](https://github.com/gmarik/Vundle.vim) bundle in `.vimrc`
-
-## Updating
-
-```bash
-wget https://raw.github.com/miguelmota/vim-config/master/update.sh -O - | bash
-```
-
 ## License
 
-Released under the MIT License.
+MIT
