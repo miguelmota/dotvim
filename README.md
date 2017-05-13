@@ -96,7 +96,7 @@ Run `BundleInstall` after adding a [Vundle](https://github.com/gmarik/Vundle.vim
 wget https://raw.github.com/miguelmota/vim-config/master/update.sh -O - | bash
 ```
 
-### Reference
+## Reference
 
 Below are references for shortcuts and key bindings (to help me remember).
 
