@@ -1,6 +1,6 @@
-# Vim config
+# .vim
 
-My `~/.vim` and `~/.vimrc` configuration.
+> My `~/.vim` and `~/.vimrc` configuration.
 
 Mainly focused on JavaScript development.
 
