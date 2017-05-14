@@ -90,7 +90,7 @@ publish
 _test
 _archive
 uploads
-backup
+backup/*
 !backup/.gitignore
 #colors
 
