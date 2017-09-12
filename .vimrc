@@ -18,18 +18,18 @@ Bundle 'scrooloose/syntastic'
 Bundle 'marijnh/tern_for_vim'
 "Bundle 'rosenfeld/conque-term'
 Bundle 'kien/ctrlp.vim'
-Bundle 'mustache/vim-mustache-handlebars'
+"Bundle 'mustache/vim-mustache-handlebars'
 "Bundle 'majutsushi/tagbar'
-Bundle 'vim-scripts/closetag.vim'
+"Bundle 'vim-scripts/closetag.vim'
 "Bundle 'mattn/emmet-vim'
-Bundle 'godlygeek/tabular'
+"Bundle 'godlygeek/tabular'
 "Bundle 'altercation/vim-colors-solarized'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'digitaltoad/vim-jade'
+"Bundle 'kchmck/vim-coffee-script'
+"Bundle 'digitaltoad/vim-jade'
 Bundle 'tpope/vim-fugitive'
 Bundle 'moll/vim-node'
 "Bundle 'vim-scripts/Rename'
-Bundle 'scrooloose/nerdcommenter'
+"Bundle 'scrooloose/nerdcommenter'
 Bundle 'othree/html5.vim'
 "Bundle 'msanders/snipmate.vim'
 "Bundle 'mklabs/vim-backbone'
@@ -53,15 +53,15 @@ Bundle 'benmills/vimux'
 Bundle 'wellle/tmux-complete.vim'
 Bundle 'tpope/vim-obsession'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'valloric/MatchTagAlways'
+"Bundle 'valloric/MatchTagAlways'
 "Bundle 'derekwyatt/vim-scala'
-Bundle 'derekwyatt/vim-sbt'
+"Bundle 'derekwyatt/vim-sbt'
 Bundle 'mhinz/vim-startify'
 Bundle 'osyo-manga/vim-over'
 Bundle 'mileszs/ack.vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'pangloss/vim-javascript'
-"Bundle 'mxw/vim-jsx'
+Bundle 'mxw/vim-jsx'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'duganchen/vim-soy'
 Bundle 'tomlion/vim-solidity'
@@ -238,8 +238,8 @@ map <Leader>fb :CtrlPBuffer<CR>
 nnoremap <Leader>ff :CtrlP<CR>
 " Enable closetag
 let b:closetag_html_style=1
-au Filetype html,xml,xsl,ejs,jade,emblem,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
-source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
+"au Filetype html,xml,xsl,ejs,jade,emblem,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
+"source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
 " Ack shortcut
 map <Leader>a :Ack!<space>
 " NerdTree show hidden files
@@ -479,4 +479,4 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=53 guibg=#5f005f
 
 " vim-go config
-let g:go_fmt_options = "-tabs=false -tabwidth=2"
+" let g:go_fmt_options = "--tabs=false --tabwidth=2":
