@@ -71,6 +71,8 @@ Bundle 'vimwiki/vimwiki'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'fatih/vim-go'
+Bundle 'junegunn/fzf'
+Bundle 'junegunn/fzf.vim'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -303,6 +305,8 @@ map <C-h> <C-w><Left>
 " Ctr-tab to switch buffers
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
+" vim-markdown disable folding
+let g:vim_markdown_folding_disabled = 1
 " Enable code folding (vim-javascript-syntax)
 "au FileType javascript call JavaScriptFold()
 " DelimitMate config
@@ -480,3 +484,6 @@ highlight ColorColumn ctermbg=53 guibg=#5f005f
 
 " vim-go config
 " let g:go_fmt_options = "--tabs=false --tabwidth=2":
+
+" FZF settings
+noremap <leader>f :FZF<CR>
