@@ -73,6 +73,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'fatih/vim-go'
 Bundle 'junegunn/fzf'
 Bundle 'junegunn/fzf.vim'
+Bundle 'chemzqm/vim-jsx-improve'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion
@@ -487,3 +488,6 @@ highlight ColorColumn ctermbg=53 guibg=#5f005f
 
 " FZF settings
 noremap <leader>f :FZF<CR>
+
+" mxw/vim-jsx settings
+let g:jsx_ext_required = 0
