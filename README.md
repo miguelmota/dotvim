@@ -88,6 +88,8 @@ git submodule update --init --recursive
 ./install.py --clang-completer --tern-completer --gocode-completer
 ```
 
+NOTE: if YouComplete server crashes, try running install script (shown above) again:
+
 Powerline
 
 [Powerline Installation instructions](http://powerline.readthedocs.org/en/latest/installation/osx.html)
