@@ -484,10 +484,18 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=53 guibg=#5f005f
 
 " vim-go config
-" let g:go_fmt_options = "--tabs=false --tabwidth=2":
+" run command :GoInstallBinaries in vim first for goimports to work
+let g:go_fmt_command = "goimports"
+" options for gofmt command
+"let g:go_fmt_options = "--tabs=false --tabwidth=4"
 
 " FZF settings
 noremap <leader>f :FZF<CR>
 
 " mxw/vim-jsx settings
 let g:jsx_ext_required = 0
+
+" disable vim's autoincrement
+map <C-a> <Nop>
+" disable vim's autodecrement
+map <C-x> <Nop>
