@@ -94,6 +94,13 @@ Powerline
 
 [Powerline Installation instructions](http://powerline.readthedocs.org/en/latest/installation/osx.html)
 
+vim-go
+
+```bash
+go get -u gopkg.in/alecthomas/gometalinter.v2
+gometalinter --install
+```
+
 All done.
 
 ## Installing bundles
