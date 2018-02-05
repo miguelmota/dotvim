@@ -129,10 +129,10 @@ vertical split
 <c-v>
 ```
 
-Toggle fullscreen for a window
+Toggle fullscreen for a window (like in tmux)
 
 ```
-<f3>
+<C-w> z
 ```
 
 ctrlp shortcuts
