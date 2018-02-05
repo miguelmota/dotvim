@@ -74,6 +74,7 @@ Bundle 'fatih/vim-go'
 Bundle 'junegunn/fzf'
 Bundle 'junegunn/fzf.vim'
 Bundle 'chemzqm/vim-jsx-improve'
+Bundle 'szw/vim-maximizer'
 " Enable pathogen
 call pathogen#infect()
 " Enhance command-line completion

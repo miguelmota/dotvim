@@ -129,6 +129,12 @@ vertical split
 <c-v>
 ```
 
+Toggle fullscreen for a window
+
+```
+<f3>
+```
+
 ctrlp shortcuts
 
 [source](https://github.com/kien/ctrlp.vim)
