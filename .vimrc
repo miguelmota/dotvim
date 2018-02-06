@@ -8,7 +8,7 @@ filetype off
 call plug#begin('~/.vim/bundle')
 
 " Let Vundle manage Vundle, required
-Plug 'VundleVim/Vundle.vim'
+"Plug 'VundleVim/Vundle.vim'
 " bundles
 Plug 'scrooloose/nerdtree'
 Plug 'marijnh/tern_for_vim'
