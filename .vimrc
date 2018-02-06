@@ -245,7 +245,17 @@ hi Normal ctermbg=none
 highlight nonText ctermbg=NONE
 
 " Highlight cursor line
-set cursorline
+"set cursorline
+"
+" makes vim faster
+set nocursorline
+set nocursorcolumn
+
+" some optimizations
+set scrolljump=5
+set lazyredraw
+set synmaxcol=180
+
 "hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
 
 set foldmethod=indent
@@ -422,6 +432,7 @@ map <Leader>e :MBEToggle<cr>
 "map <C-n> 3<C-w>-
 
 " YouCompleteMe config
+set runtimepath+=~/.vim/bundle/YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_min_num_identifier_candidate_chars = 0
@@ -444,6 +455,14 @@ let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_key_invoke_completion = '<C-Space>'
 set completeopt-=preview
+set completeopt+=longest,menuone
+
+" clang_complete config
+set conceallevel=2
+set concealcursor=vin
+let g:clang_snippets=1
+let g:clang_conceal_snippets=1
+let g:clang_snippets_engine='clang_complete'
 
 " UtilSnips config
 let g:UltiSnipsExpandTrigger="<tab>"
