@@ -9,15 +9,59 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Vundle bundles
 Bundle 'scrooloose/nerdtree'
+Bundle 'marijnh/tern_for_vim'
+Bundle 'bling/vim-airline'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
+Bundle 'Raimondi/delimitMate'
+Bundle 'moll/vim-node'
+Bundle 'othree/html5.vim'
+Bundle 'sukima/xmledit'
+Bundle 'tmhedberg/matchit'
+Bundle 'tpope/vim-surround'
+Bundle 'jeetsukumaran/vim-buffergator'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'benmills/vimux'
+Bundle 'wellle/tmux-complete.vim'
+Bundle 'tpope/vim-obsession'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'osyo-manga/vim-over'
+Bundle 'mileszs/ack.vim'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
+Bundle 'duganchen/vim-soy'
+Bundle 'tomlion/vim-solidity'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'vimwiki/vimwiki'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Bundle 'fatih/vim-go'
+Bundle 'chemzqm/vim-jsx-improve'
+Bundle 'szw/vim-maximizer'
+Bundle 'Konfekt/FastFold'
+Bundle 'junegunn/fzf'
+Bundle 'junegunn/fzf.vim'
+"Bundle 'kien/ctrlp.vim'
+"Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+"Bundle 'vim-scripts/SyntaxRange'
+"Bundle 'kovisoft/slimv'
+"Bundle 'adimit/prolog.vim'
+"Bundle 'valloric/MatchTagAlways'
+"Bundle 'derekwyatt/vim-scala'
+"Bundle 'derekwyatt/vim-sbt'
+"Bundle 'elzr/vim-json'
+"Bundle 'msanders/snipmate.vim'
+"Bundle 'mklabs/vim-backbone'
+"Bundle 'tpope/vim-pathogen'
+"Bundle 'Yggdroot/indentLine'
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'fholgado/minibufexpl.vim'
+"Bundle 'rosenfeld/conque-term'
 "Bundle 'jelera/vim-javascript-syntax'
 "Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/syntastic'
 "Bundle 'Shougo/neocomplcache.vim'
 "Bundle 'Shougo/neocomplete.vim'
-Bundle 'marijnh/tern_for_vim'
-"Bundle 'rosenfeld/conque-term'
-Bundle 'kien/ctrlp.vim'
 "Bundle 'mustache/vim-mustache-handlebars'
 "Bundle 'majutsushi/tagbar'
 "Bundle 'vim-scripts/closetag.vim'
@@ -26,57 +70,13 @@ Bundle 'kien/ctrlp.vim'
 "Bundle 'altercation/vim-colors-solarized'
 "Bundle 'kchmck/vim-coffee-script'
 "Bundle 'digitaltoad/vim-jade'
-Bundle 'tpope/vim-fugitive'
-Bundle 'moll/vim-node'
 "Bundle 'vim-scripts/Rename'
 "Bundle 'scrooloose/nerdcommenter'
-Bundle 'othree/html5.vim'
-"Bundle 'msanders/snipmate.vim'
-"Bundle 'mklabs/vim-backbone'
-"Bundle 'tpope/vim-pathogen'
-"Bundle 'Yggdroot/indentLine'
-Bundle 'sukima/xmledit'
- Bundle 'tmhedberg/matchit'
-"Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-surround'
-Bundle 'bling/vim-airline'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'jeetsukumaran/vim-buffergator'
-"Bundle 'fholgado/minibufexpl.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'editorconfig/editorconfig-vim'
-"Bundle 'heartsentwined/vim-emblem'
-"Bundle 'vim-scripts/SyntaxRange'
-"Bundle 'kovisoft/slimv'
-"Bundle 'adimit/prolog.vim'
-Bundle 'benmills/vimux'
-Bundle 'wellle/tmux-complete.vim'
-Bundle 'tpope/vim-obsession'
-Bundle 'terryma/vim-multiple-cursors'
-"Bundle 'valloric/MatchTagAlways'
-"Bundle 'derekwyatt/vim-scala'
-"Bundle 'derekwyatt/vim-sbt'
-Bundle 'mhinz/vim-startify'
-Bundle 'osyo-manga/vim-over'
-Bundle 'mileszs/ack.vim'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-Bundle 'duganchen/vim-soy'
-Bundle 'tomlion/vim-solidity'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'vimwiki/vimwiki'
-"Bundle 'elzr/vim-json'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'fatih/vim-go'
-Bundle 'junegunn/fzf'
-Bundle 'junegunn/fzf.vim'
-Bundle 'chemzqm/vim-jsx-improve'
-Bundle 'szw/vim-maximizer'
+"Bundle 'mhinz/vim-startify'
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'airblade/vim-gitgutter'
 " Enable pathogen
-call pathogen#infect()
+" call pathogen#infect()
 " Enhance command-line completion
 set wildmenu
 " Allow cursor keys in insert mode
@@ -89,12 +89,22 @@ set encoding=utf-8 nobomb
 "let mapleader=",""
 " Optimize for fast terminal connections
 set ttyfast
-" Switches on syntax highlighting, keeping current color settings
-syntax enable
+
 " Overrules color settings with the defaults for syntax highlighting
-syntax on
+"syntax on
+
+if !exists("g:syntax_on")
+    " Switches on syntax highlighting, keeping current color settings
+    " However, it does makes vim slower
+    syntax enable
+else
+endif
+
 " Display line numbers
 set number
+" Don't use relative numbers
+set norelativenumber
+
 " Width of tab set to 2 spaces.
 " 4 spaces will equal 1 tab (generally speaking, 8 spaces equal 1 tab)
 set tabstop=2
@@ -185,8 +195,11 @@ function! StripM()
 endfunction
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>)
+
 " Automatic commands
 if has("autocmd")
+  augroup aug_bufred
+    autocmd!
     " Enable file type detection
     filetype on
     " Treat .json files as .js
@@ -198,6 +211,7 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.hbs setfiletype hbs syntax=html
     autocmd BufNewFile,BufRead *.scss setfiletype scss syntax=css
     autocmd BufNewFile,BufRead *.less setfiletype less syntax=css
+  augroup END
 endif
 au BufReadPost *.em set syntax=jade
 au BufReadPost *.emblem set syntax=jade
@@ -210,19 +224,33 @@ set modelines=4
 " Enable per-directory .vimrc files and disable unsafe commands in them
 set exrc
 set secure
+
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
-"colorscheme solarized
-"colorscheme mirodark
-colorscheme Tomorrow-Night-Bright
+
 " Theme config
-set background=dark
+"set background=dark
+" Use 256 colours
+set t_Co=256
+
+" Set the color theme
+colorscheme Tomorrow-Night-Bright
+
 " Transparent background
 hi Normal ctermbg=none
 highlight nonText ctermbg=NONE
+
 " Highlight cursor line
 set cursorline
 "hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
+
+set foldmethod=indent
+" Open all folds by default. 0 = all folded
+set foldlevel=99
+
+" use older version regex engine (speed improvement)
+set re=1
+
 " Required for NERDcommenter
 filetype plugin on
 filetype plugin indent on
@@ -249,9 +277,23 @@ map <Leader>a :Ack!<space>
 " NerdTree show hidden files
 let NERDTreeShowHidden=1
 " Start NERDTree if no files were specified
-autocmd vimEnter * if !argc() | NERDTree | endif
+if exists("*NERDTree")
+  if has("autocmd")
+    augroup aug_nerdtree
+      autocmd!
+      autocmd vimEnter * if !argc() | NERDTree | endif
+    augroup END
+  endif
+endif
+
 " Focus on window
-autocmd VimEnter * wincmd p
+if has("autocmd")
+  augroup aug_winfocus
+      autocmd!
+      autocmd VimEnter * wincmd p
+  augroup END
+endif
+
 " TagBar key binding
 nmap <F8> :TagbarToggle<CR>
 " Open TagBar on JavaScript file
@@ -260,9 +302,12 @@ nmap <F8> :TagbarToggle<CR>
 "command W w !sudo tee % >/dev/null
 " Reload ~/.vimrc with \ + rv
 map <Leader>rv :source $MYVIMRC<CR>
+
 " Syntastic checker
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+if exists("*SyntasticStatuslineFlag")
+  set statusline+=%{SyntasticStatuslineFlag()}
+endif
 set statusline+=%*
 let g:syntastic_javascript_checkers = ['jshint','eslint']
 let g:syntastic_html_tidy_ignore_errors = [" proprietary attribute \"ng-"]
@@ -293,12 +338,19 @@ map j gj
 map k gk
 " Use spaces instead of tabs
 set expandtab
+
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+if has("autocmd")
+  augroup aug_winfocus
+    autocmd!
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  augroup END
+endif
+
 " Hold Ctr and use movement keys to move around window splits
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
@@ -405,10 +457,6 @@ let g:snippets_dir = "~/.vim/snippets"
 "nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Always show statusline
 set laststatus=2
-" Use 256 colours
-set t_Co=256
-" Use powerline fonts
-let g:airline_powerline_fonts = 1
 " Fix timeout when pressing escape key
 if ! has('gui_running')
     set ttimeoutlen=10
@@ -420,8 +468,15 @@ if ! has('gui_running')
 endif
 " Shortcut to align indents
 map <F12> mzgg=G`z :call StripWhitespace()<CR>
+
 " Remove trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
+if has("autocmd")
+  augroup aug_bufpre
+    autocmd!
+    autocmd BufWritePre * :%s/\s\+$//e
+  augroup END
+endif
+
 set wrap
 set linebreak
 " Note trailing space at end of next line
@@ -446,16 +501,18 @@ function! VisualFindAndReplaceWithSelection() range
 endfunction
 nnoremap <Leader>sr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>sr :call VisualFindAndReplaceWithSelection()<CR>
+
 " Incremental numbers
-function! Incr()
-    let a = line('.') - line("'<")
-    let c = virtcol("'<")
-    if a > 0
-        execute 'normal! '.c.'|'.a."\<C-a>"
-    endif
-    normal `<
-endfunction
-vnoremap <C-a> :call Incr()<CR>
+"function! Incr()
+""    let a = line('.') - line("'<")
+""    let c = virtcol("'<")
+""    if a > 0
+"        execute 'normal! '.c.'|'.a."\<C-a>"
+""    endif
+""    normal `<
+"endfunction
+"vnoremap <C-a> :call Incr()<CR>
+
 " Tabular config
 xnoremap <Leader>a= :Tabularize /=<CR>
 xnoremap <Leader>a: :Tabularize /:<CR>
@@ -464,10 +521,10 @@ xnoremap <Leader>a, :Tabularize /,<CR>
 xnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 " Clear highlights
 map <Leader>c :noh<CR>
-" Use powerline fonts
-"let g:airline_powerline_fonts = 1
 " Powerline config
 "set rtp+=~/.powerline/powerline/bindings/vim
+" Use powerline fonts
+let g:airline_powerline_fonts = 1
 " binary viewer
 " :%!xxd
 " revert binary viewer
@@ -478,11 +535,11 @@ if !has('nvim')
 endif
 
 " over column length marker
-set colorcolumn=80
+"set colorcolumn=80
 " grey
 "highlight ColorColumn ctermbg=235 guibg=#2c2d27
 " deep pink
-highlight ColorColumn ctermbg=53 guibg=#5f005f
+"highlight ColorColumn ctermbg=53 guibg=#5f005f
 
 " vim-go config
 " run command :GoInstallBinaries in vim first for goimports to work
