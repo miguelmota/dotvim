@@ -67,7 +67,7 @@ sudo apt-get install exuberant-ctags
 
 Make sure to have [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed first
 
-```
+```bash
 cd ~/.vim/bundle/tern_for_vim
 
 npm install
@@ -85,7 +85,7 @@ cd ~/.vim/bundles/YouCompleteMe
 
 git submodule update --init --recursive
 
-./install.py --clang-completer --tern-completer --gocode-completer
+./install.py --clang-completer --tern-completer --go-completer --js-completer
 ```
 
 NOTE: if YouComplete server crashes, try running install script (shown above) again:
