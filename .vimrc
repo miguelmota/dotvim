@@ -592,3 +592,6 @@ let g:maximizer_set_default_mapping = 1
 nnoremap <silent><C-w>z :MaximizerToggle<CR>
 vnoremap <silent><C-w>z :MaximizerToggle<CR>gv
 inoremap <silent><C-w>z <C-o>:MaximizerToggle<CR>
+
+" turn off recording
+map q <Nop>
