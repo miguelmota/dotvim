@@ -300,6 +300,10 @@ if exists("*NERDTree")
   endif
 endif
 
+
+" Map ctrl-p to FZF
+map <c-p> :FZF<CR>
+
 " Focus on window
 if has("autocmd")
   augroup aug_winfocus
