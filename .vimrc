@@ -29,7 +29,6 @@ Plug 'tpope/vim-obsession'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'osyo-manga/vim-over'
 Plug 'mileszs/ack.vim'
-Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'duganchen/vim-soy'
@@ -77,6 +76,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'mhinz/vim-startify'
 "Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
+"Plug 'plasticboy/vim-markdown'
 call plug#end()
 "call vundle#end()
 " Enable pathogen
@@ -253,8 +253,8 @@ set nocursorcolumn
 
 " some optimizations
 set scrolljump=5
-set lazyredraw
 set synmaxcol=180
+"set lazyredraw
 
 "hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
 
