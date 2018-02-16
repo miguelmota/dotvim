@@ -254,7 +254,7 @@ set nocursorcolumn
 " some optimizations
 set scrolljump=5
 set synmaxcol=180
-"set lazyredraw
+set lazyredraw
 
 "hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
 

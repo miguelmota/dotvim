@@ -101,6 +101,12 @@ go get -u gopkg.in/alecthomas/gometalinter.v2
 gometalinter --install
 ```
 
+[the_silver_searcher](https://github.com/ggreer/the_silver_searcher) for content searching (used with [FZF](https://github.com/junegunn/fzf.vim))
+
+```bash
+brew install the_silver_searcher
+```
+
 All done.
 
 ## Installing bundles
