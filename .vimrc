@@ -462,7 +462,7 @@ set completeopt-=preview
 set completeopt+=longest,menuone
 
 " clang_complete config
-set conceallevel=2
+set conceallevel=0 " don't hide JSON quotes
 set concealcursor=vin
 let g:clang_snippets=1
 let g:clang_conceal_snippets=1
@@ -573,12 +573,19 @@ endif
 let g:go_fmt_command = "goimports"
 " options for gofmt command
 "let g:go_fmt_options = "--tabs=false --tabwidth=4"
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_enabled = ['gofmt', 'vet', 'golint', 'errcheck', 'gas', 'deadcode', 'gotype']
 let g:go_metalinter_autosave = 1
 let g:go_test_timeout = '10s'
 let g:go_highlight_types = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1
+let g:go_bin_path = "/usr/local/bin/go"
+let $GOPATH = $HOME."/go"
 
 " FZF settings
 noremap <leader>f :FZF<CR>
