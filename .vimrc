@@ -583,7 +583,8 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:go_auto_type_info = 1
+" disabled; causes vim redraw lag
+let g:go_auto_type_info = 0
 let g:go_bin_path = "/usr/local/bin/go"
 let $GOPATH = $HOME."/go"
 
