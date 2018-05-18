@@ -215,6 +215,7 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.hbs setfiletype hbs syntax=html
     autocmd BufNewFile,BufRead *.scss setfiletype scss syntax=css
     autocmd BufNewFile,BufRead *.less setfiletype less syntax=css
+    autocmd BufNewFile,BufRead *.es6 set filetype=javascript
   augroup END
 endif
 au BufReadPost *.em set syntax=jade
@@ -238,7 +239,7 @@ let g:solarized_termtrans = 1
 set t_Co=256
 
 " Set the color theme
-colorscheme Tomorrow-Night-Bright
+colorscheme Oblivion
 
 " Transparent background
 hi Normal ctermbg=none
