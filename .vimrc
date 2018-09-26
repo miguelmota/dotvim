@@ -38,11 +38,13 @@ Plug 'vimwiki/vimwiki'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'szw/vim-maximizer'
 Plug 'Konfekt/FastFold'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'rust-lang/rust.vim'
 "Plug 'kien/ctrlp.vim'
 "Plug 'jeffkreeftmeijer/vim-numbertoggle'
 "Plug 'vim-scripts/SyntaxRange'
@@ -586,8 +588,11 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " disabled; causes vim redraw lag
 let g:go_auto_type_info = 0
-let g:go_bin_path = "/usr/local/bin/go"
-let $GOPATH = $HOME."/go"
+"let g:go_bin_path = "/usr/local/bin/go"
+let g:go_bin_path = "/Users/mota/.gvm/gos/go1.11/bin/go"
+let $GOPATH = "/Users/mota/.gvm/pkgsets/go1.11/global"
+"let $GOPATH = $HOME."/go"
+"let $GOPATH = $GOPATH
 
 " FZF settings
 noremap <leader>f :FZF<CR>

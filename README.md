@@ -88,6 +88,17 @@ git submodule update --init --recursive
 ./install.py --clang-completer --tern-completer --go-completer --js-completer
 ```
 
+Getting Go v1.11 auto completer to work
+
+```bash
+cd third_party/ycmd/third_party/
+rm -rf gocode
+git clone git@github.com:mdempsky/gocode.git
+cd gocode
+go mod init
+go build .
+```
+
 NOTE: if YouComplete server crashes, try running install script (shown above) again:
 
 Powerline
