@@ -85,7 +85,7 @@ cd ~/.vim/bundles/YouCompleteMe
 
 git submodule update --init --recursive
 
-./install.py --clang-completer --tern-completer --go-completer --js-completer
+./install.py --clang-completer --tern-completer --go-completer --js-completer --racer-completer
 ```
 
 Getting Go v1.11 auto completer to work

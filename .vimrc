@@ -45,6 +45,11 @@ Plug 'Konfekt/FastFold'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'mtth/scratch.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'vim-scripts/a.vim'
+Plug 'Rip-Rip/clang_complete'
+"Plug 'tpope/vim-vinegar'
 "Plug 'kien/ctrlp.vim'
 "Plug 'jeffkreeftmeijer/vim-numbertoggle'
 "Plug 'vim-scripts/SyntaxRange'
@@ -463,6 +468,7 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_key_invoke_completion = '<C-Space>'
 set completeopt-=preview
 set completeopt+=longest,menuone
+let g:ycm_rust_src_path = '/Users/mota/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
 
 " clang_complete config
 set conceallevel=0 " don't hide JSON quotes
@@ -611,5 +617,15 @@ nnoremap <silent><C-w>z :MaximizerToggle<CR>
 vnoremap <silent><C-w>z :MaximizerToggle<CR>gv
 inoremap <silent><C-w>z <C-o>:MaximizerToggle<CR>
 
+" Scratch shortcut key
+noremap <leader>sc :Scratch<CR>
+
 " turn off recording
 map q <Nop>
+
+" C++ autocomplete
+" macos path
+let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+if isdirectory(s:clang_library_path)
+    let g:clang_library_path=s:clang_library_path
+endif
