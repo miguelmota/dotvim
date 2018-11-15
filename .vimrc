@@ -12,7 +12,6 @@ call plug#begin('~/.vim/bundle')
 " bundles
 Plug 'scrooloose/nerdtree'
 Plug 'marijnh/tern_for_vim'
-Plug 'bling/vim-airline'
 Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
@@ -49,6 +48,7 @@ Plug 'mtth/scratch.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'vim-scripts/a.vim'
 Plug 'Rip-Rip/clang_complete'
+"Plug 'bling/vim-airline' " (note: makes window switch slower)
 "Plug 'tpope/vim-vinegar'
 "Plug 'kien/ctrlp.vim'
 "Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -260,7 +260,7 @@ set nocursorline
 set nocursorcolumn
 
 " some optimizations
-set scrolljump=5
+"set scrolljump=5
 set synmaxcol=180
 set lazyredraw
 
