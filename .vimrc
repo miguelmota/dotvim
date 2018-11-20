@@ -298,6 +298,13 @@ let b:closetag_html_style=1
 map <Leader>a :Ack!<space>
 " NerdTree show hidden files
 let NERDTreeShowHidden=1
+" don't close NERDTree pane when opening a file
+let NERDTreeQuitOnOpen = 0
+" delete buffer after deleting file with NERDTree
+let NERDTreeAutoDeleteBuffer = 1
+" make NERDTree pretty
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 " Start NERDTree if no files were specified
 if exists("*NERDTree")
   if has("autocmd")
@@ -308,6 +315,12 @@ if exists("*NERDTree")
   endif
 endif
 
+" open NERDTree by default when starting vim with no file
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" close tab if only remaining window is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Map ctrl-p to FZF
 map <c-p> :FZF<CR>
@@ -629,3 +642,14 @@ let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
 if isdirectory(s:clang_library_path)
     let g:clang_library_path=s:clang_library_path
 endif
+
+" netrw ":Explore" settings
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
