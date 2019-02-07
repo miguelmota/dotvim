@@ -584,7 +584,7 @@ if !has('nvim')
 endif
 
 " over column length marker
-"set colorcolumn=80
+set colorcolumn=80
 " grey
 "highlight ColorColumn ctermbg=235 guibg=#2c2d27
 " deep pink
@@ -607,11 +607,12 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " disabled; causes vim redraw lag
 let g:go_auto_type_info = 0
-"let g:go_bin_path = "/usr/local/bin/go"
-let g:go_bin_path = "/Users/mota/.gvm/gos/go1.11/bin/go"
-let $GOPATH = "/Users/mota/.gvm/pkgsets/go1.11/global"
+let g:go_bin_path = "/usr/local/go/bin/go"
+"let g:go_bin_path = "/Users/mota/.gvm/gos/go1.11/bin/go"
+"let $GOPATH = "/Users/mota/.gvm/pkgsets/go1.11/global"
 "let $GOPATH = $HOME."/go"
-"let $GOPATH = $GOPATH
+let $GOPATH = $GOPATH
+let $GOROOT = "/usr/local/go"
 
 " FZF settings
 noremap <leader>f :FZF<CR>
@@ -653,3 +654,8 @@ let g:netrw_winsize = 25
 "  autocmd!
 "  autocmd VimEnter * :Vexplore
 "augroup END
+
+" show last modified indicator on bottom statusline
+" https://stackoverflow.com/a/19614688/1439168
+set laststatus=2
+set statusline=[%n]\ %<%f%h%m
