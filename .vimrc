@@ -37,7 +37,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+"Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'szw/vim-maximizer'
 Plug 'Konfekt/FastFold'
@@ -611,7 +612,8 @@ let g:go_bin_path = "/usr/local/go/bin/go"
 "let g:go_bin_path = "/Users/mota/.gvm/gos/go1.11/bin/go"
 "let $GOPATH = "/Users/mota/.gvm/pkgsets/go1.11/global"
 "let $GOPATH = $HOME."/go"
-let $GOPATH = $GOPATH
+"let $GOPATH = $GOPATH
+let $GOPATH= "/Users/mota/go"
 let $GOROOT = "/usr/local/go"
 
 " FZF settings

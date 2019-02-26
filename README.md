@@ -91,7 +91,7 @@ git submodule update --init --recursive
 Getting Go v1.11 auto completer to work
 
 ```bash
-cd third_party/ycmd/third_party/
+cd bundle/YouCompleteMe/third_party/ycmd/third_party/
 rm -rf gocode
 git clone git@github.com:mdempsky/gocode.git
 cd gocode
