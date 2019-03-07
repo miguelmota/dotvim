@@ -2,8 +2,6 @@
 
 > My `~/.vim` and `~/.vimrc` configuration.
 
-Mainly focused on JavaScript development.
-
 ## Install
 
 (Adjust accordingly)
