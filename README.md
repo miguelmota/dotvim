@@ -91,12 +91,36 @@ git submodule update --init --recursive
 Getting Go v1.11 auto completer to work
 
 ```bash
-cd bundle/YouCompleteMe/third_party/ycmd/third_party/
+cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/
 rm -rf gocode
 git clone git@github.com:mdempsky/gocode.git
 cd gocode
 go mod init
 go build .
+```
+
+vim-completor
+
+javascript autocompleter
+
+```bash
+cd ~/.vim/bundle/completor.vim/
+# make sure to install tern first before this
+make js
+```
+
+Rust autocompleter
+
+```bash
+# requires nightly rust
+rustup toolchain add nightly
+cargo +nightly install racer
+```
+
+Python autocompleter
+
+```bash
+pip install jedi
 ```
 
 NOTE: if YouComplete server crashes, try running install script (shown above) again:

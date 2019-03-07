@@ -1,18 +1,24 @@
 " Make Vim more useful. vim, not vi
 set nocompatible
+
 " Disable filetype detection, required for Vundle
 filetype off
+
+" === BUNDLES ===
+
 " Set the runtime path to include Vundle and initialize
 "set rtp+=~/.vim/bundle/Vundle.vim
 "call vundle#begin()
-call plug#begin('~/.vim/bundle')
 
 " Let Vundle manage Vundle, required
 "Plug 'VundleVim/Vundle.vim'
-" bundles
+
+" Initiate Plug bundles
+call plug#begin('~/.vim/bundle')
+
+" List of bundles
 Plug 'scrooloose/nerdtree'
 Plug 'marijnh/tern_for_vim'
-Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'moll/vim-node'
@@ -37,8 +43,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
-"Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
-Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'szw/vim-maximizer'
 Plug 'Konfekt/FastFold'
@@ -49,7 +53,16 @@ Plug 'mtth/scratch.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'vim-scripts/a.vim'
 Plug 'Rip-Rip/clang_complete'
-"Plug 'bling/vim-airline' " (note: makes window switch slower)
+Plug 'maralla/completor.vim'
+" NOTE: use this fork for go1.11+
+Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+" NOTE: this is disabled because it doesn't support go1.11+
+"Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+" NOTE: YCM disabled because it's buggy
+"Plug 'Valloric/YouCompleteMe'
+" NOTE: airline is disabled because it makes window switching slower
+"Plug 'bling/vim-airline'
+" NOTE: disabled plugins below
 "Plug 'tpope/vim-vinegar'
 "Plug 'kien/ctrlp.vim'
 "Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -85,26 +98,40 @@ Plug 'Rip-Rip/clang_complete'
 "Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'plasticboy/vim-markdown'
+
+" Plug end
 call plug#end()
+
+" Vundle end
 "call vundle#end()
+
 " Enable pathogen
 " call pathogen#infect()
+
+" === BASE OPTIONS ===
+
 " Enhance command-line completion
 set wildmenu
+
 " Allow cursor keys in insert mode
 set esckeys
+
 " Allow backspace in insert mode
 set backspace=indent,eol,start
+
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
+
 " Change mapleader
 "let mapleader=",""
+
 " Optimize for fast terminal connections
 set ttyfast
 
 " Overrules color settings with the defaults for syntax highlighting
 "syntax on
 
+" Enable syntax highlighting if syntax_on option doesn't exist
 if !exists("g:syntax_on")
     " Switches on syntax highlighting, keeping current color settings
     " However, it does makes vim slower
@@ -114,22 +141,27 @@ endif
 
 " Display line numbers
 set number
+
 " Don't use relative numbers
 set norelativenumber
 
 " Width of tab set to 2 spaces.
 " 4 spaces will equal 1 tab (generally speaking, 8 spaces equal 1 tab)
 set tabstop=2
+
 " Indents will have a width of 2
 set shiftwidth=2
+
 " Columns for a tab, amount of whitespace.
 " softtabstop = shiftwidth = tabstop
 set softtabstop=2
+
 " Enable smart indent
 set smarttab
 set smartindent
 set autoindent
 set smartcase
+
 " Copy to clipboard
 if has("unix")
   let s:uname = system("uname -s")
@@ -141,49 +173,204 @@ if has("unix")
     set clipboard=unnamedplus
   endif
 endif
+
+" Tmux copy to clipboard
 "if $TMUX == ''
 "	set clipboard+=unnamed
 "endif
+
 " Start scrolling three lines before the horizontal window border
 "set scrolloff=3
+
 " Show invisible characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
+
 " List characters
 "set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
 " Highlight searches
 set hlsearch
+
 " Incremental search
 set incsearch
+
 " Show matching bracket
 set showmatch
+
 " Add the g flag to search/replace by default
 set gdefault
+
 " Highlight dynamically as pattern is typed
 set incsearch
+
 " Always show status line
 set laststatus=2
+
 " Enable mouse in all modes
 set mouse=a
+
 " Show the cursor position
 set ruler
+
 " Show the current mode
 set showmode
+
 " Disable error bells
 set noerrorbells
+
 " Show the filename in the window titlebar
 set title
+
 " Watch for filechanges
 set autoread
+
 " Centralize backup
 set backup
 set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
 set undodir=~/.vim/undo/
+
 " Disable swap files
 set noswapfile
+
 " Show the (partial) command as it’s being typed
 set showcmd
+
+" Don’t add empty newlines at the end of files
+set binary
+set noeol
+
+" Respect modeline in files
+set modeline
+set modelines=4
+
+" Enable per-directory .vimrc files and disable unsafe commands in them
+set exrc
+set secure
+
+" Theme config
+" NOTE: disabled to allow translucent background
+"set background=dark
+
+" Use 256 colours
+set t_Co=256
+
+" Set the color theme
+colorscheme Oblivion
+
+" Transparent background
+hi Normal ctermbg=none
+highlight nonText ctermbg=NONE
+
+" Highlight cursor line
+" NOTE: disabled because it makes certain things slower
+"set cursorline
+
+" Disable cursorline to make vim faster
+set nocursorline
+set nocursorcolumn
+
+" Set max column size for performance reasons
+"set scrolljump=5
+set synmaxcol=180
+
+" Enable lazy redraw for performance reasons
+set lazyredraw
+
+" Cursorline styling
+"hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
+
+" Indent as folding method
+set foldmethod=indent
+
+" Open all folds by default. 0 = all folded
+set foldlevel=99
+
+" Use older version regex engine for speed improvements
+set re=1
+
+" Show last modified indicator on bottom statusline
+" https://stackoverflow.com/a/19614688/1439168
+set laststatus=2
+set statusline=[%n]\ %<%f%h%m
+
+" Always show statusline
+set laststatus=2
+
+" Turn off recording
+map q <Nop>
+
+" Focus on window
+if has("autocmd")
+  augroup aug_winfocus
+      autocmd!
+      autocmd VimEnter * wincmd p
+  augroup END
+endif
+
+" Enable indentation
+filetype indent on
+
+" Disable vim's autoincrement
+map <C-a> <Nop>
+
+" Disable vim's autodecrement
+map <C-x> <Nop>
+
+" Ignore case toggle
+set ic
+nmap <F6> :set ignorecase! ignorecase?
+
+" Over column length marker
+set colorcolumn=80
+" Grey color for column marker
+"highlight ColorColumn ctermbg=235 guibg=#2c2d27
+" Deep pink color for colum marker
+"highlight ColorColumn ctermbg=53 guibg=#5f005f
+
+" Disable paste mode, (enabling this can affect many other things)
+set nopaste
+
+" Use spaces instead of tabs
+set expandtab
+
+" Opening a new file when the current buffer has unsaved changes causes
+" files to be hidden instead of closed
+set hidden
+
+" Enable text wrapping
+set wrap
+
+" Enable line breaks
+set linebreak
+
+" Enable noting of trailing space at end of next line
+set showbreak=>\ \ \
+
+" Remove trailing whitespace on save
+if has("autocmd")
+  augroup aug_bufpre
+    autocmd!
+    autocmd BufWritePre * :%s/\s\+$//e
+  augroup END
+endif
+
+" Make nvim backward compatible with vim
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+
+" C++ autocomplete
+" MacOS path
+" TODO: Linux paths
+let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+if isdirectory(s:clang_library_path)
+    let g:clang_library_path=s:clang_library_path
+endif
+
+" == FUNCTIONS ===
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
     let save_cursor = getpos(".")
@@ -193,6 +380,7 @@ function! StripWhitespace()
     call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
+
 " Convert tabs to whitespace
 function! TabsToWhitespace()
     let save_cursor = getpos(".")
@@ -201,12 +389,32 @@ function! TabsToWhitespace()
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfunction
+
 " strip ^M character at end of lines
 function! StripM()
     :%s/\r//g
 endfunction
-" Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>)
+
+" Incremental numbers
+"function! Incr()
+""    let a = line('.') - line("'<")
+""    let c = virtcol("'<")
+""    if a > 0
+"        execute 'normal! '.c.'|'.a."\<C-a>"
+""    endif
+""    normal `<
+"endfunction
+"vnoremap <C-a> :call Incr()<CR>
+
+" Substitution preview
+function! VisualFindAndReplace()
+    :OverCommandLine%s/
+    :w
+endfunction
+function! VisualFindAndReplaceWithSelection() range
+    :'<,'>OverCommandLine s/
+    :w
+endfunction
 
 " Automatic commands
 if has("autocmd")
@@ -228,84 +436,40 @@ if has("autocmd")
 endif
 au BufReadPost *.em set syntax=jade
 au BufReadPost *.emblem set syntax=jade
-" Don’t add empty newlines at the end of files
-set binary
-set noeol
-" Respect modeline in files
-set modeline
-set modelines=4
-" Enable per-directory .vimrc files and disable unsafe commands in them
-set exrc
-set secure
 
+" Fix timeout when pressing escape key
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
+" === PLUGINS ===
+
+" Required options for NERDcommenter
+filetype plugin on
+filetype plugin indent on
+
+" Solarized theme options
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 
-" Theme config
-"set background=dark
-" Use 256 colours
-set t_Co=256
-
-" Set the color theme
-colorscheme Oblivion
-
-" Transparent background
-hi Normal ctermbg=none
-highlight nonText ctermbg=NONE
-
-" Highlight cursor line
-"set cursorline
-"
-" makes vim faster
-set nocursorline
-set nocursorcolumn
-
-" some optimizations
-"set scrolljump=5
-set synmaxcol=180
-set lazyredraw
-
-"hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
-
-set foldmethod=indent
-" Open all folds by default. 0 = all folded
-set foldlevel=99
-
-" use older version regex engine (speed improvement)
-set re=1
-
-" Required for NERDcommenter
-filetype plugin on
-filetype plugin indent on
-" Enable indent
-filetype indent on
-" Ctrl-P options
-let g:ctrlp_use_caching=0
-let g:ctrlp_custom_ignore = '\v[\/](transpiled)|dist|tmp|node_modules|(\.(swp|git|bak|pyc|DS_Store))$'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_max_files=0
-let g:ctrlp_max_height = 18
-let g:ctrlp_open_multiple_files = '1vjr'
-let g:ctrlp_reuse_window = 'startify'
-map <Leader>fs :CtrlPTag<CR>
-map <Leader>fd :CtrlPCurFile<CR>
-map <Leader>fb :CtrlPBuffer<CR>
-nnoremap <Leader>ff :CtrlP<CR>
-" Enable closetag
-let b:closetag_html_style=1
-"au Filetype html,xml,xsl,ejs,jade,emblem,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
-"source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
-" Ack shortcut
-map <Leader>a :Ack!<space>
 " NerdTree show hidden files
 let NERDTreeShowHidden=1
-" don't close NERDTree pane when opening a file
+
+" Don't close NERDTree pane when opening a file
 let NERDTreeQuitOnOpen = 0
-" delete buffer after deleting file with NERDTree
+
+" Delete buffer after deleting file with NERDTree
 let NERDTreeAutoDeleteBuffer = 1
-" make NERDTree pretty
+
+" Make NERDTree pretty
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+
 " Start NERDTree if no files were specified
 if exists("*NERDTree")
   if has("autocmd")
@@ -314,41 +478,40 @@ if exists("*NERDTree")
       autocmd vimEnter * if !argc() | NERDTree | endif
     augroup END
   endif
+
+  " Open NERDTree by default when starting vim with no file
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 endif
 
-" open NERDTree by default when starting vim with no file
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" close tab if only remaining window is NERDTree
+" Close tab if only remaining window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Map ctrl-p to FZF
-map <c-p> :FZF<CR>
+" Ctrl-P options
+let g:ctrlp_use_caching=0
+let g:ctrlp_custom_ignore = '\v[\/](transpiled)|dist|tmp|node_modules|(\.(swp|git|bak|pyc|DS_Store))$'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_max_files=0
+let g:ctrlp_max_height = 18
+let g:ctrlp_open_multiple_files = '1vjr'
+let g:ctrlp_reuse_window = 'startify'
+" Open file in new tab
+let g:ctrlp_prompt_mappings = {
+            \ 'AcceptSelection("e")': [],
+            \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+            \ }
+map <Leader>fs :CtrlPTag<CR>
+map <Leader>fd :CtrlPCurFile<CR>
+map <Leader>fb :CtrlPBuffer<CR>
+nnoremap <Leader>ff :CtrlP<CR>
 
-" Focus on window
-if has("autocmd")
-  augroup aug_winfocus
-      autocmd!
-      autocmd VimEnter * wincmd p
-  augroup END
-endif
-
-" TagBar key binding
-nmap <F8> :TagbarToggle<CR>
-" Open TagBar on JavaScript file
-" autocmd BufRead *.js :TagbarToggle
-" Save as sudo
-"command W w !sudo tee % >/dev/null
-" Reload ~/.vimrc with \ + rv
-map <Leader>rv :source $MYVIMRC<CR>
+" Enable closetag
+let b:closetag_html_style=1
+" NOTE: disabled because of a bug
+"au Filetype html,xml,xsl,ejs,jade,emblem,haml,erb source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
+"source ~/.vim/bundle/closetag.vim/plugin/closetag.vim "" ctrl-_
 
 " Syntastic checker
-set statusline+=%#warningmsg#
-if exists("*SyntasticStatuslineFlag")
-  set statusline+=%{SyntasticStatuslineFlag()}
-endif
-set statusline+=%*
 let g:syntastic_javascript_checkers = ['jshint','eslint']
 let g:syntastic_html_tidy_ignore_errors = [" proprietary attribute \"ng-"]
 let g:syntastic_enable_signs = 1
@@ -356,28 +519,17 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+set statusline+=%#warningmsg#
+if exists("*SyntasticStatuslineFlag")
+  set statusline+=%{SyntasticStatuslineFlag()}
+endif
+set statusline+=%*
 
 " Mustache abbreviations
 let g:mustache_abbreviations = 1
+
 " Emmet trigger key ie. Ctrl+y+,
 let g:user_emmet_leader_key='<C-Y>'
-" Disable paste mode, (enabling this can affect many other things)
-set nopaste
-" Paste mode toggle
-map <F9> :set invpaste paste?<CR>
-" List mode toggle
-map <F10> :set invlist list?<CR>
-" \ + ss to strip whitespace
-map <Leader>ss :call StripWhitespace()<CR>
-" \ + ts to convert tabs to whitespace
-map <Leader>ts :call TabsToWhitespace()<CR>
-" \ + ct to open ConqueTerm
-map <Leader>ct :tabe <bar> ConqueTerm bash<CR>
-" Treat long lines as line breaks
-map j gj
-map k gk
-" Use spaces instead of tabs
-set expandtab
 
 " Enable omni completion.
 if has("autocmd")
@@ -391,73 +543,38 @@ if has("autocmd")
   augroup END
 endif
 
-" Hold Ctr and use movement keys to move around window splits
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
-" Ctr-tab to switch buffers
-map <C-Tab> :bnext<cr>
-map <C-S-Tab> :bprevious<cr>
-" vim-markdown disable folding
+" plasticboy/vim-markdown disable folding
 let g:vim_markdown_folding_disabled = 1
+
 " Enable code folding (vim-javascript-syntax)
 "au FileType javascript call JavaScriptFold()
 " DelimitMate config
 au FileType mail let b:delimitMate_autoclose = 0
-" Ctr-c inbetween brackets to expand (DelimitMate)
-imap <C-c> <CR><Esc>O
 
-" Neocomplache config
+" Neocomplache options
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 0
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><C-y>  neocomplcache#close_popup()
-"inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
-" Tern keys
+" Tern options
 let g:tern_map_keys=1
-" Open file in new tab
-let g:ctrlp_prompt_mappings = {
-            \ 'AcceptSelection("e")': [],
-            \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
-            \ }
-" Indent colors"
+
+" Indent colors
 let g:indentLine_color_term = 239
-" Ignore case toggle
-set ic
-nmap <F6> :set ignorecase! ignorecase?
+
 " EasyMotion config
 let g:EasyMotion_leader_key = '<Leader>'
-" Airline config
-let g:airline#extensions#tabline#enabled = 1
-" NerdTree shortcut
-map <Leader>d :NERDTreeToggle<CR>
-nmap <Leader>nt :NERDTreeFind<CR>
-" opening a new file when the current buffer has unsaved changes causes files
-" to be hidden instead of closed
-set hidden
+
 " miniBuffExplorer config
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
-map <Leader>e :MBEToggle<cr>
-" Easy window resizing
-"map <C-]> 5<C-w>>
-"map <C-[> 5<C-w><
-"map <C-m> 3<C-w>+
-"map <C-n> 3<C-w>-
 
-" YouCompleteMe config
+" YouCompleteMe options
 set runtimepath+=~/.vim/bundle/YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_min_num_of_chars_for_completion = 1
@@ -480,18 +597,41 @@ let g:ycm_cache_omnifunc = 1
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_key_invoke_completion = '<C-Space>'
-set completeopt-=preview
-set completeopt+=longest,menuone
 let g:ycm_rust_src_path = '/Users/mota/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+" NOTE: Disable this if using MuComplete bundle
+"set completeopt-=preview
+set completeopt+=longest,menuone
 
-" clang_complete config
+" Rip-Rip/clang_complete options
 set conceallevel=0 " don't hide JSON quotes
 set concealcursor=vin
 let g:clang_snippets=1
 let g:clang_conceal_snippets=1
 let g:clang_snippets_engine='clang_complete'
 
-" UtilSnips config
+" MUcomplete options
+"set noinfercase
+"set completeopt-=preview
+"set completeopt+=longest,menuone,noselect
+" The following line assumes `brew install llvm` in macOS
+let g:clang_library_path = '/usr/local/opt/llvm/lib/libclang.dylib'
+let g:clang_user_options = '-std=c++14'
+let g:clang_complete_auto = 1
+let g:mucomplete#always_use_completeopt = 1
+let g:mucomplete#completion_delay = 2
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#can_complete = { 'default': {'omni': { t -> strlen(&l:omnifunc) > 0 && t =~# '\%(\k\k\|\.\)$' } } }
+let g:mucomplete#chains = { 'default': [ 'omni', 'file', 'incl'] }
+
+" maralla/completor options
+let g:completor_python_binary = '/usr/bin/python'
+let g:completor_racer_binary = '/Users/mota/.cargo/bin/racer'
+let g:completor_clang_binary = '/usr/bin/clang'
+let g:completor_gocode_binary = '/Users/mota/go/bin/gocode'
+let g:completor_node_binary = '/usr/local/bin/node'
+let g:completor_complete_options = 'menuone,noselect,preview'
+
+" UtilSnips options
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -501,97 +641,26 @@ let g:UltiSnipsEditSplit="context"
 let g:UltiSnipsEnableSnipMate=1
 let g:UltiSnipsListSnippets="<c-s>"
 
-" SnipMate snippets
+" SnipMate snippets options
 let g:snippets_dir = "~/.vim/snippets"
 
-"nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" Always show statusline
-set laststatus=2
-" Fix timeout when pressing escape key
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
-" Shortcut to align indents
-map <F12> mzgg=G`z :call StripWhitespace()<CR>
-
-" Remove trailing whitespace on save
-if has("autocmd")
-  augroup aug_bufpre
-    autocmd!
-    autocmd BufWritePre * :%s/\s\+$//e
-  augroup END
-endif
-
-set wrap
-set linebreak
-" Note trailing space at end of next line
-set showbreak=>\ \ \
-" Load Slimv
+" Load Slimv client for common lisp
 let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
 set guioptions+=m
-" Matching parentheses have same color
+
+" Make matching parentheses have same color in lisp
 let g:lisp_rainbow=1
-" Vimux npm test
-map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
-" Vimux Prompt
-map <leader>x :VimuxPromptCommand<CR>
-" Substitution preview
-function! VisualFindAndReplace()
-    :OverCommandLine%s/
-    :w
-endfunction
-function! VisualFindAndReplaceWithSelection() range
-    :'<,'>OverCommandLine s/
-    :w
-endfunction
-nnoremap <Leader>sr :call VisualFindAndReplace()<CR>
-xnoremap <Leader>sr :call VisualFindAndReplaceWithSelection()<CR>
 
-" Incremental numbers
-"function! Incr()
-""    let a = line('.') - line("'<")
-""    let c = virtcol("'<")
-""    if a > 0
-"        execute 'normal! '.c.'|'.a."\<C-a>"
-""    endif
-""    normal `<
-"endfunction
-"vnoremap <C-a> :call Incr()<CR>
-
-" Tabular config
-xnoremap <Leader>a= :Tabularize /=<CR>
-xnoremap <Leader>a: :Tabularize /:<CR>
-xnoremap <Leader>a:: :Tabularize /:\zs<CR>
-xnoremap <Leader>a, :Tabularize /,<CR>
-xnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
-" Clear highlights
-map <Leader>c :noh<CR>
-" Powerline config
+" Powerline options
 "set rtp+=~/.powerline/powerline/bindings/vim
+
 " Use powerline fonts
 let g:airline_powerline_fonts = 1
-" binary viewer
-" :%!xxd
-" revert binary viewer
-" :%!xxd -r
-" Make nvim backward compatible with vim
-if !has('nvim')
-  set ttymouse=xterm2
-endif
 
-" over column length marker
-set colorcolumn=80
-" grey
-"highlight ColorColumn ctermbg=235 guibg=#2c2d27
-" deep pink
-"highlight ColorColumn ctermbg=53 guibg=#5f005f
+" Airline config
+let g:airline#extensions#tabline#enabled = 1
 
-" vim-go config
+" vim-go options
 " run command :GoInstallBinaries in vim first for goimports to work
 let g:go_fmt_command = "goimports"
 " options for gofmt command
@@ -609,44 +678,16 @@ let g:go_highlight_build_constraints = 1
 " disabled; causes vim redraw lag
 let g:go_auto_type_info = 0
 let g:go_bin_path = "/usr/local/go/bin/go"
-"let g:go_bin_path = "/Users/mota/.gvm/gos/go1.11/bin/go"
-"let $GOPATH = "/Users/mota/.gvm/pkgsets/go1.11/global"
-"let $GOPATH = $HOME."/go"
-"let $GOPATH = $GOPATH
-let $GOPATH= "/Users/mota/go"
+let $GOPATH = $HOME."/go"
 let $GOROOT = "/usr/local/go"
 
-" FZF settings
-noremap <leader>f :FZF<CR>
-
-" mxw/vim-jsx settings
+" mxw/vim-jsx options
 let g:jsx_ext_required = 0
 
-" disable vim's autoincrement
-map <C-a> <Nop>
-" disable vim's autodecrement
-map <C-x> <Nop>
-
-" szw/vim-maximizer
+" szw/vim-maximizer window maximizer options
 let g:maximizer_set_default_mapping = 1
-nnoremap <silent><C-w>z :MaximizerToggle<CR>
-vnoremap <silent><C-w>z :MaximizerToggle<CR>gv
-inoremap <silent><C-w>z <C-o>:MaximizerToggle<CR>
 
-" Scratch shortcut key
-noremap <leader>sc :Scratch<CR>
-
-" turn off recording
-map q <Nop>
-
-" C++ autocomplete
-" macos path
-let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
-if isdirectory(s:clang_library_path)
-    let g:clang_library_path=s:clang_library_path
-endif
-
-" netrw ":Explore" settings
+" Netrw ":Explore" options
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -657,7 +698,114 @@ let g:netrw_winsize = 25
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
-" show last modified indicator on bottom statusline
-" https://stackoverflow.com/a/19614688/1439168
-set laststatus=2
-set statusline=[%n]\ %<%f%h%m
+" === SHORTCUTS ===
+
+" Paste mode toggle
+map <F9> :set invpaste paste?<CR>
+" List mode toggle
+map <F10> :set invlist list?<CR>
+" \ + ss to strip whitespace
+map <Leader>ss :call StripWhitespace()<CR>
+" \ + ts to convert tabs to whitespace
+map <Leader>ts :call TabsToWhitespace()<CR>
+" \ + ct to open ConqueTerm
+map <Leader>ct :tabe <bar> ConqueTerm bash<CR>
+
+" Treat long lines as line breaks
+map j gj
+map k gk
+
+" Clear highlights
+map <Leader>c :noh<CR>
+
+" Save a file as root (,W)
+noremap <leader>W :w !sudo tee % > /dev/null<CR>)
+
+" Hold Ctr and use movement keys to move around window splits
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
+
+" Ctr-tab to switch buffers
+map <C-Tab> :bnext<cr>
+map <C-S-Tab> :bprevious<cr>
+
+" Map ctrl-p to FZF
+map <c-p> :FZF<CR>
+
+" Ack text search shortcut
+map <Leader>a :Ack!<space>
+
+" FZF shortcut
+noremap <leader>f :FZF<CR>
+
+" NerdTree shortcut
+map <Leader>d :NERDTreeToggle<CR>
+nmap <Leader>nt :NERDTreeFind<CR>
+
+" TagBar key binding
+nmap <F8> :TagbarToggle<CR>
+" autocmd BufRead *.js :TagbarToggle
+" Save as sudo
+"command W w !sudo tee % >/dev/null
+" Reload ~/.vimrc with \ + rv
+map <Leader>rv :source $MYVIMRC<CR>
+
+" Scratch shortcut key
+noremap <leader>sc :Scratch<CR>
+
+" YCM go to defintions shortcut key
+"nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Shortcut to align indents
+map <F12> mzgg=G`z :call StripWhitespace()<CR>
+
+" Ctr-c inbetween brackets to expand (DelimitMate)
+imap <C-c> <CR><Esc>O
+
+" Visual search and replace shortcut key
+nnoremap <Leader>sr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>sr :call VisualFindAndReplaceWithSelection()<CR>
+
+" szw/vim-maximizer window maximizer key bindings
+nnoremap <silent><C-w>z :MaximizerToggle<CR>
+vnoremap <silent><C-w>z :MaximizerToggle<CR>gv
+inoremap <silent><C-w>z <C-o>:MaximizerToggle<CR>
+
+" Easy window resizing
+"map <C-]> 5<C-w>>
+"map <C-[> 5<C-w><
+"map <C-m> 3<C-w>+
+"map <C-n> 3<C-w>-
+
+" Tabular shortcut keys
+xnoremap <Leader>a= :Tabularize /=<CR>
+xnoremap <Leader>a: :Tabularize /:<CR>
+xnoremap <Leader>a:: :Tabularize /:\zs<CR>
+xnoremap <Leader>a, :Tabularize /,<CR>
+xnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+" miniBuffExplorer toggle shortcut key
+map <Leader>e :MBEToggle<cr>
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplcache#close_popup()
+"inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" Vimux npm test
+map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
+" Vimux Prompt
+map <leader>x :VimuxPromptCommand<CR>
+
+" === EXAMPLES ===
+
+" binary viewer
+" :%!xxd
+
+" revert binary viewer
+" :%!xxd -r
