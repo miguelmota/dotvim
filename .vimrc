@@ -249,7 +249,7 @@ set modelines=4
 set exrc
 set secure
 
-" Theme config
+" Theme options
 " NOTE: disabled to allow translucent background
 "set background=dark
 
@@ -547,8 +547,10 @@ endif
 let g:vim_markdown_folding_disabled = 1
 
 " Enable code folding (vim-javascript-syntax)
+" NOTE: disabled because it's buggy
 "au FileType javascript call JavaScriptFold()
-" DelimitMate config
+
+" DelimitMate options
 au FileType mail let b:delimitMate_autoclose = 0
 
 " Neocomplache options
@@ -565,10 +567,10 @@ let g:tern_map_keys=1
 " Indent colors
 let g:indentLine_color_term = 239
 
-" EasyMotion config
+" EasyMotion options
 let g:EasyMotion_leader_key = '<Leader>'
 
-" miniBuffExplorer config
+" miniBuffExplorer options
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
@@ -597,7 +599,12 @@ let g:ycm_cache_omnifunc = 1
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_rust_src_path = '/Users/mota/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+" TODO: linux paths
+let s:ycm_rust_src_path = '/Users/mota/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+if isdirectory(s:ycm_rust_src_path)
+    let g:ycm_rust_src_path=s:ycm_rust_src_path
+endif
+
 " NOTE: Disable this if using MuComplete bundle
 "set completeopt-=preview
 set completeopt+=longest,menuone
@@ -613,8 +620,12 @@ let g:clang_snippets_engine='clang_complete'
 "set noinfercase
 "set completeopt-=preview
 "set completeopt+=longest,menuone,noselect
-" The following line assumes `brew install llvm` in macOS
-let g:clang_library_path = '/usr/local/opt/llvm/lib/libclang.dylib'
+" NOTE: The following line assumes `brew install llvm` in macOS
+let s:clang_library_path = '/usr/local/opt/llvm/lib/libclang.dylib'
+if !empty(s:clang_library_path)
+    let g:clang_library_path=s:clang_library_path
+endif
+
 let g:clang_user_options = '-std=c++14'
 let g:clang_complete_auto = 1
 let g:mucomplete#always_use_completeopt = 1
@@ -624,12 +635,27 @@ let g:mucomplete#can_complete = { 'default': {'omni': { t -> strlen(&l:omnifunc)
 let g:mucomplete#chains = { 'default': [ 'omni', 'file', 'incl'] }
 
 " maralla/completor options
-let g:completor_python_binary = '/usr/bin/python'
-let g:completor_racer_binary = '/Users/mota/.cargo/bin/racer'
-let g:completor_clang_binary = '/usr/bin/clang'
-let g:completor_gocode_binary = '/Users/mota/go/bin/gocode'
-let g:completor_node_binary = '/usr/local/bin/node'
-let g:completor_complete_options = 'menuone,noselect,preview'
+let s:completor_python_binary = '/usr/bin/python'
+if !empty(s:completor_python_binary)
+    let g:completor_python_binary=s:completor_python_binary
+endif
+let s:completor_racer_binary = '/Users/mota/.cargo/bin/racer'
+if !empty(s:completor_racer_binary)
+    let g:completor_racer_binary=s:completor_racer_binary
+endif
+let s:completor_clang_binary = '/usr/bin/clang'
+if !empty(s:completor_clang_binary)
+    let g:completor_clang_binary=s:completor_clang_binary
+endif
+let s:completor_gocode_binary = '/Users/mota/go/bin/gocode'
+if !empty(s:completor_gocode_binary)
+    let g:completor_gocode_binary=s:completor_gocode_binary
+endif
+let s:completor_node_binary = '/usr/local/bin/node'
+if !empty(s:completor_node_binary)
+    let g:completor_node_binary=s:completor_node_binary
+endif
+let s:completor_complete_options = 'menuone,noselect,preview'
 
 " UtilSnips options
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -645,6 +671,7 @@ let g:UltiSnipsListSnippets="<c-s>"
 let g:snippets_dir = "~/.vim/snippets"
 
 " Load Slimv client for common lisp
+" TODO: linux command
 let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
 set guioptions+=m
 
@@ -657,7 +684,7 @@ let g:lisp_rainbow=1
 " Use powerline fonts
 let g:airline_powerline_fonts = 1
 
-" Airline config
+" Airline options
 let g:airline#extensions#tabline#enabled = 1
 
 " vim-go options
@@ -677,9 +704,16 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " disabled; causes vim redraw lag
 let g:go_auto_type_info = 0
-let g:go_bin_path = "/usr/local/go/bin/go"
-let $GOPATH = $HOME."/go"
-let $GOROOT = "/usr/local/go"
+let s:go_bin_path = "/usr/local/go/bin/go"
+if isdirectory(s:go_bin_path)
+  let g:go_bin_path=s:go_bin_path
+endif
+if isdirectory($HOME."/go")
+  let $GOPATH = $HOME."/go"
+endif
+if isdirectory("/usr/local/go")
+  let $GOROOT = "/usr/local/go"
+endif
 
 " mxw/vim-jsx options
 let g:jsx_ext_required = 0
