@@ -257,6 +257,7 @@ set secure
 set t_Co=256
 
 " Set the color theme
+" NOTE: disable if themes not installed
 colorscheme Oblivion
 
 " Transparent background
@@ -288,6 +289,7 @@ set foldmethod=indent
 set foldlevel=99
 
 " Use older version regex engine for speed improvements
+" NOTE: might need to disable this for some versions of vim
 set re=1
 
 " Show last modified indicator on bottom statusline
@@ -631,8 +633,8 @@ let g:clang_complete_auto = 1
 let g:mucomplete#always_use_completeopt = 1
 let g:mucomplete#completion_delay = 2
 let g:mucomplete#enable_auto_at_startup = 1
-let g:mucomplete#can_complete = { 'default': {'omni': { t -> strlen(&l:omnifunc) > 0 && t =~# '\%(\k\k\|\.\)$' } } }
-let g:mucomplete#chains = { 'default': [ 'omni', 'file', 'incl'] }
+"let g:mucomplete#can_complete = { 'default': {'omni': { t -> strlen(&l:omnifunc) > 0 && t =~# '\%(\k\k\|\.\)$' } } }
+"let g:mucomplete#chains = { 'default': [ 'omni', 'file', 'incl'] }
 
 " maralla/completor options
 let s:completor_python_binary = '/usr/bin/python'
