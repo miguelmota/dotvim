@@ -40,6 +40,7 @@ Plug 'duganchen/vim-soy'
 Plug 'tomlion/vim-solidity'
 Plug 'leafgarland/typescript-vim'
 Plug 'vimwiki/vimwiki'
+" NOTE: requires vim to be compiled with python3
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
@@ -53,6 +54,7 @@ Plug 'mtth/scratch.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'vim-scripts/a.vim'
 Plug 'Rip-Rip/clang_complete'
+" NOTE: requires vim to be compiled with python3
 Plug 'maralla/completor.vim'
 " NOTE: use this fork for go1.11+
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
@@ -63,6 +65,7 @@ Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.
 " NOTE: airline is disabled because it makes window switching slower
 "Plug 'bling/vim-airline'
 " NOTE: disabled plugins below
+"Plug 'christoomey/vim-tmux-navigator'
 "Plug 'tpope/vim-vinegar'
 "Plug 'kien/ctrlp.vim'
 "Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -449,6 +452,27 @@ if ! has('gui_running')
     augroup END
 endif
 
+" Use TAB to complete when typing words, else inserts TABs as usual.  Uses
+" dictionary, source files, and completor to find matching words to complete.
+
+" Note: usual completion is on <C-n> but more trouble to press all the time.
+" Never type the same word twice and maybe learn a new spellings!
+" Use the Linux dictionary when spelling is in doubt.
+function! TabOrComplete() abort
+  " If completor is already open the `tab` cycles through suggested completions.
+  if pumvisible()
+    return "\<C-N>"
+  " If completor is not open and we are in the middle of typing a word then
+  " `tab` opens completor menu.
+  elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-R>=completor#do('complete')\<CR>"
+  else
+    " If we aren't typing a word and we press `tab` simply do the normal `tab`
+    " action.
+    return "\<Tab>"
+  endif
+endfunction
+
 " === PLUGINS ===
 
 " Required options for NERDcommenter
@@ -658,8 +682,9 @@ if !empty(s:completor_node_binary)
     let g:completor_node_binary=s:completor_node_binary
 endif
 let s:completor_complete_options = 'menuone,noselect,preview'
+let g:completor_auto_trigger = 0
 
-" UtilSnips options
+" UltiSnips options
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -838,6 +863,13 @@ map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
 " Vimux Prompt
 map <leader>x :VimuxPromptCommand<CR>
 
+" Use `tab` key to select completions. Default is arrow keys.
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Use tab to trigger auto completion. Default suggests completions as you type.
+inoremap <expr> <Tab> TabOrComplete()
+
 " === EXAMPLES ===
 
 " binary viewer
@@ -845,3 +877,8 @@ map <leader>x :VimuxPromptCommand<CR>
 
 " revert binary viewer
 " :%!xxd -r
+
+" Plug CLI
+"vim +PlugInstall
+"vim +PlugUpdate
+"vim +PlugClean
