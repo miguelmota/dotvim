@@ -54,14 +54,16 @@ Plug 'mtth/scratch.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'vim-scripts/a.vim'
 Plug 'Rip-Rip/clang_complete'
+Plug 'tpope/vim-commentary'
+Plug 'cespare/vim-toml'
+" Plug 'ajh17/VimCompletesMe'
 " NOTE: requires vim to be compiled with python3
-Plug 'maralla/completor.vim'
+" Plug 'maralla/completor.vim'
 " NOTE: use this fork for go1.11+
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 " NOTE: this is disabled because it doesn't support go1.11+
 "Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
-" NOTE: YCM disabled because it's buggy
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " NOTE: airline is disabled because it makes window switching slower
 "Plug 'bling/vim-airline'
 " NOTE: disabled plugins below
@@ -101,6 +103,14 @@ Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.
 "Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'plasticboy/vim-markdown'
+" Deoplete install
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
 
 " Plug end
 call plug#end()
@@ -587,6 +597,12 @@ let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 0
 
+" VimCompleteMe options
+autocmd FileType vim let b:vcm_tab_complete = 'vim'
+
+" Deoplete options
+let g:deoplete#enable_at_startup = 1
+
 " Tern options
 let g:tern_map_keys=1
 
@@ -869,6 +885,9 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Use tab to trigger auto completion. Default suggests completions as you type.
 inoremap <expr> <Tab> TabOrComplete()
+
+" Use slash to toggle comment lines
+noremap <leader>/ :Commentary<cr>
 
 " === EXAMPLES ===
 
