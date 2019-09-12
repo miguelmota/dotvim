@@ -357,6 +357,10 @@ set hidden
 " Enable text wrapping
 set wrap
 
+" Disable auto-breaking of lines text wrapping
+set tw=0
+set formatoptions-=t
+
 " Enable line breaks
 set linebreak
 
@@ -555,6 +559,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_highlighting = 0
 set statusline+=%#warningmsg#
 if exists("*SyntasticStatuslineFlag")
   set statusline+=%{SyntasticStatuslineFlag()}
@@ -901,3 +906,4 @@ noremap <leader>/ :Commentary<cr>
 "vim +PlugInstall
 "vim +PlugUpdate
 "vim +PlugClean
+
