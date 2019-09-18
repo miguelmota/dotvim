@@ -263,8 +263,9 @@ set exrc
 set secure
 
 " Theme options
-" NOTE: disabled to allow translucent background
-"set background=dark
+" NOTE: disable to allow translucent background (will make error background
+" color white though)
+set background=dark
 
 " Use 256 colours
 set t_Co=256
@@ -559,7 +560,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_highlighting = 0
+let g:syntastic_enable_highlighting = 1
 set statusline+=%#warningmsg#
 if exists("*SyntasticStatuslineFlag")
   set statusline+=%{SyntasticStatuslineFlag()}
@@ -906,4 +907,3 @@ noremap <leader>/ :Commentary<cr>
 "vim +PlugInstall
 "vim +PlugUpdate
 "vim +PlugClean
-
