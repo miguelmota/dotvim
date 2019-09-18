@@ -79,7 +79,7 @@ sudo apt-get install python-dev python3-dev
 ```
 
 ```bash
-cd ~/.vim/bundles/YouCompleteMe
+cd ~/.vim/bundle/YouCompleteMe
 
 git submodule update --init --recursive
 

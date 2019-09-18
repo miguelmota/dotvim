@@ -272,7 +272,7 @@ set t_Co=256
 
 " Set the color theme
 " NOTE: disable if themes not installed
-colorscheme Oblivion
+colorscheme oblivion
 
 " Transparent background
 hi Normal ctermbg=none

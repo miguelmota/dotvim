@@ -1,1 +1,1 @@
-/Users/mota/.vim/bundle/gocode/vim/ftplugin/go/gocomplete.vim
+/home/mota/.vim/bundle/gocode/vim/ftplugin/go/gocomplete.vim
