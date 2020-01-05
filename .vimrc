@@ -18,6 +18,7 @@ call plug#begin('~/.vim/bundle')
 
 " List of bundles
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'marijnh/tern_for_vim'
 Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
@@ -98,7 +99,6 @@ Plug 'Valloric/YouCompleteMe'
 "Plug 'kchmck/vim-coffee-script'
 "Plug 'digitaltoad/vim-jade'
 "Plug 'vim-scripts/Rename'
-"Plug 'scrooloose/nerdcommenter'
 "Plug 'mhinz/vim-startify'
 "Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'

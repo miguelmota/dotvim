@@ -156,6 +156,24 @@ wget https://raw.github.com/miguelmota/vim-config/master/update.sh -O - | bash
 
 Below are references for shortcuts and key bindings (to help me remember).
 
+toggle comment
+
+```
+<leader>c<space>
+```
+
+uncomment comment
+
+```
+<leader>cu
+```
+
+comment out using asterisks
+
+```
+<leader>cs
+```
+
 ctrlp Search/open files:
 
 `Ctrl+p`
