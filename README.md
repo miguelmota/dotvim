@@ -59,11 +59,14 @@ brew install ctags
 
 # Ubuntu
 sudo apt-get install exuberant-ctags
+
+# fedora
+sudo dnf install ctags
 ```
 
 [Tern](https://github.com/marijnh/tern) for [tern](https://github.com/marijnh/tern_for_vim) plugin
 
-Make sure to have [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed first
+Make sure to have [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed first. You can use [nvm](https://github.com/nvm-sh/nvm).
 
 ```bash
 cd ~/.vim/bundle/tern_for_vim
@@ -76,6 +79,9 @@ YouCompleteMe completers
 ```bash
 # ubuntu requirements
 sudo apt-get install python-dev python3-dev
+
+# fedora
+sudo dnf install cmake gcc-c++ python-devel python3-devel
 ```
 
 ```bash
