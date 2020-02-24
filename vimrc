@@ -144,6 +144,9 @@ set ttyfast
 " Overrules color settings with the defaults for syntax highlighting
 "syntax on
 
+" Cap syntax highlighting
+set synmaxcol=500
+
 " Enable syntax highlighting if syntax_on option doesn't exist
 if !exists("g:syntax_on")
     " Switches on syntax highlighting, keeping current color settings
@@ -292,6 +295,13 @@ set synmaxcol=180
 
 " Enable lazy redraw for performance reasons
 set lazyredraw
+
+" Fixes syntax highlighting for big files
+set redrawtime=10000
+
+" Improve syntax highlighting performance
+syntax sync minlines=256
+set synmaxcol=200
 
 " Cursorline styling
 "hi CursorLine term=bold cterm=bold ctermbg=0 guibg=Grey40
@@ -908,3 +918,5 @@ noremap <leader>/ :Commentary<cr>
 "vim +PlugUpdate
 "vim +PlugClean
 
+" if vim freezes, disable syntax highligting
+"syntax off
