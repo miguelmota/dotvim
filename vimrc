@@ -127,7 +127,8 @@ call plug#end()
 set wildmenu
 
 " Allow cursor keys in insert mode
-set esckeys
+" Note: this option doesn't work with neovim
+" set esckeys
 
 " Allow backspace in insert mode
 set backspace=indent,eol,start
@@ -277,9 +278,12 @@ set t_Co=256
 " NOTE: disable if themes not installed
 colorscheme oblivion
 
+" Bottom bar color
+hi statusline guibg=White ctermfg=8 guifg=OrangeRed4 ctermbg=15
+
 " Transparent background
 hi Normal ctermbg=none
-highlight nonText ctermbg=NONE
+hi nonText ctermbg=NONE
 
 " Highlight cursor line
 " NOTE: disabled because it makes certain things slower
@@ -351,9 +355,16 @@ nmap <F6> :set ignorecase! ignorecase?
 " Over column length marker
 set colorcolumn=80
 " Grey color for column marker
-"highlight ColorColumn ctermbg=235 guibg=#2c2d27
+"hi ColorColumn ctermbg=235 guibg=#2c2d27
 " Deep pink color for colum marker
-"highlight ColorColumn ctermbg=53 guibg=#5f005f
+"hi ColorColumn ctermbg=53 guibg=#5f005f
+" Green color for colum marker
+"ColorColumn ctermbg=Green
+
+" highlight text red that goes past max column
+hi ColorColumn ctermbg=NONE ctermfg=red
+hi Bang ctermfg=red guifg=red
+match Bang /\%>80v.*/
 
 " Disable paste mode, (enabling this can affect many other things)
 set nopaste

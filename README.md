@@ -82,6 +82,9 @@ sudo apt-get install python-dev python3-dev
 
 # fedora
 sudo dnf install cmake gcc-c++ python-devel python3-devel
+
+# arch
+
 ```
 
 ```bash
