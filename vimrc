@@ -20,7 +20,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'marijnh/tern_for_vim'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'moll/vim-node'
 Plug 'othree/html5.vim'
@@ -40,9 +40,11 @@ Plug 'mxw/vim-jsx'
 Plug 'duganchen/vim-soy'
 Plug 'tomlion/vim-solidity'
 Plug 'leafgarland/typescript-vim'
+" .tsx .jsx syntax highlighting
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'vimwiki/vimwiki'
 " NOTE: requires vim to be compiled with python3
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
 Plug 'chemzqm/vim-jsx-improve'
@@ -64,7 +66,8 @@ Plug 'cespare/vim-toml'
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 " NOTE: this is disabled because it doesn't support go1.11+
 "Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " NOTE: airline is disabled because it makes window switching slower
 "Plug 'bling/vim-airline'
 " NOTE: disabled plugins below
@@ -103,6 +106,8 @@ Plug 'Valloric/YouCompleteMe'
 "Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'plasticboy/vim-markdown'
+" polyglot causes terrible lag
+"Plug 'sheerun/vim-polyglot'
 " Deoplete install
 "if has('nvim')
 "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -143,7 +148,7 @@ set encoding=utf-8 nobomb
 set ttyfast
 
 " Overrules color settings with the defaults for syntax highlighting
-"syntax on
+syntax on
 
 " Cap syntax highlighting
 set synmaxcol=500
@@ -328,6 +333,10 @@ set statusline=[%n]\ %<%f%h%m
 " Always show statusline
 set laststatus=2
 
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
 " Turn off recording
 map q <Nop>
 
@@ -379,12 +388,13 @@ set hidden
 " Enable text wrapping
 set wrap
 
-" Disable auto-breaking of lines text wrapping
-set tw=0
-set formatoptions-=t
-
 " Enable line breaks
 set linebreak
+
+" Disable auto-breaking of lines text wrapping
+set textwidth=0
+set wrapmargin=0
+set formatoptions-=t
 
 " Enable noting of trailing space at end of next line
 set showbreak=>\ \ \
@@ -674,6 +684,13 @@ if isdirectory(s:ycm_rust_src_path)
     let g:ycm_rust_src_path=s:ycm_rust_src_path
 endif
 
+" CoC options
+let g:coc_global_extensions = ['coc-go', 'coc-cmake', 'coc-rls', 'coc-python', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-highlight', 'coc-git', 'coc-snippets']
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
 " NOTE: Disable this if using MuComplete bundle
 "set completeopt-=preview
 set completeopt+=longest,menuone
@@ -728,6 +745,7 @@ let s:completor_complete_options = 'menuone,noselect,preview'
 let g:completor_auto_trigger = 0
 
 " UltiSnips options
+" NOTE: do not use <tab> if using YCM or CoC
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -893,8 +911,44 @@ xnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 " miniBuffExplorer toggle shortcut key
 map <Leader>e :MBEToggle<cr>
 
+" CoC shortcuts
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if has('patch8.1.1068')
+  " Use `complete_info` if your (Neo)Vim version supports it.
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+" Use <TAB> for selections ranges.
+" NOTE: Requires 'textDocument/selectionRange' support from the language server.
+" coc-tsserver, coc-python are the examples of servers that support it.
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " <C-h>, <BS>: close popup and delete backword char.
 "inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
@@ -930,4 +984,4 @@ noremap <leader>/ :Commentary<cr>
 "vim +PlugClean
 
 " if vim freezes, disable syntax highligting
-"syntax off
+" syntax off
