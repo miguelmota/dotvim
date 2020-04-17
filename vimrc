@@ -147,7 +147,8 @@ set encoding=utf-8 nobomb
 " Optimize for fast terminal connections
 set ttyfast
 
-" Overrules color settings with the defaults for syntax highlighting
+" Overrules color settings with the defaults for syntax highlighting.
+" if vim freezes, disable syntax highligting.
 syntax on
 
 " Cap syntax highlighting
@@ -241,8 +242,9 @@ set showmode
 " Disable error bells
 set noerrorbells
 
-" Show the filename in the window titlebar
-set title
+" Hide filename in the window titlebar because
+" it overlaps first line in certain terminals.
+set notitle
 
 " Watch for filechanges
 set autoread
@@ -982,6 +984,3 @@ noremap <leader>/ :Commentary<cr>
 "vim +PlugInstall
 "vim +PlugUpdate
 "vim +PlugClean
-
-" if vim freezes, disable syntax highligting
-" syntax off
