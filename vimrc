@@ -18,56 +18,56 @@ call plug#begin('~/.vim/bundle')
 
 " List of bundles
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter'
 Plug 'marijnh/tern_for_vim'
 "Plug 'scrooloose/syntastic'
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 Plug 'moll/vim-node'
 Plug 'othree/html5.vim'
-Plug 'sukima/xmledit'
-Plug 'tmhedberg/matchit'
-Plug 'tpope/vim-surround'
-Plug 'jeetsukumaran/vim-buffergator'
+"Plug 'sukima/xmledit'
+"Plug 'tmhedberg/matchit'
+"Plug 'tpope/vim-surround'
+"Plug 'jeetsukumaran/vim-buffergator'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'benmills/vimux'
-Plug 'wellle/tmux-complete.vim'
-Plug 'tpope/vim-obsession'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'osyo-manga/vim-over'
+"Plug 'benmills/vimux'
+"Plug 'wellle/tmux-complete.vim'
+"Plug 'tpope/vim-obsession'
+"Plug 'terryma/vim-multiple-cursors'
+"Plug 'osyo-manga/vim-over'
 Plug 'mileszs/ack.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'duganchen/vim-soy'
+"Plug 'duganchen/vim-soy'
 Plug 'tomlion/vim-solidity'
 Plug 'leafgarland/typescript-vim'
 " .tsx .jsx syntax highlighting
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
+" Plug 'wakatime/vim-wakatime'
 " NOTE: requires vim to be compiled with python3
 "Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'fatih/vim-go'
 Plug 'chemzqm/vim-jsx-improve'
-Plug 'szw/vim-maximizer'
-Plug 'Konfekt/FastFold'
+"Plug 'szw/vim-maximizer'
+"Plug 'Konfekt/FastFold'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'mtth/scratch.vim'
-Plug 'junegunn/vim-peekaboo'
+"Plug 'mtth/scratch.vim'
+"Plug 'junegunn/vim-peekaboo'
 Plug 'vim-scripts/a.vim'
 Plug 'Rip-Rip/clang_complete'
 Plug 'tpope/vim-commentary'
 Plug 'cespare/vim-toml'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 " Plug 'ajh17/VimCompletesMe'
 " NOTE: requires vim to be compiled with python3
 " Plug 'maralla/completor.vim'
-" NOTE: use this fork for go1.11+
-Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
-" NOTE: this is disabled because it doesn't support go1.11+
-"Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 "Plug 'Valloric/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Make sure to run `:CocInstall coc-json coc-tsserver` afterwards
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'miguelmota/cairo.vim'
+"Plug '~/Sandbox/cairo.vim'
 " NOTE: airline is disabled because it makes window switching slower
 "Plug 'bling/vim-airline'
 " NOTE: disabled plugins below
@@ -115,6 +115,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "  Plug 'Shougo/deoplete.nvim'
 "  Plug 'roxma/nvim-yarp'
 "  Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" NOTE: use this fork for go1.11+
+Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+" NOTE: this is disabled because it doesn't support go1.11+
+"Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 "endif
 
 " Plug end
@@ -324,8 +329,9 @@ set foldmethod=indent
 set foldlevel=99
 
 " Use older version regex engine for speed improvements
-" NOTE: might need to disable this for some versions of vim
-set re=1
+" NOTE: might need to disable this for some versions of vim,
+" otherwise vim will freeze.
+"set re=1
 
 " Show last modified indicator on bottom statusline
 " https://stackoverflow.com/a/19614688/1439168
@@ -338,6 +344,9 @@ set laststatus=2
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
 
 " Turn off recording
 map q <Nop>
@@ -373,6 +382,7 @@ set colorcolumn=80
 "ColorColumn ctermbg=Green
 
 " highlight text red that goes past max column
+"hi ColorColumn ctermbg=NONE
 hi ColorColumn ctermbg=NONE ctermfg=red
 hi Bang ctermfg=red guifg=red
 match Bang /\%>80v.*/
@@ -400,6 +410,9 @@ set formatoptions-=t
 
 " Enable noting of trailing space at end of next line
 set showbreak=>\ \ \
+
+" Give more space for displaying messages.
+set cmdheight=2
 
 " Remove trailing whitespace on save
 if has("autocmd")
@@ -521,6 +534,11 @@ function! TabOrComplete() abort
   endif
 endfunction
 
+" Organize TypeScript imports
+function! OrganizeImports()
+    execute ':CocCommand tsserver.organizeImports'
+endfunction
+
 " === PLUGINS ===
 
 " Required options for NERDcommenter
@@ -577,7 +595,10 @@ let g:ctrlp_prompt_mappings = {
 map <Leader>fs :CtrlPTag<CR>
 map <Leader>fd :CtrlPCurFile<CR>
 map <Leader>fb :CtrlPBuffer<CR>
-nnoremap <Leader>ff :CtrlP<CR>
+" nnoremap <Leader>ff :CtrlP<CR>
+
+" spellcheck
+map ^T :w!<CR>:!aspell check %<CR>:e! %<CR>
 
 " Enable closetag
 let b:closetag_html_style=1
@@ -697,6 +718,9 @@ let g:coc_snippet_prev = '<c-k>'
 "set completeopt-=preview
 set completeopt+=longest,menuone
 
+" spell checker word completion
+set complete+=kspell
+
 " Rip-Rip/clang_complete options
 set conceallevel=0 " don't hide JSON quotes
 set concealcursor=vin
@@ -784,6 +808,10 @@ let g:go_fmt_command = "goimports"
 "let g:go_fmt_options = "--tabs=false --tabwidth=4"
 let g:go_metalinter_enabled = ['gofmt', 'vet', 'golint', 'errcheck', 'gas', 'deadcode', 'gotype']
 let g:go_metalinter_autosave = 1
+" these 3 options cause vim to crash on save, so disabling them.
+"let g:go_metalinter_command='gopls'
+"let g:go_gopls_staticcheck = 1
+"let g:go_metalinter_deadline = '20s'
 let g:go_test_timeout = '10s'
 let g:go_highlight_types = 1
 let g:go_highlight_extra_types = 1
@@ -821,6 +849,9 @@ let g:netrw_winsize = 25
 "  autocmd!
 "  autocmd VimEnter * :Vexplore
 "augroup END
+
+" cairo plugin
+let g:cairo_linter_autosave = 1
 
 " === SHORTCUTS ===
 
@@ -862,11 +893,13 @@ map <c-p> :FZF<CR>
 map <Leader>a :Ack!<space>
 
 " FZF shortcut
-noremap <leader>f :FZF<CR>
+" noremap <leader>f :FZF<CR>
 
 " NerdTree shortcut
+" NERDTreeToggle opens panel at root
 map <Leader>d :NERDTreeToggle<CR>
-nmap <Leader>nt :NERDTreeFind<CR>
+" NERDTreeFind opens panel at current file location
+nmap <Leader>f :NERDTreeFind<CR>
 
 " TagBar key binding
 nmap <F8> :TagbarToggle<CR>
