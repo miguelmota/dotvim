@@ -17,16 +17,19 @@ filetype off
 call plug#begin('~/.vim/bundle')
 
 " List of bundles
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 "Plug 'scrooloose/nerdcommenter'
 Plug 'marijnh/tern_for_vim'
 "Plug 'scrooloose/syntastic'
-"Plug 'Raimondi/delimitMate'
+" delimitMate provides automatic closing of quotes
+Plug 'Raimondi/delimitMate'
 Plug 'moll/vim-node'
 Plug 'othree/html5.vim'
 "Plug 'sukima/xmledit'
 "Plug 'tmhedberg/matchit'
-"Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 "Plug 'jeetsukumaran/vim-buffergator'
 Plug 'editorconfig/editorconfig-vim'
 "Plug 'benmills/vimux'
@@ -40,12 +43,17 @@ Plug 'mxw/vim-jsx'
 "Plug 'duganchen/vim-soy'
 Plug 'tomlion/vim-solidity'
 Plug 'leafgarland/typescript-vim'
+" tsuquyomi is a typescript plugin
+Plug 'Quramy/tsuquyomi'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
 " .tsx .jsx syntax highlighting
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'vimwiki/vimwiki'
 " Plug 'wakatime/vim-wakatime'
 " NOTE: requires vim to be compiled with python3
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'chemzqm/vim-jsx-improve'
 "Plug 'szw/vim-maximizer'
@@ -61,10 +69,11 @@ Plug 'tpope/vim-commentary'
 Plug 'cespare/vim-toml'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 " Plug 'ajh17/VimCompletesMe'
-" NOTE: requires vim to be compiled with python3
+" NOTE: completor.vim requires vim to be compiled with python3
 " Plug 'maralla/completor.vim'
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " Make sure to run `:CocInstall coc-json coc-tsserver` afterwards
+"Plug 'neoclide/coc.nvim'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'miguelmota/cairo.vim'
 "Plug '~/Sandbox/cairo.vim'
@@ -103,7 +112,9 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 "Plug 'digitaltoad/vim-jade'
 "Plug 'vim-scripts/Rename'
 "Plug 'mhinz/vim-startify'
-"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
+" NOTE: vim-rhubarb required fro vim-fugitive :GBrowse
+Plug 'tpope/vim-rhubarb'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'plasticboy/vim-markdown'
 " polyglot causes terrible lag
@@ -120,6 +131,13 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 " NOTE: this is disabled because it doesn't support go1.11+
 "Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
+"Plug 'Galooshi/vim-import-js'
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+Plug 'jason0x43/vim-js-indent'
+Plug 'Shougo/unite.vim'
+Plug 'mhartington/vim-typings'
+Plug 'prabirshrestha/asyncomplete.vim'
 "endif
 
 " Plug end
@@ -278,24 +296,24 @@ set modelines=4
 set exrc
 set secure
 
-" Theme options
-" NOTE: disable to allow translucent background (will make error background
-" color white though)
-set background=dark
+" Dictionary words
+set dictionary+=/usr/share/dict/words
 
 " Use 256 colours
 set t_Co=256
 
-" Set the color theme
-" NOTE: disable if themes not installed
-colorscheme oblivion
+" Theme options
+" NOTE: disable to allow translucent background (will make error background
+" color white though)
+set background=dark
+"set background=light
 
 " Bottom bar color
 hi statusline guibg=White ctermfg=8 guifg=OrangeRed4 ctermbg=15
 
-" Transparent background
-hi Normal ctermbg=none
-hi nonText ctermbg=NONE
+" Transparent background (do not use for light themes)
+"hi Normal ctermbg=none
+"hi nonText ctermbg=none
 
 " Highlight cursor line
 " NOTE: disabled because it makes certain things slower
@@ -539,6 +557,16 @@ function! OrganizeImports()
     execute ':CocCommand tsserver.organizeImports'
 endfunction
 
+" Toggle background color setting
+function ToggleBackground()
+  if &background ==# 'dark'
+    set background=light
+  else
+    set background=dark
+  endif
+endfunction
+noremap <leader>b :call ToggleBackground()<CR>
+
 " === PLUGINS ===
 
 " Required options for NERDcommenter
@@ -548,6 +576,10 @@ filetype plugin indent on
 " Solarized theme options
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
+
+" Gruvbox theme options
+let g:gruvbox_italic=0
+let g:gruvbox_contrast_dark='hard'
 
 " NerdTree show hidden files
 let NERDTreeShowHidden=1
@@ -678,6 +710,16 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
+" Quramy/tsuquyomi options
+let g:tsuquyomi_shortest_import_path = 1
+let g:tsuquyomi_ignore_missing_modules = 1
+let g:tsuquyomi_baseurl_import_path = 1
+" If enabled, makes popup slower
+let g:tsuquyomi_completion_detail = 0
+
+" prabirshrestha/asyncomplete.vim options
+let g:asyncomplete_matchfuzzy = 1
+
 " YouCompleteMe options
 set runtimepath+=~/.vim/bundle/YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -696,11 +738,23 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_cache_omnifunc = 1
-"let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_key_list_stop_completion = ['<C-y>']
+let g:ycm_semantic_triggers =  {
+  \   'c': ['->', '.'],
+  \   'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \            're!\[.*\]\s'],
+  \   'ocaml': ['.', '#'],
+  \   'cpp,cuda,objcpp': ['->', '.', '::'],
+  \   'perl': ['->'],
+  \   'php': ['->', '::'],
+  \   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'],
+  \   'ruby,rust': ['.', '::'],
+  \   'lua': ['.', ':'],
+  \   'erlang': [':'],
+  \ }
 " TODO: linux paths
 let s:ycm_rust_src_path = '/Users/mota/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
 if isdirectory(s:ycm_rust_src_path)
@@ -720,6 +774,24 @@ set completeopt+=longest,menuone
 
 " spell checker word completion
 set complete+=kspell
+
+" enable dictionary completion
+set complete+=k
+
+" enable completion for tags
+set complete+=t
+
+" scan current buffer
+set complete+=.
+
+" scan buffers from other windows
+set complete+=w
+
+" scan other loaded buffers that are in the buffer list
+set complete+=b
+
+" scan unloaded buffers that are in the buffer list
+set complete+=u
 
 " Rip-Rip/clang_complete options
 set conceallevel=0 " don't hide JSON quotes
@@ -853,6 +925,19 @@ let g:netrw_winsize = 25
 " cairo plugin
 let g:cairo_linter_autosave = 1
 
+" kristijanhusak/vim-js-file-import options
+let g:js_file_import_from_root = 1
+let g:js_file_import_root = getcwd().'/src'
+let g:js_file_import_root_alias = 'src/'
+let g:js_file_import_use_fzf = 1
+let g:js_file_import_sort_after_insert = 1
+let g:js_file_import_prompt_if_no_tag = 1
+let g:js_file_import_force_require = 0
+let g:js_file_import_package_first = 1
+let g:js_file_import_omit_semicolon = 1
+let g:js_file_import_string_quote = "'"
+let g:js_file_import_strip_file_extension = 1
+
 " === SHORTCUTS ===
 
 " Paste mode toggle
@@ -894,6 +979,16 @@ map <Leader>a :Ack!<space>
 
 " FZF shortcut
 " noremap <leader>f :FZF<CR>
+
+" Mapping selecting mappings
+"nmap <leader><tab> <plug>(fzf-maps-n)
+"xmap <leader><tab> <plug>(fzf-maps-x)
+"omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+"imap <c-x><c-k> <plug>(fzf-complete-word)
+"imap <c-x><c-f> <plug>(fzf-complete-path)
+"imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " NerdTree shortcut
 " NERDTreeToggle opens panel at root
@@ -950,17 +1045,20 @@ map <Leader>e :MBEToggle<cr>
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
+"function! s:check_back_space() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <c-space> coc#refresh()
+
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 if has('patch8.1.1068')
@@ -983,6 +1081,11 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" use 'jk' keys to navigate autocomplete popup.
+" disabled because it interferes with typing.
+"inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+"inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 " <C-h>, <BS>: close popup and delete backword char.
 "inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
@@ -1017,3 +1120,11 @@ noremap <leader>/ :Commentary<cr>
 "vim +PlugInstall
 "vim +PlugUpdate
 "vim +PlugClean
+
+
+" Set the color theme (keep this at bottom of file)
+" NOTE: disable if themes not installed
+"colorscheme oblivion
+"colorscheme PaperColor
+colorscheme gruvbox
+

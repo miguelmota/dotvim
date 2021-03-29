@@ -92,7 +92,13 @@ cd ~/.vim/bundle/YouCompleteMe
 
 git submodule update --init --recursive
 
-./install.py --clang-completer --tern-completer --go-completer --js-completer --racer-completer
+# tern is deprecated
+rm ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/tern_runtime/node_modules
+
+./install.py --clang-completer --go-completer --ts-completer --js-completer --racer-completer
+
+# alternatively, compile with everything enabled
+./install.py --all
 ```
 
 Getting Go v1.11 auto completer to work
@@ -446,6 +452,14 @@ TernRename: Rename the variable under the cursor.
 <Leader> ttd	:TernDefTab	Definition in new tab
 <Leader> tr	:TernRefs	All references under cursor
 <Leader> tR	:TernRename	Rename variable
+```
+
+##### Vim fugitive commands
+
+```
+:help fugitive
+:Gblame
+:GBrowse
 ```
 
 ##### Lisp Swank server
