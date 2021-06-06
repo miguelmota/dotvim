@@ -138,6 +138,9 @@ Plug 'jason0x43/vim-js-indent'
 Plug 'Shougo/unite.vim'
 Plug 'mhartington/vim-typings'
 Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'hwayne/tla.vim'
+Plug 'jpalardy/vim-slime'
+Plug 'vim-scripts/paredit.vim'
 "endif
 
 " Plug end
@@ -565,7 +568,7 @@ function ToggleBackground()
     set background=dark
   endif
 endfunction
-noremap <leader>b :call ToggleBackground()<CR>
+noremap <leader>t :call ToggleBackground()<CR>
 
 " === PLUGINS ===
 
