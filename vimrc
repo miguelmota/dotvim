@@ -73,8 +73,7 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 " Plug 'maralla/completor.vim'
 Plug 'Valloric/YouCompleteMe'
 " Make sure to run `:CocInstall coc-json coc-tsserver` afterwards
-"Plug 'neoclide/coc.nvim'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'miguelmota/cairo.vim'
 "Plug '~/Sandbox/cairo.vim'
 " NOTE: airline is disabled because it makes window switching slower
@@ -141,6 +140,9 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'hwayne/tla.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'vim-scripts/paredit.vim'
+Plug 'venantius/vim-cljfmt'
+Plug 'tpope/vim-fireplace'
+" Plug 'github/copilot.vim'
 "endif
 
 " Plug end
@@ -940,6 +942,19 @@ let g:js_file_import_package_first = 1
 let g:js_file_import_omit_semicolon = 1
 let g:js_file_import_string_quote = "'"
 let g:js_file_import_strip_file_extension = 1
+
+" Github copilot options
+let g:copilot_filetypes = {
+  \ '*': v:false,
+  \ 'xml': v:true,
+  \ 'html': v:true,
+  \ 'css': v:true,
+  \ 'markdown': v:true,
+  \ 'javascript': v:true,
+  \ 'python': v:true,
+  \ 'go': v:true,
+  \ 'rust': v:true,
+  \ }
 
 " === SHORTCUTS ===
 
