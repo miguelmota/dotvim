@@ -56,7 +56,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'chemzqm/vim-jsx-improve'
-"Plug 'szw/vim-maximizer'
+Plug 'szw/vim-maximizer'
 "Plug 'Konfekt/FastFold'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -71,9 +71,13 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 " Plug 'ajh17/VimCompletesMe'
 " NOTE: completor.vim requires vim to be compiled with python3
 " Plug 'maralla/completor.vim'
-Plug 'Valloric/YouCompleteMe'
+" Make sure to enable "runtimepath" in "YouCompleteMe options" below
+" Plug 'Valloric/YouCompleteMe'
 " Make sure to run `:CocInstall coc-json coc-tsserver` afterwards
+" Use release branch (recommend)
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" build from source code by using yarn
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 " Plug 'miguelmota/cairo.vim'
 "Plug '~/Sandbox/cairo.vim'
 " NOTE: airline is disabled because it makes window switching slower
@@ -726,7 +730,7 @@ let g:tsuquyomi_completion_detail = 0
 let g:asyncomplete_matchfuzzy = 1
 
 " YouCompleteMe options
-set runtimepath+=~/.vim/bundle/YouCompleteMe
+" set runtimepath+=~/.vim/bundle/YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_min_num_identifier_candidate_chars = 0
