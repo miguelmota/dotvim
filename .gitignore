@@ -98,3 +98,6 @@ backup/*
 #####################
 .VimballRecord
 .netrwhist
+/viminfo
+files
+bundle

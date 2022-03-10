@@ -1,0 +1,83 @@
+set nocompatible
+filetype off
+filetype indent on
+set wildmenu
+set backspace=indent,eol,start
+set encoding=utf-8 nobomb
+set ttyfast
+set synmaxcol=200
+set number
+set norelativenumber
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set shiftround
+set smarttab
+set smartindent
+set autoindent
+set smartcase
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set list
+set hlsearch
+set incsearch
+set showmatch
+set gdefault
+set incsearch
+set display=lastline
+set laststatus=2
+set splitbelow
+set splitright
+set mouse=a
+set ruler
+set showmode
+set noerrorbells
+set notitle
+set autoread
+set showcmd
+set binary
+set noeol
+set modeline
+set modelines=4
+set exrc
+set secure
+set nocursorline
+set nocursorcolumn
+set lazyredraw
+set redrawtime=10000
+set foldmethod=indent
+set foldlevel=99
+set updatetime=300
+set shortmess+=c
+set noswapfile
+set colorcolumn=80
+set nopaste
+set expandtab
+set hidden
+set wrap
+set wrapscan
+set report=0
+set linebreak
+set textwidth=0
+set wrapmargin=0
+set formatoptions-=t
+set showbreak=>\ \ \
+set cmdheight=2
+set ic
+set t_Co=256
+set background=dark
+set clipboard=unnamedplus
+set backup
+set backupdir=$HOME/.vim/files/backup/
+set backupext=-vimbackup
+set backupskip=
+set directory=$HOME/.vim/files/swap/
+set updatecount=100
+set undofile
+set undodir=$HOME/.vim/files/undo/
+set viminfo='100,n$HOME/.vim/files/info/viminfo
+syntax on
+syntax sync minlines=256
+map q <Nop> " Turn off recording
+hi ColorColumn ctermbg=NONE ctermfg=red
+hi Bang ctermfg=red guifg=red
+match Bang /\%>80v.*/
