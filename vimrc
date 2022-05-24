@@ -40,16 +40,17 @@ Plug 'editorconfig/editorconfig-vim'
 "Plug 'tpope/vim-obsession'
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'osyo-manga/vim-over'
-"Plug 'mileszs/ack.vim'
+" NOTE: ack.vim requires `ack` command
+" Plug 'mileszs/ack.vim'
 "Plug 'pangloss/vim-javascript'
 "Plug 'mxw/vim-jsx'
 "Plug 'duganchen/vim-soy'
-"Plug 'tomlion/vim-solidity'
+Plug 'tomlion/vim-solidity'
 "Plug 'leafgarland/typescript-vim'
 " tsuquyomi is a typescript plugin
 "Plug 'Quramy/tsuquyomi'
 "Plug 'maxmellon/vim-jsx-pretty'
-"Plug 'jparise/vim-graphql'
+Plug 'jparise/vim-graphql'
 " .tsx .jsx syntax highlighting
 "Plug 'peitalin/vim-jsx-typescript'
 " NOTE: yet another typescript plugin
@@ -62,8 +63,8 @@ Plug 'editorconfig/editorconfig-vim'
 "Plug 'chemzqm/vim-jsx-improve'
 "Plug 'szw/vim-maximizer'
 "Plug 'Konfekt/FastFold'
-"Plug 'junegunn/fzf'
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 "Plug 'rust-lang/rust.vim'
 "Plug 'mtth/scratch.vim'
 "Plug 'junegunn/vim-peekaboo'
@@ -134,7 +135,7 @@ Plug 'tpope/vim-fugitive'
 "  Plug 'Shougo/deoplete.nvim'
 "  Plug 'roxma/nvim-yarp'
 "  Plug 'roxma/vim-hug-neovim-rpc'
-"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " NOTE: use this fork for go1.11+
 "Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 " NOTE: this is disabled because it doesn't support go1.11+
@@ -150,7 +151,8 @@ Plug 'tpope/vim-fugitive'
 "Plug 'jpalardy/vim-slime'
 "Plug 'vim-scripts/paredit.vim'
 "Plug 'venantius/vim-cljfmt'
-"Plug 'tpope/vim-fireplace'
+" NOTE: this is a clojurescript plugin
+Plug 'tpope/vim-fireplace'
 " NOTE: Use alt+squarebracket for next suggestion
 Plug 'github/copilot.vim'
 "endif
@@ -619,6 +621,9 @@ endfunction
 " Use slash-p to toggle code pilot
 noremap <leader>p :call ToggleCopilot()<cr>
 
+" Use JSX syntax highlighting in TSX files
+autocmd BufRead,BufNewFile *.tsx setlocal syntax=javascript.jsx
+
 " === PLUGINS ===
 
 " Required options for NERDcommenter
@@ -1037,11 +1042,13 @@ map <C-S-Tab> :bprevious<cr>
 " Map ctrl-p to FZF
 map <c-p> :FZF<CR>
 
-" Ack text search shortcut
-map <Leader>a :Ack!<space>
+" Ack text search shortcut (ack.vim)
+" map <Leader>a :Ack!<space>
+" map <c-a> :Ack!<CR>
 
 " FZF shortcut
 " noremap <leader>f :FZF<CR>
+noremap <c-a> :Rg<CR>
 
 " Mapping selecting mappings
 "nmap <leader><tab> <plug>(fzf-maps-n)
