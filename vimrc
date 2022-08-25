@@ -1000,11 +1000,15 @@ let g:copilot_filetypes = {
   \ 'css': v:true,
   \ 'markdown': v:true,
   \ 'javascript': v:true,
+  \ 'typescript': v:true,
+  \ 'typescriptreact': v:true,
   \ 'python': v:true,
   \ 'go': v:true,
   \ 'rust': v:true,
   \ 'vim': v:true,
   \ }
+"let g:copilot_no_tab_map = v:true
+let g:copilot_assume_mapped = v:true
 
 " === SHORTCUTS ===
 
