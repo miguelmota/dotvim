@@ -1154,7 +1154,13 @@ noremap <leader>sc :Scratch<CR>
 "imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " press <TAB> to use completion suggestion
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" more info: https://www.reddit.com/r/neovim/comments/weydql/comment/ikkl1eq/?utm_source=share&utm_medium=web2x&context=3
+" note: that this makes tab not tab indent anymore which is undesired
+"inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-n>"
+
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : coc#pum#visible() ? coc#pum#confirm() : "\<TAB>"
 
 " use 'jk' keys to navigate autocomplete popup.
 " disabled because it interferes with typing.
