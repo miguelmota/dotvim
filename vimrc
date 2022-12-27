@@ -155,6 +155,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fireplace'
 " NOTE: Use alt+squarebracket for next suggestion
 Plug 'github/copilot.vim'
+Plug 'tpope/vim-abolish'
 "endif
 
 " Plug end
