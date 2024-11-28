@@ -160,15 +160,15 @@ Plug 'tpope/vim-abolish'
 " ---
 
 " ChatGPT (:AI command) https://github.com/madox2/vim-ai
-Plug 'madox2/vim-ai'
+"Plug 'madox2/vim-ai'
 
 " ChatGPT (:Chat command) https://github.com/dpayne/CodeGPT.nvim
-Plug 'dpayne/CodeGPT.nvim'
+"Plug 'dpayne/CodeGPT.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'MunifTanjim/nui.nvim'
 
 " ChatGPT (:ChatGPT command) https://github.com/jackMort/ChatGPT.nvim
-Plug 'jackMort/ChatGPT.nvim'
+"Plug 'jackMort/ChatGPT.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'MunifTanjim/nui.nvim'
 "Plug 'nvim-lua/plenary.nvim'
@@ -180,11 +180,9 @@ Plug 'MunifTanjim/nui.nvim'
 " Plug end
 call plug#end()
 
-" code for plugin jackMort/ChatGPT.nvim
-lua <<EOF
--- chat gpt
-require("chatgpt").setup()
-EOF
+"lua << EOF
+"  require("chatgpt").setup()
+"EOF
 
 " Vundle end
 "call vundle#end()

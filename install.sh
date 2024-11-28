@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Deprecated. Just run ./link_vim.sh"
+exit 1
+
 # Backup .dotfiles
 echo "**** Backing up .dotfiles directory."
 if [ -d ~/.dotfiles ]; then
@@ -40,7 +43,9 @@ if ! type ctags > /dev/null; then
   fi
 
   if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    sudo apt-get install exuberant-ctags 
+   if grep -q "Ubuntu" /etc/os-release; then
+    sudo apt-get install exuberant-ctags
+   fi
   fi
 
 fi
@@ -63,13 +68,13 @@ fi
 # Install bundles
 echo "**** Installing bundles (this may take a while)."
 #vim +BundleInstall +qall 2&> /dev/null
-vim +BundleInstall 
+vim +BundleInstall
 
 # Install term
 echo "**** Installing tern."
 npm config set registry http://registry.npmjs.org/
-cd ~/.vim/bundle/tern_for_vim
-npm install
+#cd ~/.vim/bundle/tern_for_vim
+#npm install
 
 echo "**** Done."
 exit 0;
