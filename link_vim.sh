@@ -29,6 +29,5 @@ link_file() {
   fi
 }
 
-link_file "$DOTVIM_DIR"          ~/.vim
-link_file "$DOTVIM_DIR/vimrc"    ~/.vimrc
-link_file "$DOTVIM_DIR/viminfo"  ~/.viminfo
+link_file "$DOTVIM_DIR"        ~/.vim
+link_file "$DOTVIM_DIR/vimrc"  ~/.vimrc
