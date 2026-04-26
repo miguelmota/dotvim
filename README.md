@@ -11,7 +11,7 @@
 mkdir ~/.dotfiles
 
 # Clone repo
-git clone https://github.com/miguelmota/vim-config.git ~/.dotfiles/.vim
+git clone https://github.com/miguelmota/dotvim.git ~/.dotfiles/.vim
 
 # Create backup directory
 mkdir -p ~/.vim/backup
@@ -164,7 +164,7 @@ Run `BundleInstall` after adding a [Vundle](https://github.com/gmarik/Vundle.vim
 ## Updating
 
 ```bash
-wget https://raw.github.com/miguelmota/vim-config/master/update.sh -O - | bash
+wget https://raw.github.com/miguelmota/dotvim/master/update.sh -O - | bash
 ```
 
 ## Reference

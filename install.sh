@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Deprecated. Just run ./link_vim.sh"
+echo "Deprecated. Just run ./link_vim.sh && ./install_plug.sh"
 exit 1
 
 # Backup .dotfiles
