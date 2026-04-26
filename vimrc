@@ -13,7 +13,7 @@ filetype indent on
 "set rtp+=~/.vim/bundle/Vundle.vim
 "call vundle#begin()
 
-" Let Vundle manage Vundle, required
+
 "Plug 'VundleVim/Vundle.vim'
 
 " Initiate Plug bundles
@@ -160,7 +160,13 @@ Plug 'tpope/vim-abolish'
 " ---
 
 " ChatGPT (:AI command) https://github.com/madox2/vim-ai
-"Plug 'madox2/vim-ai'
+Plug 'madox2/vim-ai'
+
+" /build/bin/llama-server -m ~/Downloads/qwen2.5-coder-7b-q8_0.gguf --temp 0.4 --repeat-penalty 1.1 --repeat-last-n 2048 --mirostat 2  --numa distribute -c 8192 --flash-attn -ctk q4_0 -ctv q4_0 --mlock --ctx-size 0 --cache-reuse 256 --port 8012
+Plug 'ggml-org/llama.vim'
+
+" Llama
+Plug 'Robitx/gp.nvim'
 
 " ChatGPT (:Chat command) https://github.com/dpayne/CodeGPT.nvim
 "Plug 'dpayne/CodeGPT.nvim'
@@ -173,16 +179,61 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'MunifTanjim/nui.nvim'
 "Plug 'nvim-lua/plenary.nvim'
 
+" NOTE: plenary and nvim-treesitter required for olimorris/codecompanion.nvim
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'olimorris/codecompanion.nvim'
+
 " ---
 
 "endif
 
+
 " Plug end
 call plug#end()
 
-"lua << EOF
-"  require("chatgpt").setup()
-"EOF
+" let s:vim_ai_endpoint_url = "http://localhost:8012/v1/chat/completions"
+
+let g:vim_ai_chat = {
+\  "options": {
+\    "endpoint_url": "http://localhost:8012/v1/chat/completions",
+\    "enable_auth": 0,
+\  }
+\}
+
+let g:vim_ai_complete = {
+\  "engine": "complete",
+\  "options": {
+\    "endpoint_url": "http://localhost:8012/v1/completions",
+\    "max_tokens": 1000,
+\    "temperature": 0.1,
+\    "request_timeout": 20,
+\    "stream": 1,
+\    "enable_auth": 0,
+\    "selection_boundary": "#####",
+\  },
+\  "ui": {
+\    "paste_mode": 1,
+\  },
+\}
+
+let g:vim_ai_edit = {
+\  "engine": "chat",
+\  "options": {
+\    "endpoint_url": "http://localhost:8012/v1/chat/completions",
+\    "max_tokens": 1000,
+\    "temperature": 0.1,
+\    "request_timeout": 20,
+\    "stream": 1,
+\    "enable_auth": 0,
+\    "selection_boundary": "#####",
+\    "max_completion_tokens": 25000,
+\  },
+\  "ui": {
+\    "paste_mode": 1,
+\  },
+\}
+
 
 " Vundle end
 "call vundle#end()
